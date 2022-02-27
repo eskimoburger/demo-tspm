@@ -1,6 +1,7 @@
 module.exports = {
-    images: {
-      domains: ['*'],
-    },
-    
-  }
+  images: {
+    domains: ["*"],
+  },
+
+  presets: ["next/babel"],
+};
