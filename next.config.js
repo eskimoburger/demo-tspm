@@ -2,6 +2,5 @@ module.exports = {
   images: {
     domains: ["*"],
   },
-
-  presets: ["next/babel"],
+  swcMinify: false, // it should be false by default
 };

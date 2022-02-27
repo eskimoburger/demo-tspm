@@ -25,7 +25,7 @@
     "cookie": "^0.4.1",
     "crypto": "^1.0.1",
     "fs": "0.0.1-security",
-    "next": "12.0.8",
+    "next": "^12.1.1-canary.4",
     "pdfjs-dist": "^2.6.347",
     "prop-types": "^15.8.1",
     "react": "17.0.2",
@@ -45,9 +45,9 @@
     "eslint-config-next": "12.0.8",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15"
-  }
-  ,"engines": {
-    "node":"v16.13.1",
+  },
+  "engines": {
+    "node": "v16.13.1",
     "npm": "8.1.2"
   }
 }
