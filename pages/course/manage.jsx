@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { useRouter } from "next/router";
 import CourseLayout from "../../components/courseteachers/LayoutCourse";
-import ManageProjectTest from "../../components/courseteachers/manageprojectTest";
+import ManageProjectTest from "../../components/courseteachers/ManageProjectTest";
 import ManageProjectFinal from "../../components/courseteachers/ManageProjectFinal";
 const ManagePage = ({ allProject }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
