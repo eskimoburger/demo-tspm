@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
-import TestLayout from "../components/testLayout";
+import TestLayout from "../components/TestLayout";
 
 const TestNew = ({ resources, params }) => {
   const router = useRouter();

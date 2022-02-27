@@ -1,5 +1,5 @@
 import React from "react";
-import ManageProjectTest from "../../components/courseteachers/manageprojectTest";
+import ManageProjectTest from "../../components/courseteachers/ManageProjectTest";
 
 const TestPage = ({ allProject, checkError, ErrorMessage }) => {
   if (checkError) {
