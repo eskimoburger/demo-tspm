@@ -1,0 +1,29 @@
+.table_student {
+    table,
+    td,
+    th {
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+  
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+  
+    th,
+    td {
+      padding: 8px;
+    }
+
+    .center {
+        vertical-align: middle;
+        text-align: center;
+        /* just to see what's happening */
+        //background: #eee;
+    }
+   
+
+
+    
+  }

@@ -1,0 +1,129 @@
+$font-size: 62.5%;
+$title-font: 'Open Sans';
+$data-font: 'Lato';
+$white-bone: #e6e6e6;
+$blue: rgb(51, 131, 255);
+$light-black: hsla(0, 0%, 0%, 0.8);
+$transparent-black: #00000033;
+$white: #fff;
+$light-gray: rgb(200, 200, 200, .7);
+$black-purple:rgb(54, 48, 74);
+$transition-fast: 0.1s;
+
+.table_manage {
+  table {
+    border-collapse: collapse;
+    border: 0px solid black;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background: white;
+    font-size: 20px;
+  }
+  th,
+  td {
+    border: 10px solid white;
+    padding: 5px;
+  }
+  
+  //tr:nth-child(even){background-color: #f2f2f2;}
+  thead th{
+    padding: 15px 8px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+  }
+  tbody th {
+      background-color: #f2f2f2;
+      border-radius: 25px;
+      padding: 10px 5px;
+  }
+}
+
+.table_for_manage{
+  margin-top: 25px;
+  table-layout: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 1px 1px 16px $transparent-black;
+  background-color: $white-bone;
+  border-radius: 6px;
+  overflow: hidden;
+  border-collapse: collapse;
+  padding-bottom: 1em;
+}
+
+.header {
+  padding: .25em 0;
+
+  font-size: 20px;//2.4 rem
+  font-weight: 500;
+  
+  color: $white;
+}
+.table__headers {
+  background-color: $black-purple;
+}
+
+.table__row:nth-child(odd) {
+  background-color: $white;
+}
+.row__cell{
+  padding: .25em 0.25em;
+  
+  font-size: 18px; //2rem
+  text-align: center;
+}
+.InputGroup {
+  display: flex;
+  height: 50px;
+  width: 400px;
+ 
+  input[type="radio"] {
+    visibility: hidden; /* 1 */
+    height: 0; /* 2 */
+    width: 0; /* 2 */
+  }
+
+  label {
+    display: flex;
+    flex: auto;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: color $transition-fast ease-out,
+      background-color $transition-fast ease-in;
+    user-select: none;
+    margin-right: 5px;
+    border: solid 2px black
+  }
+
+  label:last-of-type {
+    margin-right: 0;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: white;
+    color:#00D100;
+    border: solid 2px #00D100 ;
+
+  }
+
+  input[type="radio"]:hover:not(:checked) + label {
+    //background-color: $color-black;
+    color:#00D100;
+    border:solid 2px #00D100
+  }
+}
+
+
+
+
+
+
+

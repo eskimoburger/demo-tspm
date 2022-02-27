@@ -1,0 +1,108 @@
+.content {
+  display: -ms-grid;
+  display: grid;
+  background-color: white;
+  padding: 5px;
+  width: 1200px;
+      grid-template-areas: "title" "body";
+  -ms-grid-rows: 80px auto;
+      grid-template-rows: 80px auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+  background-color: #00b74a;
+  color: #fbfbfb;
+  width: 300px;
+  height: 60px;
+  border-radius: 10px;
+  line-height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  margin-left: -45px;
+  margin-top: -5px;
+}
+
+.body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: body;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+  font-size: 18px;
+      grid-template-areas: "1 2";
+  -ms-grid-columns: 200px 600px;
+      grid-template-columns: 200px 600px;
+}
+
+.body p {
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+.body p.title {
+  font-weight: bold;
+}
+
+.body input {
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  height: 60px;
+  margin-top: 45px;
+  border-radius: 10px;
+  text-indent: 2em;
+}
+
+.body textarea {
+  display: block;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  height: 150px;
+  margin-top: 45px;
+  border-radius: 10px;
+  line-height: 20px;
+}
+
+.body select {
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  height: 60px;
+  margin-top: 45px;
+  border-radius: 10px;
+  text-indent: 2em;
+}
+
+.button {
+  height: 40px;
+  border: none;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #f93154;
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-top: 40px;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #ffa900;
+  cursor: pointer;
+}
+/*# sourceMappingURL=es.module.css.map */

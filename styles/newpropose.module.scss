@@ -1,0 +1,62 @@
+$color-black: #232323;
+$color-pink: #ff6393;
+$color-dark-pink: #df4775;
+$color-purple: #342a47;
+$color-blue: deepskyblue;
+$color-gray: #525252;
+$color-green: #bbe187;
+
+$transition-fast: 0.1s;
+
+.InputGroup {
+  display: flex;
+  height: 50px;
+  width: 400px;
+ 
+  input[type="radio"] {
+    visibility: hidden; /* 1 */
+    height: 0; /* 2 */
+    width: 0; /* 2 */
+  }
+
+  label {
+    display: flex;
+    flex: auto;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: color $transition-fast ease-out,
+      background-color $transition-fast ease-in;
+    user-select: none;
+    margin-right: 5px;
+    border: solid 2px black
+  }
+
+  label:last-of-type {
+    margin-right: 0;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: white;
+    color:#00D100;
+    border: solid 2px #00D100 ;
+
+  }
+
+  input[type="radio"]:hover:not(:checked) + label {
+    //background-color: $color-black;
+    color:#00D100;
+    border:solid 2px #00D100
+  }
+}
+
+/**
+    * 1. Hides the input from view
+    * 2. Ensures the element does not consume any space
+    */

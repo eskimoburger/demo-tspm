@@ -1,0 +1,21 @@
+.table_notification {
+  table,
+  td,
+  th {
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 5px;
+  }
+}
+.slash {
+  background-image: linear-gradient(to top right, white 48%, black, white 52%);
+}

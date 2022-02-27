@@ -1,0 +1,154 @@
+.content {
+  display: -ms-grid;
+  display: grid;
+  background-color: #f0f2f5;
+  min-height: calc(100vh - 100px);
+  -ms-grid-rows: 800px auto auto;
+      grid-template-rows: 800px auto auto;
+  -ms-grid-columns: 1200px;
+      grid-template-columns: 1200px;
+}
+
+.main {
+  display: -ms-grid;
+  display: grid;
+  background-color: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  border-radius: 10px;
+  margin-top: 20px;
+  -ms-grid-rows: 80px auto;
+      grid-template-rows: 80px auto;
+      grid-template-areas: "title" "_info";
+}
+
+.title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+  background-color: #f93154;
+  height: 80px;
+  width: 350px;
+  margin-left: -30px;
+  margin-top: -10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 70px;
+}
+
+.info_box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: _info;
+      grid-template-areas: "picture info";
+  -ms-grid-columns: 400px auto;
+      grid-template-columns: 400px auto;
+  background-color: white;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+
+.pic_box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: picture;
+      grid-template-areas: "title" "pic";
+  background-color: white;
+  -ms-grid-rows: 80px auto;
+      grid-template-rows: 80px auto;
+}
+
+.file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file + label {
+  cursor: pointer;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #00b74a;
+  display: inline-block;
+  text-align: center;
+  line-height: 35px;
+  height: 40px;
+  width: 300px;
+  margin-left: 50px;
+  margin-top: -10px;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+
+.file + label:hover {
+  background-color: red;
+}
+
+.pic {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: pic;
+  height: 400px;
+  width: 300px;
+  margin-top: 30px;
+  margin-left: 50px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+
+.info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: info;
+      grid-template-areas: "title" "data";
+  background-color: #f0f2f5;
+  -ms-grid-rows: 80px auto;
+      grid-template-rows: 80px auto;
+}
+
+.textbox {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: data;
+  text-indent: 2em;
+  margin-top: 10px;
+}
+
+.textbox label {
+  text-indent: 2em;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.title2 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+  background-color: #1266f1;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 70px;
+  text-indent: 2em;
+}
+/*# sourceMappingURL=user.module copy.css.map */

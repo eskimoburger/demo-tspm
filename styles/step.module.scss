@@ -1,0 +1,74 @@
+.stepper_container {
+  //border: 1px solid lightsalmon;
+  //border-radius: 3px;
+  //box-shadow: 0 0 13px #333;
+  margin: 20px auto;
+  padding: 10px 0px;
+  width: 100%;
+  position: relative;
+}
+.stepper_wrapper_horizontal {
+  display: flex;
+  
+  justify-content: space-between;
+  //flex-wrap: wrap;
+  .stepper_wrapper {
+    //gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //justify-content: center;
+    width: 100%;
+    font-size:20px;
+    text-align: center;
+    //flex: 1 ;
+    position: relative;
+    
+  }
+  .stepper_number {
+    
+    border-radius: 80%;
+    border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+  .divider_line {
+    height: 4px;
+    background-color: #bdbdbd;
+    position: absolute;
+    width: 50%;
+    //margin: 10px 10px;
+    top: 20%;
+    left: 75%;
+    //background: linear-gradient(#e66465, #9198e5);
+  }
+}
+.stepper_number_active {
+  border-radius: 80%;
+  border: 1px solid gray;
+  width: 50px;
+  height: 50px;
+  padding: 3px;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  background: #ee5252;
+  color: #fff;
+  font-size: 25px;
+}
+.stepper_number_disabled {
+  border: 1px solid #838383;
+  border-radius: 80%;
+  width: 50px;
+  height: 50px;
+  padding: 3px;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 25px;
+}
+.stepper_description_active {
+  font-weight: bold;
+  
+}
