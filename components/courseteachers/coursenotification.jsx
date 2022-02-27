@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import TestState from "./testState";
+import TestState from "./teststate";
 import axios from "axios"
 
 export default function coursenotification() {
