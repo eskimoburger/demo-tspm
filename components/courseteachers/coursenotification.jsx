@@ -23,7 +23,7 @@ export default function coursenotification() {
 
   const getNotificationCourseTeacher = () =>{
     axios
-      .get(`http://localhost:3001/notification/course-teacher`)
+      .get(`https://demo-tspm-server.herokuapp.com/notification/course-teacher`)
       .then((response) => {
         console.log(response.data);
         setNotifications(response.data);

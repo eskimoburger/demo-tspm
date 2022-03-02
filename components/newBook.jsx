@@ -119,7 +119,7 @@ export default function NewBook(props) {
     data.append("file", file);
     try {
       const res = await axios.post(
-        `http://localhost:3001/upload-file/${project_name}`,
+        `https://demo-tspm-server.herokuapp.com/upload-file/${project_name}`,
         data
       );
       console.log(res);
@@ -127,7 +127,7 @@ export default function NewBook(props) {
       console.log(ex);
     }
 
-    //axios.post("http://localhost:3001/upload-file/CPE01,")
+    //axios.post("https://demo-tspm-server.herokuapp.com/upload-file/CPE01,")
     //เขียน axios
     //update state +1
     var project_id = props.project.id;

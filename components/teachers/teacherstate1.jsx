@@ -29,7 +29,7 @@ export default function teacherState1(props) {
 
   function getProjectByName(name) {
     axios
-      .get("http://localhost:3001/project/getprojectbyname/" + name)
+      .get("https://demo-tspm-server.herokuapp.com/project/getprojectbyname/" + name)
       .then((response) => {
         setProjectDetail(response.data);
         setOpen(true);
@@ -38,7 +38,7 @@ export default function teacherState1(props) {
 
   // async function deleteNotification(id) {
   //   axios
-  //     .delete("http://localhost:3001/notification/project/" + id)
+  //     .delete("https://demo-tspm-server.herokuapp.com/notification/project/" + id)
   //     .then(async (response) => {
   //       console.log(response.data);
   //       await props.function();
@@ -49,7 +49,7 @@ export default function teacherState1(props) {
   // function submitted(projectName, teacherID) {
   //   axios
   //     .put(
-  //       `http://localhost:3001/project/submitted/${projectName}/${teacherID}`
+  //       `https://demo-tspm-server.herokuapp.com/project/submitted/${projectName}/${teacherID}`
   //     )
   //     .then((response) => {
   //       console.log(response.data);
@@ -59,7 +59,7 @@ export default function teacherState1(props) {
   // function rejected(projectName, teacherID) {
   //   console.log(projectName, teacherID);
   //   axios
-  //     .put(`http://localhost:3001/project/rejected/${projectName}/${teacherID}`)
+  //     .put(`https://demo-tspm-server.herokuapp.com/project/rejected/${projectName}/${teacherID}`)
   //     .then((response) => {
   //       console.log(response.data);
   //     });
@@ -67,7 +67,7 @@ export default function teacherState1(props) {
 
   const finalConfirm = async(status,des) =>{
     await axios
-    .put(`http://localhost:3001/final-teacher/confirm-state1/${props.teacherID}/${status}`,{idNotification:props.id,projectName:props.projectName,description:des})
+    .put(`https://demo-tspm-server.herokuapp.com/final-teacher/confirm-state1/${props.teacherID}/${status}`,{idNotification:props.id,projectName:props.projectName,description:des})
     .then(async(response) => {
       await props.function();
       setAlert(false)

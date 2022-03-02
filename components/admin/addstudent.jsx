@@ -53,7 +53,7 @@ export default function addstudent() {
 
 
   const Upload  = () =>{
-    axios.post("http://localhost:3001/students/hello",{testData:students}).then((res)=>{
+    axios.post("https://demo-tspm-server.herokuapp.com/students/hello",{testData:students}).then((res)=>{
       console.log(res.data)
     }).catch((err)=>{
       console.log(err)
@@ -62,7 +62,7 @@ export default function addstudent() {
   }
 
   const upload2  = async () =>{
-    await axios.post("http://localhost:3001/students/hello",{testData:students}).then((res)=>{
+    await axios.post("https://demo-tspm-server.herokuapp.com/students/hello",{testData:students}).then((res)=>{
       console.log(res.data)
     }).catch((err)=>{
       console.log(err)
@@ -70,7 +70,7 @@ export default function addstudent() {
     )
     
     for (let i = 0; i < students.length ; i++ ){
-      await axios.post("http://localhost:3001/students/sendregyoyo",{username:students[i].studentcode ,password:students[i].studentcode+students[i].studentnameeng,number:i}).then( (res)=>{
+      await axios.post("https://demo-tspm-server.herokuapp.com/students/sendregyoyo",{username:students[i].studentcode ,password:students[i].studentcode+students[i].studentnameeng,number:i}).then( (res)=>{
       console.log(res.data)
       if(students.length == res.data.number+1){
         console.log("Hello")

@@ -75,7 +75,7 @@ export default function FinalAssesEdit({
   const getFile = () => {
     console.log(projectID);
     axios
-      .get(`http://localhost:3001/final-course/get-final-file/${projectID}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-course/get-final-file/${projectID}`)
       .then((res) => {
         console.log(res.data);
         setShowFile(res.data);
@@ -84,7 +84,7 @@ export default function FinalAssesEdit({
 
   const finalGetProjectAsses = async (id) => {
     await axios
-      .get(`http://localhost:3001/final-course/project-asses/${id}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-course/project-asses/${id}`)
       .then((res) => {
         console.log(res.data);
         setProject(res.data.data_project);
@@ -95,7 +95,7 @@ export default function FinalAssesEdit({
     const time = notificationName.split(" ")[1];
 
     await axios
-      .post(`http://localhost:3001/final-course/edit-asses/${id}`, {
+      .post(`https://demo-tspm-server.herokuapp.com/final-course/edit-asses/${id}`, {
         final: final,
         finalStatus: finalStatus,
         idNotification: notificationId,
@@ -112,7 +112,7 @@ export default function FinalAssesEdit({
   const getEditAssesPrevious = async (id) => {
     const time = notificationName.split(" ")[1] - 1;
     await axios
-      .get(`http://localhost:3001/final-course/get-asses/${id}/${time}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-course/get-asses/${id}/${time}`)
       .then((res) => {
         console.log(res?.data[0]);
         setShowAsses(res?.data[0]);

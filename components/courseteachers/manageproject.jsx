@@ -138,14 +138,14 @@ export default function ManageProject() {
 
   function getProjectFromTeacher() {
     axios
-      .get("http://localhost:3001/project/getallproject")
+      .get("https://demo-tspm-server.herokuapp.com/project/getallproject")
       .then((response) => {
         for (let i = 0; i < response.data.length; i++) {
           // console.log("กรรมการ" + i);
           //console.log(response.data[i]);
           axios
             .get(
-              `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
+              `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
             )
             .then((res) => {
               console.log(res.data);
@@ -163,7 +163,7 @@ export default function ManageProject() {
     // await console.log(p)
 
     await axios
-      .put(`http://localhost:3001/final-course/update-project/${id}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/final-course/update-project/${id}`, {
         projectId: newProjectId,
       })
       .then(async (response) => {
@@ -190,7 +190,7 @@ export default function ManageProject() {
   };
 
   const getAll = () => {
-    axios.get("http://localhost:3001/final-course/all-project").then((res) => {
+    axios.get("https://demo-tspm-server.herokuapp.com/final-course/all-project").then((res) => {
       console.log(res.data.results);
       setAllP(res.data.results);
     });
@@ -198,7 +198,7 @@ export default function ManageProject() {
 
   const getOne = (projectName) => {
     axios
-      .get(`http://localhost:3001/project/getprojectbyname/${projectName}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${projectName}`)
       .then((res) => {
         console.log(res.data);
         setP(res.data);
@@ -222,13 +222,13 @@ export default function ManageProject() {
   };
 
   function fetchStudentList() {
-    axios.get(`http://localhost:3001/allstudent/test`).then((response) => {
+    axios.get(`https://demo-tspm-server.herokuapp.com/allstudent/test`).then((response) => {
       console.log(response.data.studentList);
       setStudentList(response.data.studentList);
     });
   }
   function fetchTeacherList() {
-    axios.get(`http://localhost:3001/allteacher`).then((response) => {
+    axios.get(`https://demo-tspm-server.herokuapp.com/allteacher`).then((response) => {
       console.log(response.data);
       setTeacherList(response.data);
     });
@@ -268,7 +268,7 @@ export default function ManageProject() {
   const finalGetProjectByID = async (id) => {
     setTest(true);
     await axios
-      .get("http://localhost:3001/final-course/get-project/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-project/" + id)
       .then((res) => {
         setP(res.data.results);
         setCheck(res.data.results.status);
@@ -281,7 +281,7 @@ export default function ManageProject() {
     setEditDetail(true);
     setIdProject(id);
     await axios
-      .get("http://localhost:3001/final-course/get-project/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-project/" + id)
       .then((res) => {
         console.log(res.data);
 

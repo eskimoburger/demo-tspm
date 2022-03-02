@@ -48,7 +48,7 @@ export default ManagePage;
 
 // export async function getServerSideProps({ query }) {
 //   const resData = await fetch(
-//     `http://localhost:3001/final-project/project-detail/${query.id}`
+//     `https://demo-tspm-server.herokuapp.com/final-project/project-detail/${query.id}`
 //   );
 //   const data = await resData.json();
 //   let queryStatus = false;

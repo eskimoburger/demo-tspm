@@ -23,7 +23,7 @@ export default function teacherState5(props) {
 
   const getFile = () => {
     axios
-      .get(`http://localhost:3001/final-teacher/file-state9/${props.projectID}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-teacher/file-state9/${props.projectID}`)
       .then((res) => {
         console.log(res.data);
         setShowFile(res.data);
@@ -32,7 +32,7 @@ export default function teacherState5(props) {
 
   const updateFeedback = () => {
     axios
-      .put(`http://localhost:3001/project/test-feedBack/${props.projectID}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/project/test-feedBack/${props.projectID}`, {
         testFeedback: testFeedback,
       })
       .then((res) => {
@@ -45,7 +45,7 @@ export default function teacherState5(props) {
   const updateStatusFeedback = (status) => {
     axios
       .put(
-        `http://localhost:3001/project/test-feedBackStatus/${props.projectID}`,
+        `https://demo-tspm-server.herokuapp.com/project/test-feedBackStatus/${props.projectID}`,
         {
           status: status,
         }
@@ -60,7 +60,7 @@ export default function teacherState5(props) {
   const finalConfirmTest = async (status, des) => {
     await axios
       .put(
-        `http://localhost:3001/final-teacher/confirm-state9/${props.teacherID}/${status}`,
+        `https://demo-tspm-server.herokuapp.com/final-teacher/confirm-state9/${props.teacherID}/${status}`,
         {
           idNotification: props.id,
           projectName: props.projectName,

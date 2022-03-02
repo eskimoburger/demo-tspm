@@ -30,7 +30,7 @@ export default function state7({
 
   const finalSendAsses = async () => {
     await axios
-      .post("http://localhost:3001/final-project/state-6-asses/" + projectId, {
+      .post("https://demo-tspm-server.herokuapp.com/final-project/state-6-asses/" + projectId, {
         project_eng: projectNameENG,
         project_th: projectNameTH,
         idTeacher: teacher.id_teacher,
@@ -172,7 +172,7 @@ export default function state7({
 // function SendAsses() {
 //   //Project1 ได้ส่งคำขอให้ ดร.เศรษฐา ตั้งค้าวานิช  อาจารย์ที่ปรึกษาประจำโครงงงาน1 (Project1) ประเมินความก้าวหน้าของโครงงาน
 //   axios
-//     .post("http://localhost:3001/notification/id", {
+//     .post("https://demo-tspm-server.herokuapp.com/notification/id", {
 //       description: `${props.project.name_eng}  ได้ส่งคำขอให้  ${teacher.name} ${teacher.role}ประจำ${props.project.name} (${props.project.name_eng}) ประเมินความก้าวหน้าของโครงงาน`,
 //       state_name: "ขอประเมินความก้าวหน้าของโครงงาน",
 //       id_teacher: teacher.id_teacher,
@@ -187,7 +187,7 @@ export default function state7({
 
 //     axios
 //       .post(
-//         `http://localhost:3001/project/studentasses/${props.project.idP}`,
+//         `https://demo-tspm-server.herokuapp.com/project/studentasses/${props.project.idP}`,
 //         {
 //           idStudent: props.project.members[i].id,
 //         }
@@ -198,7 +198,7 @@ export default function state7({
 //   }
 
 //   axios
-//     .post(`http://localhost:3001/project/asses/${props.project.idP}`)
+//     .post(`https://demo-tspm-server.herokuapp.com/project/asses/${props.project.idP}`)
 //     .then((res) => {
 //       console.log(res.data);
 //     });
@@ -222,7 +222,7 @@ export default function state7({
 
 // async function nextStageProject() {
 //   await axios
-//     .put(`http://localhost:3001/project/nextstage/${props.project.idP}`)
+//     .put(`https://demo-tspm-server.herokuapp.com/project/nextstage/${props.project.idP}`)
 //     .then((response) => {
 //       console.log(response.data);
 //     });

@@ -35,7 +35,7 @@ export default function NewExamResults(props) {
 
   function getTeachers() {
     axios
-      .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
       .then((response) => {
         console.log(response.data);
 
@@ -64,7 +64,7 @@ export default function NewExamResults(props) {
 
     for (let k = 0; k < data.length; k++) {
       axios
-        .post("http://localhost:3001/project/examresult", {
+        .post("https://demo-tspm-server.herokuapp.com/project/examresult", {
           exam_value: data[k].value,
           exam_details: data[k].detail,
           id_project: props.project.id,
@@ -75,7 +75,7 @@ export default function NewExamResults(props) {
         });
 
       axios
-        .post("http://localhost:3001/notification", {
+        .post("https://demo-tspm-server.herokuapp.com/notification", {
           description: `${props.project.name_eng} ได้ส่งแบบบันทึกผลการสอบหัวข้อโครงงานให้ ${data[k].name} ตรวจสอบ !! `,
           state_name: "บันทึกผลการสอบหัวข้อโครงงาน",
           id_teacher: data[k].id,

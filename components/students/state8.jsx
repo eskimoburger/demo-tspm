@@ -31,7 +31,7 @@ export default function state8(props) {
   const getAssesFeedback = async () => {
     await axios
       .get(
-        "http://localhost:3001/final-project/asses-feedback/" +
+        "https://demo-tspm-server.herokuapp.com/final-project/asses-feedback/" +
           props.project.idP
       )
       .then((res) => {
@@ -45,7 +45,7 @@ export default function state8(props) {
 
   // function getAssesStatus() {
   //     axios
-  //       .get(`http://localhost:3001/project/asses/${props.project.id}`)
+  //       .get(`https://demo-tspm-server.herokuapp.com/project/asses/${props.project.id}`)
   //       .then((res) => {
   //         //console.log(res.data[0]);
   //         if (res.data[0].asses_status===1) {

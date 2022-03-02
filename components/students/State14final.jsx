@@ -34,7 +34,7 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
 
   async function backToStageProject() {
     await axios
-      .put(`http://localhost:3001/project/backToStage/${projectId}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/project/backToStage/${projectId}`, {
         state: 12,
       })
       .then((_) => {

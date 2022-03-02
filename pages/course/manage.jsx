@@ -20,6 +20,7 @@ const ManagePage = ({ allProject }) => {
       {allProject && (
         <>
           <ManageProjectFinal allP={allProject} refreshData={refreshData} />
+          
         </>
       )}
     </>
@@ -33,7 +34,7 @@ ManagePage.getLayout = function getLayout(page) {
 export async function getServerSideProps() {
   try {
     const resData = await fetch(
-      "http://localhost:3001/final-course/all-project"
+      "https://demo-tspm-server.herokuapp.com/final-course/all-project"
     );
     const data = await resData.json();
     return {
@@ -41,13 +42,15 @@ export async function getServerSideProps() {
         allProject: data.results,
       },
     };
-  } catch (err) {
-    return {
-      props: {
-        ErrorMessage: err.message,
-        checkError: true,
-      },
-    };
+  } 
+  catch (err) {
+    console.log(err)
+    // return {
+    //   props: {
+    //     ErrorMessage: err.message,
+    //     checkError: true,
+    //   },
+    // };
   }
 
   //console.log(data);

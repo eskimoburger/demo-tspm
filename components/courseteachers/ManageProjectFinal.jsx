@@ -41,7 +41,7 @@ const ManageProjectFinal = ({ allP, refreshData }) => {
 
   const finalGetProjectByID = async (id) => {
     await axios
-      .get("http://localhost:3001/final-course/get-project/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-project/" + id)
       .then((res) => {
         setProjectData(res.data.results);
         setCheck(res.data.results.status);
@@ -53,7 +53,7 @@ const ManageProjectFinal = ({ allP, refreshData }) => {
     setEditDetail(true);
     setIdProject(id);
     await axios
-      .get("http://localhost:3001/final-course/get-project/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-project/" + id)
       .then((res) => {
         console.log(res.data);
 
@@ -67,7 +67,7 @@ const ManageProjectFinal = ({ allP, refreshData }) => {
     //setIdProject(id);
     setOpenLogbook(true)
     await axios
-      .get("http://localhost:3001/final-course/get-logbook/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-logbook/" + id)
       .then((res) => {
         console.log(res.data);
         setLogbookData(res?.data)

@@ -33,7 +33,7 @@ export default function propose() {
   };
 
   const sendPropose = () => {
-    Axios.put("http://localhost:3001/sendpropose", {
+    Axios.put("https://demo-tspm-server.herokuapp.com/sendpropose", {
       project: project,
       engproject: engproject,
       teacherid: teacher,

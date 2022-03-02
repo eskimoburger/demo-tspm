@@ -47,7 +47,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   async function getRequest() {
     await axios
       .get(
-        `http://localhost:3001/final-project/get-request-state2/${projectId}`
+        `https://demo-tspm-server.herokuapp.com/final-project/get-request-state2/${projectId}`
       )
       .then((response) => {
         const { data_request, checkSubmitAll, checkNext, checkReject } =
@@ -64,7 +64,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
         );
       });
     // axios
-    //   .get(`http://localhost:3001/project/getmainproject/${projectName}`)
+    //   .get(`https://demo-tspm-server.herokuapp.com/project/getmainproject/${projectName}`)
     //   .then((response) => {
     //     //setIdProject(response.data[0].project_id);
     //     console.log(response.data);
@@ -81,7 +81,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   };
 
   function getAllTeacher() {
-    axios.get(`http://localhost:3001/allteacher`).then((response) => {
+    axios.get(`https://demo-tspm-server.herokuapp.com/allteacher`).then((response) => {
       console.log(response.data);
       SetAllTeacher(response.data);
     });
@@ -89,7 +89,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 
   async function getReject() {
     await axios
-      .get(`http://localhost:3001/final-project/reject-teacher/${projectId}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-project/reject-teacher/${projectId}`)
       .then((response) => {
         ///console.log(response.data);
         SetRejectTeacher(response.data);
@@ -99,7 +99,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 
   const finalChange = async () => {
     await axios
-      .post(`http://localhost:3001/final-project/state-1/change/${projectId}`, {
+      .post(`https://demo-tspm-server.herokuapp.com/final-project/state-1/change/${projectId}`, {
         changeTeacher: data,
         rejectTeacher: rejectTeacher,
         project_eng: projectName,
@@ -115,7 +115,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   //CancelProject
   const finalCancelProject = async () => {
     await axios
-      .post(`http://localhost:3001/final-project/cancel/${projectId}`)
+      .post(`https://demo-tspm-server.herokuapp.com/final-project/cancel/${projectId}`)
       .then((res) => {
         alert("CancelSuccess");
         //console.lo g(res)
@@ -548,7 +548,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 
 // function nextStageProject() {
 //   axios
-//     .put(`http://localhost:3001/project/nextstage/${projectId}`)
+//     .put(`https://demo-tspm-server.herokuapp.com/project/nextstage/${projectId}`)
 //     .then((response) => {
 //       console.log(response.data);
 //       props.function();
@@ -567,7 +567,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 //     //console.log(id,name,role,pnameEN)
 
 //     axios
-//       .post("http://localhost:3001/project/addcommitproject", {
+//       .post("https://demo-tspm-server.herokuapp.com/project/addcommitproject", {
 //         committee_name: name,
 //         role: role,
 //         id_teacher: id,
@@ -578,7 +578,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 //       });
 
 //     axios
-//       .post("http://localhost:3001/notification/", {
+//       .post("https://demo-tspm-server.herokuapp.com/notification/", {
 //         description: description,
 //         state_name: state_name,
 //         id_teacher: id,
@@ -595,7 +595,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 //   for (let i = 0; i < rejectTeacher.length; i++) {
 //     axios
 //       .delete(
-//         `http://localhost:3001/project/deleterejecteacher/${rejectTeacher[i].id_teacher}`,
+//         `https://demo-tspm-server.herokuapp.com/project/deleterejecteacher/${rejectTeacher[i].id_teacher}`,
 //         { data: { project: props.projectName } }
 //       )
 //       .then((res) => {
@@ -605,7 +605,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 //   }
 // };
 // const cancelProject = () =>{
-//   axios.post(`http://localhost:3001/project/cancel/${projectId}`,{
+//   axios.post(`https://demo-tspm-server.herokuapp.com/project/cancel/${projectId}`,{
 //     projectName:props.projectName
 //   }).then((res)=>{
 //     props.function()

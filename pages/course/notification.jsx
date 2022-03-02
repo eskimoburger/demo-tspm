@@ -31,7 +31,7 @@ NotificationPage.getLayout = function getLayout(page) {
 export async function getServerSideProps() {
   try {
     const resData = await axios.get(
-      "http://localhost:3001/notification/course-teacher"
+      "https://demo-tspm-server.herokuapp.com/notification/course-teacher"
     );
     const data = resData.data;
     //console.log(data);

@@ -21,7 +21,7 @@ DocumentPage.getLayout = function getLayout(page){
 
 
 export async function getServerSideProps() {
-  const resData = await fetch(`http://localhost:3001/files/document`);
+  const resData = await fetch(`https://demo-tspm-server.herokuapp.com/files/document`);
   const data = await resData.json(); //console.log(data);
   return {
     props: {
@@ -35,7 +35,7 @@ export async function getServerSideProps() {
 //const [documents, SetDocuments] = useState([]);
 
 // const getDocument = () => {
-//   axios.get("http://localhost:3001/files/document").then((response) => {
+//   axios.get("https://demo-tspm-server.herokuapp.com/files/document").then((response) => {
 //     console.log(response.data);
 //     SetDocuments(response.data);
 //   });

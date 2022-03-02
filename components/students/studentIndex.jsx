@@ -64,7 +64,7 @@ export default function studentIndex() {
   const getProject = async () => {
     await axios
       .get(
-        `http://localhost:3001/final-project/project-detail/${sessionStorage.getItem(
+        `https://demo-tspm-server.herokuapp.com/final-project/project-detail/${sessionStorage.getItem(
           "useID"
         )}`
       )
@@ -141,7 +141,7 @@ export default function studentIndex() {
   const getUser = () => {
     axios
       .get(
-        `http://localhost:3001/allstudent/test/${sessionStorage.getItem(
+        `https://demo-tspm-server.herokuapp.com/allstudent/test/${sessionStorage.getItem(
           "useID"
         )}`
       )
@@ -152,7 +152,7 @@ export default function studentIndex() {
 
   const nextStageProject = async () => {
     await axios
-      .put(`http://localhost:3001/final-project/next-stage/${project.idP}`)
+      .put(`https://demo-tspm-server.herokuapp.com/final-project/next-stage/${project.idP}`)
       .then((response) => {
         getProject();
         console.log(response.data);

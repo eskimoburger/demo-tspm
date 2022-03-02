@@ -38,7 +38,7 @@ export default function state11(props) {
 
   function getTeachers() {
     axios
-      .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
       .then((response) => {
         console.log(response.data.length);
         console.log(response.data);
@@ -51,7 +51,7 @@ export default function state11(props) {
 
   function getTeachers() {
     axios
-      .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
       .then((response) => {
         console.log(response.data);
 
@@ -83,7 +83,7 @@ export default function state11(props) {
   function  NewSendFinalExamResults () {
     for (let k = 0; k < validation.length; k++) {
       axios
-        .post("http://localhost:3001/project/finalexamresult", {
+        .post("https://demo-tspm-server.herokuapp.com/project/finalexamresult", {
           exam_value: validation[k].value,
           exam_details: validation[k].detail,
           id_project: props.project.idP,
@@ -93,7 +93,7 @@ export default function state11(props) {
           console.log(res.data);
         });
         axios
-        .post("http://localhost:3001/notification/id", {
+        .post("https://demo-tspm-server.herokuapp.com/notification/id", {
           description: `${props.project.name_eng} ได้ส่งแบบบันทึกผลการสอบโครงงานให้ ${validation[k].name} ตรวจสอบ !! `,
           state_name: "บันทึกผลการสอบโครงงาน",
           id_teacher: validation[k].id,
