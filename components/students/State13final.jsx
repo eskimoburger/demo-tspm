@@ -151,7 +151,7 @@ export default function state13({
   const uploadFileEdit = () => {
     setOpenUpload(true);
     const formData = new FormData();
-    formData.append("file", file, `finalFile${finalCount}.pdf`);
+    formData.append("file", file, `finalfile${finalCount}.pdf`);
     // appending file
     axios
       .post(`https://demo-tspm-server.herokuapp.com/upload-file-final/${projectId}`, formData, {

@@ -29,20 +29,20 @@ TeacherPage.getLayout = function getLayout(page) {
 
 export default TeacherPage;
 
-// export async function getServerSideProps({ query }) {
-//   const resData = await fetch(
-//     `https://demo-tspm-server.herokuapp.com/final-project/project-detail/${query.id}`
-//   );
-//   const data = await resData.json();
-//   let queryStatus = false;
-//   if (query.login === "true") {
-//     queryStatus = true;
-//   }
-//   console.log(query);
-//   return {
-//     props: {
-//       project: data,
-//       loginStatus: queryStatus,
-//     },
-//   };
-// }
+export async function getServerSideProps({ query }) {
+  const resData = await fetch(
+    `https://demo-tspm-server.herokuapp.com/allteacher/byuser/${query.id}`
+  );
+  const data = await resData.json();
+  // let queryStatus = false;
+  // if (query.login === "true") {
+  //   queryStatus = true;
+  // }
+ // console.log(query);
+  return {
+    props: {
+      project: data,
+      //loginStatus: queryStatus,
+    },
+  };
+}

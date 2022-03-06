@@ -1,6 +1,29 @@
 import React, { Fragment } from "react";
+import axios from "axios";
 
-export default function teacherState7() {
+export default function teacherState7({
+  projectID,
+  projectName,
+  teacherID,
+  teacherName,
+  idNotification,
+  functionNew,
+}) {
+  const validationState11 = async (idP) => {
+    await axios
+      .put("https://demo-tspm-server.herokuapp.com/final-teacher/validation-state11/" + idP, {
+        idNotification: idNotification,
+      })
+      .then(async (res) => {
+        await functionNew();
+
+        console.log(res.data);
+      })
+      .catch((_) => {
+        alert("Cannot validation ");
+      });
+  };
+
   return (
     <Fragment>
       {" "}
@@ -22,7 +45,9 @@ export default function teacherState7() {
       </div>
       <div className="flex space-x-5 justify-center">
         <button
-          onClick={() => setAlert(true)}
+          onClick={() => {
+            validationState11(projectID);
+          }}
           className="focus:outline-none  bg-green-100 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4   rounded shadow"
         >
           <span
@@ -37,16 +62,6 @@ export default function teacherState7() {
             ตรวจสอบเรียบร้อย
           </span>
         </button>
-
-        {/* <button
-          onClick={validation}
-          className="bg-green-300 px-8  py-2  text-lg shadow-sm font-medium tracking-wider   rounded-2xl hover:shadow-2xl hover:bg-green-400 focus:outline-none"
-        >
-          ตรวจสอบเรียบร้อย
-        </button> */}
-        {/* <button className="bg-red-500 px-8 py-2 text-lg shadow-sm font-medium tracking-wider   rounded-2xl hover:shadow-2xl hover:bg-red-600 focus:outline-none">
-          ปฏิเสธ
-        </button> */}
       </div>
     </Fragment>
   );

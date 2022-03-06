@@ -18,7 +18,8 @@ export default function teacherState6({
   projectName,
   teacherID,
   teacherName,
-  idNotification,functionNew
+  idNotification,
+  functionNew,
 }) {
   useEffect(() => {
     //getExamResults(projectID);
@@ -46,8 +47,7 @@ export default function teacherState6({
     setOpenEdit(false);
   };
 
-
-  const getFinalExamResults = (id)=>{
+  const getFinalExamResults = (id) => {
     axios
       .get("https://demo-tspm-server.herokuapp.com/final-teacher/final-exam-result/" + id)
       .then((response) => {
@@ -55,8 +55,8 @@ export default function teacherState6({
         setExamResult(response.data.exam_result);
         setProject(response.data.project);
       });
-    console.log("hello"+id)
-  }
+    console.log("hello" + id);
+  };
 
   const getExamResults = (id) => {
     //setOpen(true);
@@ -113,14 +113,34 @@ export default function teacherState6({
   };
 
   const [edit, setEdit] = useState("");
-  const validationTestExam = async() => {
-  await axios
-      .put(`https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10/${teacherID}/${projectID}`, {
-        idTeacher: teacherID,
-        idNotification: idNotification,
-      })
-      .then(async(res) => {
-        await functionNew()
+  const validationTestExam = async () => {
+    await axios
+      .put(
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10/${teacherID}/${projectID}`,
+        {
+          idTeacher: teacherID,
+          idNotification: idNotification,
+        }
+      )
+      .then(async (res) => {
+        await functionNew();
+
+        console.log(res.data);
+      });
+  };
+
+
+  const validationTestExamEdit = async () => {
+    await axios
+      .put(
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10/${teacherID}/${projectID}`,
+        {
+          idTeacher: teacherID,
+          idNotification: idNotification,
+        }
+      )
+      .then(async (res) => {
+        await functionNew();
 
         console.log(res.data);
       });
@@ -128,18 +148,20 @@ export default function teacherState6({
   return (
     <div>
       <div className="my-4">
-      <button
-        onClick={() => {
-          handleClickOpen();
-        }}
-        className="focus:outline-none  bg-white hover:bg-blue-100 text-gray-800 font-semibold py-1 px-4 border  rounded shadow "
-      >
-        <span className="flex items-center gap-2" style={{ fontSize: "18px" }}>
-          <i className="bx bxs-detail" style={{ fontSize: "24px" }}></i>
-          แสดงรายละเอียด
-        </span>
-      </button>
-
+        <button
+          onClick={() => {
+            handleClickOpen();
+          }}
+          className="focus:outline-none  bg-white hover:bg-blue-100 text-gray-800 font-semibold py-1 px-4 border  rounded shadow "
+        >
+          <span
+            className="flex items-center gap-2"
+            style={{ fontSize: "18px" }}
+          >
+            <i className="bx bxs-detail" style={{ fontSize: "24px" }}></i>
+            แสดงรายละเอียด
+          </span>
+        </button>
       </div>
       {/* <div
         className="text-blue-600  cursor-pointer hover:text-indigo-500"
@@ -159,14 +181,20 @@ export default function teacherState6({
         ดูรายละเอียด
       </div> */}
       <div className="flex space-x-5 justify-center">
-      <button
-       onClick={validationTestExam}
+        <button
+          onClick={validationTestExam}
           //onClick={updateAsses}
-          className="focus:outline-none  bg-green-100 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4   rounded shadow"  
+          className="focus:outline-none  bg-green-100 hover:bg-green-200 text-gray-800 font-semibold py-2 px-4   rounded shadow"
         >
-          <span className="flex items-center gap-2" style={{fontSize:"18px"}}> <i className='bx bxs-check-square' style={{fontSize:"24px"}}  ></i>ยอมรับ</span>        
+          <span
+            className="flex items-center gap-2"
+            style={{ fontSize: "18px" }}
+          >
+            {" "}
+            <i className="bx bxs-check-square" style={{ fontSize: "24px" }}></i>
+            ยอมรับ
+          </span>
         </button>
-
 
         <button
           // onClick={() => {
@@ -176,12 +204,20 @@ export default function teacherState6({
             //getExamResults(projectID);
             handleClickOpenEdit();
           }}
-          className="focus:outline-none  bg-yellow-100 hover:bg-yellow-200 text-gray-800 font-semibold py-2 px-4   rounded shadow"  
+          className="focus:outline-none  bg-yellow-100 hover:bg-yellow-200 text-gray-800 font-semibold py-2 px-4   rounded shadow"
         >
-           <span className="flex items-center gap-2" style={{fontSize:"18px"}}> <i className='bx bxs-edit-alt' style={{fontSize:"24px"}}  ></i> แก้ไข </span>        
+          <span
+            className="flex items-center gap-2"
+            style={{ fontSize: "18px" }}
+          >
+            {" "}
+            <i
+              className="bx bxs-edit-alt"
+              style={{ fontSize: "24px" }}
+            ></i>{" "}
+            แก้ไข{" "}
+          </span>
         </button>
-
-
 
         {/* <button
           className="bg-green-300 px-8  py-2  text-lg shadow-sm font-medium tracking-wider   rounded-2xl hover:shadow-2xl hover:bg-green-400 focus:outline-none"
@@ -199,7 +235,6 @@ export default function teacherState6({
           แก้ไข
         </button> */}
       </div>
-     
 
       <Dialog
         open={open}
@@ -251,7 +286,9 @@ export default function teacherState6({
                         borderRadius: "10px",
                       }}
                     >
-                      {exam.exam_details}
+                      {exam.exam_details.length == 0
+                        ? "ไม่มีข้อเสนอแนะ"
+                        : exam.exam_details}
                     </div>
                   </div>
                 </div>
@@ -313,7 +350,9 @@ export default function teacherState6({
                           borderRadius: "10px",
                         }}
                       >
-                        {exam.exam_details}
+                        {exam.exam_details.length == 0
+                          ? "ไม่มีข้อเสนอแนะ"
+                          : exam.exam_details}
                       </div>
                     </div>
                     <div className=" flex justify-center  my-10">
@@ -348,7 +387,7 @@ export default function teacherState6({
           </Button>
           <Button
             onClick={() => {
-              sendEdit(teacherName, teacherID);
+              //sendEdit(teacherName, teacherID);
               getExamResults(projectID);
               handleCloseEdit();
             }}

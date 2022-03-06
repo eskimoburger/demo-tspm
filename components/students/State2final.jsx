@@ -40,7 +40,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   const [allTeacher, SetAllTeacher] = useState([]);
   const [data, SetData] = useState([]);
   const [idProject, setIdProject] = useState(0);
-  const [alert, setAlert] = useState(false);
+  const [alertM, setAlertM] = useState(false);
   const [alertChange, setAlertChange] = useState(false);
   const [duplicate, setDuplicate] = useState([]);
 
@@ -106,8 +106,8 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
       })
       .then((res) => {
         console.log(res.data);
-        //refreshData()
-        //getRequest();
+        refreshData()
+        getRequest();
         handleClose();
         setAlertChange(false);
       });
@@ -117,7 +117,10 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
     await axios
       .post(`https://demo-tspm-server.herokuapp.com/final-project/cancel/${projectId}`)
       .then((res) => {
+
         alert("CancelSuccess");
+        refreshData()
+        
         //console.lo g(res)
       })
       .catch((err) => {
@@ -198,7 +201,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
           <Button
             onClick={
               () => {
-                setAlert(true);
+                setAlertM(true);
               }
               //cancelProject
             }
@@ -219,7 +222,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
           <Button
             onClick={
               () => {
-                setAlert(true);
+                setAlertM(true);
               }
               //cancelProject
             }
@@ -472,7 +475,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
       </div>
 
       <Dialog
-        open={alert}
+        open={alertM}
         //onClose={handleClose}
       >
         <DialogTitle>
@@ -488,7 +491,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
         <DialogActions>
           <button
             onClick={() => {
-              setAlert(false);
+              setAlertM(false);
             }}
             className=" h-10 rounded-lg bg-red-600   uppercase font-semibold hover:bg-red-700 text-gray-100 transition px-4 "
           >

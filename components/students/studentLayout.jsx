@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 
 export default function studentLayout({ children, title }) {
   const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
     getUser();
@@ -41,7 +42,7 @@ export default function studentLayout({ children, title }) {
   const [edit, setEdit] = useState(false);
   const [error, setError] = useState(false);
   const [sideShow, setSideShow] = useState(false);
-  const { id } = router.query;
+  
 
   var editContent = null;
   if (edit) {

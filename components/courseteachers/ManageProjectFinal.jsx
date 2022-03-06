@@ -84,7 +84,10 @@ const ManageProjectFinal = ({ allP, refreshData }) => {
       <div>
         {" "}
         {allP.length == 0 ? (
-          <p className="text-center">ยังไม่มีข้อมูล...</p>
+
+
+
+          <p className="text-center text-2xl mt-4">ยังไม่มีข้อมูล...</p>
         ) : (
           <table
             className="table-auto mx-auto overflow-hidden border-collapse pb-4 rounded-md bg-[#e6e6e6] mt-4 w-full  "

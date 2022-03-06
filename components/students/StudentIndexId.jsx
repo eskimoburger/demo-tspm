@@ -79,16 +79,16 @@ export default function StudentIndexId({ project, refreshData }) {
     committees: [],
   };
   let advisor;
-  let logbookData = 0
-  let projectId = 0
+  let logbookData = 0;
+  let projectId = 0;
 
   const nextStageProject = async () => {
     await axios
       .put(
         `https://demo-tspm-server.herokuapp.com/final-project/next-stage/${project.data.projectData.id}`
       )
-      .then((_) => {
-        refreshData();
+      .then(async (_) => {
+        await refreshData();
         //getProject();
         console.log(_.data);
       });
@@ -106,7 +106,7 @@ export default function StudentIndexId({ project, refreshData }) {
       final_status,
       final_asses,
       final_count,
-      logbook
+      logbook,
     } = project.data.projectData;
     members = project.data.members;
     committees = project.data.committees;
@@ -114,18 +114,18 @@ export default function StudentIndexId({ project, refreshData }) {
     stateCondition = state;
     stepNumber = state;
     projectData = project.data.projectData;
-    logbookData = logbook
-    projectId = id
+    logbookData = logbook;
+    projectId = id;
     if (state === 0) {
       state_name = "เสนอหัวข้อโครงงาน";
       stateComp = (
         <State1final
-          user={{
-            id: 60365260,
-            prefix_th: "นาย",
-            thname: "สุนทร",
-            thlastname: "ป้องแสนสี",
-          }}
+          // user={{
+          //   id: 60365260,
+          //   prefix_th: "นาย",
+          //   thname: "สุนทร",
+          //   thlastname: "ป้องแสนสี",
+          // }}
           refreshData={refreshData}
         />
       );
@@ -253,7 +253,6 @@ export default function StudentIndexId({ project, refreshData }) {
           advisor={advisor}
           refreshData={refreshData}
           projectNameENG={project_name_eng}
-          functionNext={nextStageProject}
         />
       );
     } else if (state === 11) {
@@ -268,7 +267,6 @@ export default function StudentIndexId({ project, refreshData }) {
           refreshData={refreshData}
           projectNameENG={project_name_eng}
           members={members}
-          functionNext={nextStageProject}
         />
       );
     } else if (state == 12) {
@@ -347,7 +345,12 @@ export default function StudentIndexId({ project, refreshData }) {
         </div>
         <StepTest currentstep={stepsArray} number={stepNumber} />
         <div className=" flex justify-center gap-4 mt-3 text-xl flex-wrap  ">
-          <SaveLogbook state={stateCondition} logbookData={logbookData} projectId={projectId} refreshData={refreshData} />
+          <SaveLogbook
+            state={stateCondition}
+            logbookData={logbookData}
+            projectId={projectId}
+            refreshData={refreshData}
+          />
 
           <StatusDisplay
             state={stateCondition}

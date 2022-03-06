@@ -16,7 +16,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 import SendIcon from "@material-ui/icons/Send";
 import DeleteIcon from "@material-ui/icons/Delete";
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import AssignmentIcon from "@material-ui/icons/Assignment";
 const CssTextField = withStyles({
   root: {
     backgroundColor: "#f5f5f5",
@@ -74,7 +74,7 @@ const DEFAULT_TEACHER_VALUE = {
   role: "",
 };
 
-const State1final = ({ user ,refreshData}) => {
+const State1final = ({ user, refreshData }) => {
   useEffect(() => {
     const fetchAllList = async () => {
       const resData = await axios.get(`https://demo-tspm-server.herokuapp.com/final-fetch`);
@@ -83,24 +83,51 @@ const State1final = ({ user ,refreshData}) => {
       setStudentList(studentList);
     };
     fetchAllList();
+    getUser();
   }, []);
+
   const classes = useStyles();
+
   const router = useRouter();
 
+  const getUser = async () => {
+    await axios
+      .get(
+        `https://demo-tspm-server.herokuapp.com/allstudent/test/${
+          //sessionStorage.getItem("useID")
+          router.query.id
+        }
+          `
+      )
+      .then((response) => {
+        const { id, prefix_th, thname, thlastname } =
+          response.data.studentList[0];
+        console.log(id);
+        const newState = [
+          ...selectedStudent,
+          { id: id, name: `${prefix_th} ${thname} ${thlastname}` },
+        ];
+        setSelectedStudent(newState);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        //setError(true);
+      });
+  };
 
-  const { id, prefix_th, thname, thlastname } = user;
+  const [name, setName] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [error, setError] = useState(false);
+  const [sideShow, setSideShow] = useState(false);
+
+  //const { id, prefix_th, thname, thlastname } = user;
   const [project, setProject] = useState(DEFAULT_PROJECT);
   const [studentList, setStudentList] = useState([]);
   const [teacherList, setTeacherList] = useState([]);
   const [studentValue, setStudentValue] = useState("");
   const [teacherValue, setTeacherValue] = useState(DEFAULT_TEACHER_VALUE);
   const [selectedTeacher, setSelectedTeacher] = useState([]);
-  const [selectedStudent, setSelectedStudent] = useState([
-    {
-      id: id,
-      name: `${prefix_th} ${thname} ${thlastname}`,
-    },
-  ]);
+  const [selectedStudent, setSelectedStudent] = useState([]);
   const [openEditTeacher, setOpenEditTeacher] = useState(false);
   const [openEditStudent, setOpenEditStudent] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -134,7 +161,7 @@ const State1final = ({ user ,refreshData}) => {
         selectedStudent: selectedStudent,
         selectedTeacher: selectedTeacher,
       })
-      .then((_) => refreshData(),alert("Success"))
+      .then((_) => refreshData(), alert("Success"))
       .catch((_) => {
         alert("Cannot send data!");
       });
@@ -157,7 +184,7 @@ const State1final = ({ user ,refreshData}) => {
           backgroundColor: "#59981A",
         }}
       >
-        <AssignmentIcon/> แบบฟอร์มเสนอหัวข้อโครงงาน
+        <AssignmentIcon /> แบบฟอร์มเสนอหัวข้อโครงงาน
       </div>
       <div className="mt-4 mx-auto space-y-4 text-xl" style={{ width: "95%" }}>
         <h2 className="font-bold">ชื่อโครงงานภาษาไทย </h2>
@@ -464,7 +491,10 @@ const State1final = ({ user ,refreshData}) => {
             </p>
             <div className="">
               <h4 className="font-bold">รายละเอียดโครงงาน </h4>
-              <p className="my-2" style={{ wordWrap: "break-word",textIndent:20 }}>
+              <p
+                className="my-2"
+                style={{ wordWrap: "break-word", textIndent: 20 }}
+              >
                 {" "}
                 {project.project_description}
               </p>
@@ -494,17 +524,16 @@ const State1final = ({ user ,refreshData}) => {
           </div>
         </DialogContent>
         <DialogActions>
-        <Button onClick={()=>setOpenConfirm(false)} variant="contained" color="secondary">
-          ยกเลิก
-        </Button>
-        <Button
-            color="primary"
+          <Button
+            onClick={() => setOpenConfirm(false)}
             variant="contained"
-          onClick={finalApiState1}
-        >
-          ยืนยัน
-        </Button>
-
+            color="secondary"
+          >
+            ยกเลิก
+          </Button>
+          <Button color="primary" variant="contained" onClick={finalApiState1}>
+            ยืนยัน
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
