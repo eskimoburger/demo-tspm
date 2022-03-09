@@ -129,14 +129,15 @@ export default function teacherState6({
       });
   };
 
-
   const validationTestExamEdit = async () => {
+    var text = "//แก้ไขโดย : " + teacherName + " --> " + edit;
     await axios
       .put(
-        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10/${teacherID}/${projectID}`,
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10-edit/${teacherID}/${projectID}`,
         {
           idTeacher: teacherID,
           idNotification: idNotification,
+          edit: text,
         }
       )
       .then(async (res) => {
@@ -388,8 +389,10 @@ export default function teacherState6({
           <Button
             onClick={() => {
               //sendEdit(teacherName, teacherID);
-              getExamResults(projectID);
-              handleCloseEdit();
+              // getExamResults(projectID);
+              // handleCloseEdit();
+              validationTestExamEdit()
+              
             }}
             variant="contained"
             color="primary"

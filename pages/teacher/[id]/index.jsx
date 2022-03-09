@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import TeacherLayout from "../../../components/teachers/FinalTeacherLayout";
 import { useRouter } from "next/router";
+import TeacherHomePage from "../../../components/teachers/TeacherHomePage";
 
-const TeacherPage = () => {
+const TeacherPage = ({teacher}) => {
   const router = useRouter();
   const [notLogin, setNotLogin] = useState(false);
   useEffect(() => {
@@ -20,7 +21,12 @@ const TeacherPage = () => {
     // return <div>Go to login page</div>
   }
 
-  return <div>Hello</div>;
+  return (
+    <>
+   <TeacherHomePage teacher={teacher}/>
+    
+   </>
+  );
 };
 
 TeacherPage.getLayout = function getLayout(page) {
@@ -38,10 +44,10 @@ export async function getServerSideProps({ query }) {
   // if (query.login === "true") {
   //   queryStatus = true;
   // }
- // console.log(query);
+  // console.log(query);
   return {
     props: {
-      project: data,
+      teacher: data[0],
       //loginStatus: queryStatus,
     },
   };

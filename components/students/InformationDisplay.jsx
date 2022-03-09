@@ -8,6 +8,20 @@ import Button from "@material-ui/core/Button";
 import DetailsIcon from "@material-ui/icons/Details";
 import ChromeReaderModeIcon from "@material-ui/icons/ChromeReaderMode";
 import axios from "axios";
+
+const ASSES_LABEL = {
+  1: "ทำได้ตามข้อกำหนด",
+  2: "ทำได้บางส่วน",
+  3: "ไม่เป็นไปตามข้อกำหนด",
+  4: "ไม่สามารถประเมินได้",
+};
+const SUMMARIZE = {
+  1:"เหมาะสม",
+  2:"ไม่เหมาะสม"
+}
+
+
+
 const InformationDisplay = ({ state, projectData }) => {
   const {
     project_id,
@@ -15,12 +29,17 @@ const InformationDisplay = ({ state, projectData }) => {
     project_name_eng,
     project_description,
     id,
+    final_count,
   } = projectData?.projectData;
   const { committees, members } = projectData;
   const [detail, setDetail] = useState(false);
   const [openMid, setOpenMid] = useState(false);
   const [openFinal, setOpenFinal] = useState(false);
+  const [openAsses, setOpenAsses] = useState(false);
+  const [openFinalAsses, setOpenFinalAsses] = useState(false);
   const [midResults, setMidResults] = useState([]);
+  const [assesResults, setAssesResults] = useState(null);
+  const [finalAssesResults, setFinalAssesResults] = useState(null);
   const [finalResults, setFinalResults] = useState([]);
 
   const getMidExamResults = async () => {
@@ -43,6 +62,29 @@ const InformationDisplay = ({ state, projectData }) => {
       .catch((_) => alert("Cannot get results"));
   };
 
+  const getAssesResult = async () => {
+    await axios
+      .get("https://demo-tspm-server.herokuapp.com/final-project/get-asses-results/" + id)
+      .then((res) => {
+        setAssesResults(res.data);
+        setOpenAsses(true);
+      })
+      .catch((_) => alert("Cannot get results"));
+  };
+
+  const getFinalAsses = async () => {
+    await axios
+      .get(
+        `https://demo-tspm-server.herokuapp.com/final-project/get-asses-final/${id}/${final_count-1}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setFinalAssesResults(res.data);
+        setOpenFinalAsses(true);
+      })
+      .catch((_) => alert("Cannot get results"));
+  };
+
   return (
     <div
       className=" bg-white  rounded-md p-3 mt-5   "
@@ -57,7 +99,7 @@ const InformationDisplay = ({ state, projectData }) => {
             className="p-2 text-white rounded-t-lg text-2xl"
             style={{ backgroundColor: "#32a5c2" }}
           >
-            ข้อมูลโครงงาน
+            ข้อมูลโครงงาน 
           </div>
           <div className="bg-white rounded-b-lg m-2 font-medium px-2  ">
             {state == 0 ? (
@@ -115,7 +157,7 @@ const InformationDisplay = ({ state, projectData }) => {
                 })}
                 <Button
                   variant="contained"
-                  style={{ fontSize: 18, backgroundColor: "#ffc107" }}
+                  style={{ fontSize: 16, backgroundColor: "#ffc107" }}
                   startIcon={<DetailsIcon />}
                   size="small"
                   onClick={() => {
@@ -127,7 +169,7 @@ const InformationDisplay = ({ state, projectData }) => {
               </div>
             )}
             <div className="my-2">
-              {/* <h3 className="text-xl font-bold my-1">บันผลการสอบ</h3> */}
+              {state >= 6 && <h3 className="text-xl font-bold my-1">บันทึกผล</h3>}
               <div className="flex flex-wrap gap-2">
                 {state >= 6 && (
                   <Button
@@ -135,10 +177,22 @@ const InformationDisplay = ({ state, projectData }) => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    style={{ fontSize: 18 }}
+                    style={{ fontSize: 14 }}
                     onClick={getMidExamResults}
                   >
                     บันทึกผลการสอบเสนอหัวข้อโครงงาน
+                  </Button>
+                )}
+                {state >= 8 && (
+                  <Button
+                    startIcon={<ChromeReaderModeIcon />}
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    style={{ fontSize: 14 }}
+                    onClick={getAssesResult}
+                  >
+                    ผลการประเมินความคืบหน้า
                   </Button>
                 )}
                 {state >= 12 && (
@@ -147,7 +201,7 @@ const InformationDisplay = ({ state, projectData }) => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    style={{ fontSize: 18 }}
+                    style={{ fontSize: 14 }}
                     onClick={getFinalExamResults}
                   >
                     บันทึกผลการสอบโครงงาน
@@ -155,19 +209,23 @@ const InformationDisplay = ({ state, projectData }) => {
                 )}
               </div>
             </div>
-            {/* <div>
-              <h3 className="text-xl font-bold my-1">ผลการประเมินรูปเล่มวิทยานิพนธ์</h3>
-              <Button
-                    startIcon={<ChromeReaderModeIcon />}
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    style={{ fontSize: 18 }}
-                    onClick={getMidExamResults}
-                  >
-                    ข้อเสนอแนะ
-                  </Button>
-            </div> */}
+            {final_count > 0 && (
+              <div>
+                <h3 className="text-xl font-bold my-1">
+                  ผลการประเมินรูปเล่มวิทยานิพนธ์
+                </h3>
+                <Button
+                  startIcon={<ChromeReaderModeIcon />}
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  style={{ fontSize: 14 }}
+                  onClick={getFinalAsses}
+                >
+                  ผลการประเมินรูปเล่ม
+                </Button>
+              </div>
+            )}
           </div>
         </div>
         <div
@@ -199,7 +257,6 @@ const InformationDisplay = ({ state, projectData }) => {
           <div style={{ height: 50 }} />
         </div>
       </div>
-
       <Dialog
         open={detail}
         onClose={() => {
@@ -219,7 +276,6 @@ const InformationDisplay = ({ state, projectData }) => {
           <p>{project_description}</p>
         </DialogContent>
       </Dialog>
-
       <Dialog
         open={openMid}
         onClose={() => {
@@ -231,7 +287,7 @@ const InformationDisplay = ({ state, projectData }) => {
         <DialogTitle>
           <p className="text-2xl">{"ผลการสอบหัวข้อโครงงาน"}</p>{" "}
         </DialogTitle>
-        <DialogContent className=" text-xl mb-4 ">
+        <DialogContent className=" text-xl mb-4  space-y-4">
           {midResults.map((m, i) => {
             return (
               <div key={i}>
@@ -263,7 +319,7 @@ const InformationDisplay = ({ state, projectData }) => {
         <DialogTitle>
           <p className="text-2xl">{"ผลการสอบโครงงาน"}</p>{" "}
         </DialogTitle>
-        <DialogContent className=" text-xl mb-4 ">
+        <DialogContent className=" text-xl mb-4 space-y-2 ">
           {finalResults.map((m, i) => {
             return (
               <div key={i}>
@@ -281,6 +337,169 @@ const InformationDisplay = ({ state, projectData }) => {
               </div>
             );
           })}
+          <div></div>
+        </DialogContent>
+      </Dialog>
+      <Dialog
+        open={openAsses}
+        onClose={() => {
+          setOpenAsses(false);
+        }}
+        fullWidth={true}
+        maxWidth="md"
+      >
+        <DialogTitle>
+          <p className="text-2xl">{"ผลการประเมินความคืบหน้า"}</p>{" "}
+        </DialogTitle>
+        <DialogContent className=" text-xl mb-4 ">
+          {assesResults && (
+            <div>
+              <div className=" indent-2  ">
+                <p>
+                  {" "}
+                  1. การดำเนินงานตามวัตถุประสงค์ &nbsp;{" "}
+                  <span className="font-bold">
+                    {ASSES_LABEL[assesResults.asses_project.asses1]}
+                  </span>
+                </p>
+                <p>
+                  {" "}
+                  2. การดำเนินงานตามแผนงาน/ปฏิทิน &nbsp;{" "}
+                  <span className="font-bold">
+                    {ASSES_LABEL[assesResults.asses_project.asses2]}
+                  </span>
+                </p>
+                <p>
+                  {" "}
+                  3. การแบ่งงานและการทำงานเป็นทีม (กรณีมีนิสิตมากกว่า 1 คน)
+                  &nbsp;{" "}
+                  <span className="font-bold">
+                    {ASSES_LABEL[assesResults.asses_project.asses3]}
+                  </span>
+                </p>
+                <p>
+                  {" "}
+                  4. ผลผลิต/ผลลัพธ์ของโครงงาน &nbsp;{" "}
+                  <span className="font-bold">
+                    {ASSES_LABEL[assesResults.asses_project.asses4]}
+                  </span>
+                </p>
+                <p>
+                  {" "}
+                  5. ความสมบูรณ์ของรายงาน &nbsp;{" "}
+                  <span className="font-bold">
+                    {ASSES_LABEL[assesResults.asses_project.asses5]}
+                  </span>
+                </p>
+              </div>
+
+              <p className="my-2 font-bold"> ผลการประเมินนิสิตที่ทำโครงงาน</p>
+
+              <table className="table-auto text-lg">
+                <thead>
+                  <tr>
+                    <th>
+                      หัวข้อการประเมิน <hr /> สมาชิกในกลุ่ม
+                    </th>
+                    <th>ความรู้ความเข้าใจเกี่ยวกับโครงงาน</th>
+                    <th> ความรับผิดชอบและการมีส่วนร่วม</th>
+                    <th> ความตรงต่อเวลา</th>
+                    <th> การปฏิบัติตามจรรยาบรรณของนักวิจัย</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {assesResults.asses_member.map((m, i) => {
+                    return (
+                      <tr key={i} className="text-center text-base">
+                        <td>
+                          {m.id_student} {m.name}
+                        </td>
+                        <td>{m.student1}</td>
+                        <td>{m.student2}</td>
+                        <td>{m.student3}</td>
+                        <td>{m.student4}</td>
+                      </tr>
+                    );
+                  })}
+                  {assesResults.asses_project.feedback.length > 0 && (
+                    <>
+                      <h2 className="my-2 font-bold"> ข้อเสนอแนะ</h2>
+                      <div className="indent-2">
+                        {assesResults.asses_project.feedback}
+                      </div>
+                    </>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          )}
+          <div></div>
+        </DialogContent>
+      </Dialog>
+      <Dialog
+        open={openFinalAsses}
+        onClose={() => {
+          setOpenFinalAsses(false);
+        }}
+        fullWidth={true}
+        maxWidth="md"
+      >
+        <DialogTitle>
+          <p className="text-2xl">{"ผลการประเมินรูปเล่มปริญานิพนธ์"}</p>{" "}
+        </DialogTitle>
+        <DialogContent className=" text-xl mb-4 space-y-2 ">
+          {/* {JSON.stringify(finalAssesResults)} */}
+          {finalAssesResults && (
+            <>
+            <div>
+              <p>
+                1.
+                รูปแบบการพิมพ์รายงานถูกต้องตามระเบียบของคณะและ/หรือมหาวิทยาลัย &nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final1]}</span>
+              </p>{" "}
+              <p>
+                2. เนื้อหารายงานครบถ้วนสมบูรณ์&nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final2]}</span>
+              </p>{" "}
+              <p>
+                3. การอ้างอิงบรรณานุกรมถูกต้องตามรูปแบบที่กำหนด&nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final3]}</span>
+              </p>
+              <p>
+                {" "}
+                4. รูปแบบการเขียนสารบัญเนื้อหา
+                สารบัญรูปภาพและตารางถูกต้องตามกำหนด{" "}&nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final4]}</span>
+              </p>
+              
+            </div>
+            <div>
+               <h2 className="font-bold">ข้อเสนอแนะ</h2>
+              <div className="indent-2">
+                  <p>{finalAssesResults[0].final_details}</p>
+              </div>
+
+            </div>
+            </>
+          )}
+
+          {/* {finalResults.map((m, i) => {
+            return (
+              <div key={i}>
+                <h3 className="">
+                  <span className="font-bold">{m.role}</span> {m.committee_name}
+                </h3>
+                <p
+                  className="bg-gray-100 py-1"
+                  style={{ wordBreak: "break-word", textIndent: "20px" }}
+                >
+                  {m.exam_details.length === 0
+                    ? "ไม่มีข้อเสนอแนะ"
+                    : m.exam_details}
+                </p>
+              </div>
+            );
+          })} */}
           <div></div>
         </DialogContent>
       </Dialog>

@@ -300,6 +300,7 @@ export default function StudentIndexId({ project, refreshData }) {
           members={members}
           projectCPE={project_id}
           refreshData={refreshData}
+          finalCount={final_count}
         />
       );
     } else if (state == 14) {
@@ -358,6 +359,7 @@ export default function StudentIndexId({ project, refreshData }) {
             stateName={state_name}
             projectMembers={members}
             projectData={projectData}
+            refreshData={refreshData}
             // getProject={getProject}
           />
         </div>

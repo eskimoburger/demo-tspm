@@ -8,6 +8,7 @@ import Slide from "@material-ui/core/Slide";
 import axios from "axios";
 //import { Input } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
+import { Typography } from "@material-ui/core";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -40,8 +41,8 @@ const ModalDetail = ({
       .then((_) => {
         setOpenEdit(false);
         refreshData();
-        getIdFunction(id)
-        setIdProject(0)
+        getIdFunction(id);
+        setIdProject(0);
       });
   };
   const handleChange = (e) => {
@@ -68,12 +69,16 @@ const ModalDetail = ({
           {projectData && (
             <div className="text-lg stage2:text-xl space-y-1">
               <p>
-               <span className="font-bold"> รหัสโครงงาน : </span>
-               CPE{projectData.project.project_id.toString().padStart(2, 0)}
+                <span className="font-bold"> รหัสโครงงาน : </span>
+                CPE{projectData.project.project_id.toString().padStart(2, 0)}
               </p>
-              <p><span className="font-bold">ชื่อโครงงานภาษาไทย :</span>  {projectData.project.project_name_th}</p>
               <p>
-               <span className="font-bold"> ชื่อโครงงานภาษาอังกฤษ :</span> {projectData.project.project_name_eng}
+                <span className="font-bold">ชื่อโครงงานภาษาไทย :</span>{" "}
+                {projectData.project.project_name_th}
+              </p>
+              <p>
+                <span className="font-bold"> ชื่อโครงงานภาษาอังกฤษ :</span>{" "}
+                {projectData.project.project_name_eng}
               </p>
               <p className="font-bold">สมาชิกในกลุ่ม</p>
               {projectData.members.map((mem, index) => {
@@ -142,7 +147,8 @@ const ModalDetail = ({
                 value={idProject === 0 ? "" : idProject}
                 onChange={handleChange}
                 required
-                helperText={<p className="text-xl">กรุณากรอกหมายเลข 1-99</p>}
+                helperText={<span className="text-2xl">กรุณากรอกหมายเลข 1-99</span> }
+                
                 //inputProps={{ inputmode: 'numeric', pattern: '[0-9]*' }}
               />
 

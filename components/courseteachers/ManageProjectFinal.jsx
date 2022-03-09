@@ -30,13 +30,14 @@ const ManageProjectFinal = ({ allP, refreshData }) => {
   const [openDetail, setOpenDetail] = useState(false);
   const [editDetail, setEditDetail] = useState(false);
   const [openLogbook, setOpenLogbook] = useState(false);
+  const [logbookData,setLogbookData] = useState([]);
 
   const [idProject, setIdProject] = useState(0);
   const [projectEdit, setProjectEdit] = useState(null);
   const [editSList, setEditSList] = useState([]);
   const [editTList, setEditTList] = useState([]);
   const [check, setCheck] = useState(false);
-  const [logbookData,setLogbookData] = useState([]);
+  
 
 
   const finalGetProjectByID = async (id) => {

@@ -259,7 +259,7 @@ export default function newlogin() {
               //   });
               router.push(`/students/${id}`);
             } else if (sessionStorage.getItem("login") && role == "teacher") {
-              router.push("/teachers");
+              router.push(`/teacher/${id}`);
             } else if (
               sessionStorage.getItem("login") &&
               role == "course_lecture"

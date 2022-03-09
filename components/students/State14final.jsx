@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button } from "@material-ui/core";
+import { Button, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -24,8 +24,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+const SUMMARIZE = {
+  1:"เหมาะสม",
+  2:"ไม่เหมาะสม"
+}
 
-export default function state14({ finalAssesStatus, functionNext,refreshData,projectId}) {
+
+export default function state14({ finalAssesStatus, functionNext,refreshData,projectId,finalCount}) {
   const classes = useStyles()
   useEffect(() => {
     setStatus(finalAssesStatus);
@@ -42,9 +47,21 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
       }).catch(_=>alert("Cannot back to stage!"));
   }
 
-  const finalAssesFeedback = async()=> {
-
-  }
+ 
+  const getFinalAsses = async () => {
+    await axios
+      .get(
+        `https://demo-tspm-server.herokuapp.com/final-project/get-asses-final/${projectId}/${finalCount-1}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setFinalAssesResults(res.data);
+        setOpenFinalAsses(true);
+      })
+      .catch((_) => alert("Cannot get results"));
+  };
+  const [openFinalAsses, setOpenFinalAsses] = useState(false);
+  const [finalAssesResults, setFinalAssesResults] = useState(null);
 
   return (
     <div
@@ -113,7 +130,7 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
             <>
               <Button
                 className={classes.buttonFeed}
-                onClick={() => setShowFeedback(true)}
+                onClick={getFinalAsses}
                 variant="contained"
                 size="large"
                 startIcon={<ErrorOutlineIcon />}
@@ -149,6 +166,73 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
           ) : null}
         </div>
       </div>
+      <Dialog
+        open={openFinalAsses}
+        onClose={() => {
+          setOpenFinalAsses(false);
+        }}
+        fullWidth={true}
+        maxWidth="md"
+      >
+        <DialogTitle>
+          <p className="text-2xl">{"ผลการประเมินรูปเล่มปริญานิพนธ์"}</p>{" "}
+        </DialogTitle>
+        <DialogContent className=" text-xl mb-4 space-y-2 ">
+          {/* {JSON.stringify(finalAssesResults)} */}
+          {finalAssesResults && (
+            <>
+            <div>
+              <p>
+                1.
+                รูปแบบการพิมพ์รายงานถูกต้องตามระเบียบของคณะและ/หรือมหาวิทยาลัย &nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final1]}</span>
+              </p>{" "}
+              <p>
+                2. เนื้อหารายงานครบถ้วนสมบูรณ์&nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final2]}</span>
+              </p>{" "}
+              <p>
+                3. การอ้างอิงบรรณานุกรมถูกต้องตามรูปแบบที่กำหนด&nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final3]}</span>
+              </p>
+              <p>
+                {" "}
+                4. รูปแบบการเขียนสารบัญเนื้อหา
+                สารบัญรูปภาพและตารางถูกต้องตามกำหนด{" "}&nbsp;{" "}
+                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final4]}</span>
+              </p>
+              
+            </div>
+            <div>
+               <h2 className="font-bold">ข้อเสนอแนะ</h2>
+              <div className="indent-2">
+                  <p>{finalAssesResults[0].final_details}</p>
+              </div>
+
+            </div>
+            </>
+          )}
+
+          {/* {finalResults.map((m, i) => {
+            return (
+              <div key={i}>
+                <h3 className="">
+                  <span className="font-bold">{m.role}</span> {m.committee_name}
+                </h3>
+                <p
+                  className="bg-gray-100 py-1"
+                  style={{ wordBreak: "break-word", textIndent: "20px" }}
+                >
+                  {m.exam_details.length === 0
+                    ? "ไม่มีข้อเสนอแนะ"
+                    : m.exam_details}
+                </p>
+              </div>
+            );
+          })} */}
+          <div></div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -11,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 //   },
 // }));
 
-const ProfileComp = ({ studentDetail, imgProfile }) => {
+const ProfileComp = ({ studentDetail, imgProfile, functionGetUser }) => {
   const [editStudent, setEditStudent] = useState(studentDetail);
   //const [img,setImg] = useState(imageProfile);
 
@@ -27,6 +28,21 @@ const ProfileComp = ({ studentDetail, imgProfile }) => {
         [name]: value,
       };
     });
+  };
+
+  const UpdateProfileDetails = async () => {
+    await axios
+      .put("https://demo-tspm-server.herokuapp.com/allstudent/edit", {
+        editStudent: editStudent,
+      })
+      .then((res) => {
+        alert("Edit user complete!!");
+        functionGetUser();
+      })
+      .catch((_) => {
+        alert("Can not edit student");
+      });
+    //alert(JSON.stringify(editStudent));
   };
   //const classes = useStyles();
   return (
@@ -162,10 +178,16 @@ const ProfileComp = ({ studentDetail, imgProfile }) => {
             />
           </div>
           <div className="mt-4 border-t-2 border-gray-100 pt-4 ">
-            <div className="flex justify-end  ">
+            <div className="flex justify-end gap-2  ">
+              <button
+                className="bg-gray-500 text-white p-2 rounded-xl"
+                onClick={() => setEditStudent(studentDetail)}
+              >
+                ยกเลิก
+              </button>
               <button
                 className="bg-red-500 text-white p-2 rounded-xl"
-                onClick={() => alert(JSON.stringify(editStudent))}
+                onClick={UpdateProfileDetails}
               >
                 บันทึกข้อมูลส่วนตัว
               </button>

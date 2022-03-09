@@ -9,6 +9,7 @@ export default function Profile() {
     getUser();
   }, []);
   const router = useRouter();
+  const {id} =  router.query
   const [studentDetail, setStudentDetail] = useState(null);
   const [imageProfile, setImageProfile] = useState(null);
   const getUser = async () => {

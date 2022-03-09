@@ -22,8 +22,8 @@ export default function studentLayout({ children, title }) {
     await axios
       .get(
         `https://demo-tspm-server.herokuapp.com/allstudent/test/${
-          //sessionStorage.getItem("useID")
-          router.query.id
+          sessionStorage.getItem("useID")
+          //router.query.id
         }
           `
       )

@@ -104,6 +104,7 @@ export default function state3({
   const [uploadStatus, setUploadStatus] = useState(false);
   const [openUpload, setOpenUpload] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const uploadFile = async () => {
     setOpenUpload(true);
@@ -199,64 +200,61 @@ export default function state3({
           style={{ width: "90%" }}
         >
           <div className="w-full stage2:w-[500px] space-y-2 " style={{}}>
-         
-          <h2 className="font-bold">สมาชิกในกลุ่ม</h2>
-          {members.map((val, index) => {
-            return (
-              <p key={index} className="ml-2   font-normal">
-                {" "}
-                {index + 1}. {val.name}
-              </p>
-            );
-          })}
-          <h2 className="font-bold">อาจารย์ประจำโครงงาน</h2>
-          {committees.map((val, index) => {
-            return (
-              <p key={index} className="ml-2  font-normal">
-                {" "}
-                {index + 1}. {val.teacher_name}
-              </p>
-            );
-          })}
+            <h2 className="font-bold">สมาชิกในกลุ่ม</h2>
+            {members.map((val, index) => {
+              return (
+                <p key={index} className="ml-2   font-normal">
+                  {" "}
+                  {index + 1}. {val.name}
+                </p>
+              );
+            })}
+            <h2 className="font-bold">อาจารย์ประจำโครงงาน</h2>
+            {committees.map((val, index) => {
+              return (
+                <p key={index} className="ml-2  font-normal">
+                  {" "}
+                  {index + 1}. {val.teacher_name}
+                </p>
+              );
+            })}
 
-          <h2 className="font-bold mt-2">อัพโหลดไฟล์รายงาน</h2>
-          <form onSubmit={handlePdfFileSubmit}>
-            <input
-              id="file"
-              type="file"
-              accept=".pdf"
-              className="hidden"
-              onChange={handlePdfFileChange}
-              required
-              multiple
-            />
-            <label
-              htmlFor="file"
-              className="mt-2 px-3 py-1 text-black uppercase break-word border-2 border-rose-50 hover:bg-rose-300 rounded cursor-pointer transition duration-500"
-              
-            >
-              เลือกไฟล์
-            </label>
-
-            <div className="mt-2 p-2 break-words  text-lg stage2:text-xl block" >
-              {Filename}
-            </div>
-
-            {pdfFile && (
-              <button
-                onClick={handleOpen}
-                type="submit"
-                className={
-                  "  px-3 py-1 text-black uppercase break-word border-2 border-green-50 hover:bg-green-300 rounded cursor-pointer transition duration-500 block "
-                }
+            <h2 className="font-bold mt-2">อัพโหลดไฟล์รายงาน</h2>
+            <form onSubmit={handlePdfFileSubmit}>
+              <input
+                id="file"
+                type="file"
+                accept=".pdf"
+                className="hidden"
+                onChange={handlePdfFileChange}
+                required
+                multiple
+              />
+              <label
+                htmlFor="file"
+                className="mt-2 px-3 py-1 text-black uppercase break-word border-2 border-rose-50 hover:bg-rose-300 rounded cursor-pointer transition duration-500"
               >
-                ตัวอย่างไฟล์
-              </button>
-            )}
-          </form>
-        </div>
-        <div>
-        </div>
+                เลือกไฟล์
+              </label>
+
+              <div className="mt-2 p-2 break-words  text-lg stage2:text-xl block">
+                {Filename}
+              </div>
+
+              {pdfFile && (
+                <button
+                  onClick={handleOpen}
+                  type="submit"
+                  className={
+                    "  px-3 py-1 text-black uppercase break-word border-2 border-green-50 hover:bg-green-300 rounded cursor-pointer transition duration-500 block "
+                  }
+                >
+                  ตัวอย่างไฟล์
+                </button>
+              )}
+            </form>
+          </div>
+          <div></div>
           {pdfFile && (
             <Button
               onClick={() => {
@@ -312,7 +310,7 @@ export default function state3({
             <div className=" flex  justify-end space-x-3">
               <Button
                 variant="contained"
-                style={{ backgroundColor: "red", color: "white",fontSize:18   }}
+                style={{ backgroundColor: "red", color: "white", fontSize: 18 }}
                 onClick={handleClose}
               >
                 ปิดหน้าต่าง
@@ -320,7 +318,11 @@ export default function state3({
               <Button
                 variant="contained"
                 onClick={handlePdfReset}
-                style={{ backgroundColor: "#ffea00", color: "black",fontSize:18 }}
+                style={{
+                  backgroundColor: "#ffea00",
+                  color: "black",
+                  fontSize: 18,
+                }}
               >
                 เลือกไฟล์ใหม่
               </Button>

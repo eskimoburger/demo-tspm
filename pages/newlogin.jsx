@@ -51,15 +51,15 @@ export default function newlogin() {
             var role = sessionStorage.getItem("role");
             var id = sessionStorage.getItem("useID");
             if (sessionStorage.getItem("login") && role == "student") {
-              axios
-                .get(`https://demo-tspm-server.herokuapp.com/user/getproject/${id}`)
-                .then((response) => {
-                  sessionStorage.setItem(
-                    "projectname",
-                    response.data[0].project_name_eng
-                  );
-                  console.log(response.data);
-                });
+              // axios
+              //   .get(`https://demo-tspm-server.herokuapp.com/user/getproject/${id}`)
+              //   .then((response) => {
+              //     sessionStorage.setItem(
+              //       "projectname",
+              //       response.data[0].project_name_eng
+              //     );
+              //     console.log(response.data);
+              //   });
               router.push(`/students/${id}`);
             } else if (sessionStorage.getItem("login") && role == "teacher") {
               router.push("/teachers");

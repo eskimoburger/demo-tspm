@@ -46,14 +46,14 @@ export default function Profile() {
           //   setImageProfile("/noimage.jpg");
         });
     }else{
-      router.push('/newlogin')
+      router.push('/')
     }
   };
   return (
     <>
       {studentDetail && imageProfile && (
-        <ProfileComp studentDetail={studentDetail} imgProfile={imageProfile} />
-      )}
+        <ProfileComp studentDetail={studentDetail} imgProfile={imageProfile}  functionGetUser={getUser}  />
+      )} 
       <br />
         
       

@@ -10,7 +10,6 @@ import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core";
 
-
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
@@ -24,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 const StatusDisplay = ({
   stateName,
   state,
@@ -33,8 +30,9 @@ const StatusDisplay = ({
   projectMembers,
   projectData,
   getProject,
+  refreshData,
 }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   //console.log(projectMembers)
 
   useEffect(() => {
@@ -81,15 +79,16 @@ const StatusDisplay = ({
 
   const sendEditProject = async () => {
     await axios
-      .post(`https://demo-tspm-server.herokuapp.com/final-project/edits/${projectData.idP}`, {
+      .post(`https://demo-tspm-server.herokuapp.com/final-project/edits/${projectData.id}`, {
         delStudents: delList,
         addStudents: addList,
-        projectNameTH: projectData.name,
-        projectNameENG: projectData.name_eng,
+        projectNameTH: projectData.project_name_th,
+        projectNameENG: projectData.project_name_eng,
       })
       .then((res) => {
         console.log(res.data);
-        getProject();
+        // getProject();
+        refreshData();
         setEditMembers(false);
         setAddList([]);
         setDelList([]);

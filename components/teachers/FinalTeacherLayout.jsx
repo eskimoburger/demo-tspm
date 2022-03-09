@@ -62,7 +62,7 @@ export default function FinalTeacherLayout({ children, title }) {
       >
         <div
           onClick={() => {
-            router.push("/newlogin"), sessionStorage.clear();
+            router.push("/"), sessionStorage.clear();
           }}
           className=" flex items-center rounded-md hover:bg-gray-100 text-black cursor-pointer "
         >
