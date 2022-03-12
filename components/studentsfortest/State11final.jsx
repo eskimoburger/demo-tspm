@@ -12,19 +12,45 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function state11({ projectId, projectNameENG, functionNext }) {
+const RESULTS_FINAL = [
+  {
+    committee_name: "ดร.เศรษฐา ตั้งค้าวานิช ",
+    role: "อาจารย์ที่ปรึกษา",
+    id_teacher: "2",
+    exam_value: "",
+    exam_detail: "",
+  },
+  {
+    committee_name: "ดร.จิราพร พุกสุข ",
+    role: "กรรมการ",
+    id_teacher: "5",
+    exam_value: "",
+    exam_detail: "",
+  },
+  {
+    committee_name: "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+    role: "กรรมการ",
+    id_teacher: "7",
+    exam_value: "",
+    exam_detail: "",
+  },
+];
+
+
+export default function state11({ projectId, projectNameENG, functionNext,refreshData }) {
   useEffect(() => {
     getTeacherByIdProjectStage10(projectId);
   }, []);
 
   const getTeacherByIdProjectStage10 = async (id) => {
-    await axios
-      .get(`http://localhost:3001/final-project/get-teacher-state10/${id}`)
-      .then((response) => {
-        console.log(response.data.results.length);
-        console.log(response.data);
-        setTeachers(response.data.results);
-      });
+    setTeachers(RESULTS_FINAL)
+    // await axios
+    //   .get(`http://localhost:3001/final-project/get-teacher-state10/${id}`)
+    //   .then((response) => {
+    //     console.log(response.data.results.length);
+    //     console.log(response.data);
+    //     setTeachers(response.data.results);
+    //   });
   };
   const [checkButton, setCheckButton] = useState(false);
   const [teachers, setTeachers] = useState([]);
@@ -81,20 +107,21 @@ export default function state11({ projectId, projectNameENG, functionNext }) {
   };
 
   const sendFinalExamResult = async () => {
-    await axios
-      .post(
-        `http://localhost:3001/final-project/results-state10/${projectId}`,
-        {
-          teachers: teachers,
-          project_eng: projectNameENG,
-        }
-      )
-      .then((_) => {
-        functionNext();
-      })
-      .catch((_) => {
-        alert("Cannot send final results!!");
-      });
+    refreshData();
+    // await axios
+    //   .post(
+    //     `http://localhost:3001/final-project/results-state10/${projectId}`,
+    //     {
+    //       teachers: teachers,
+    //       project_eng: projectNameENG,
+    //     }
+    //   )
+    //   .then((_) => {
+    //     functionNext();
+    //   })
+    //   .catch((_) => {
+    //     alert("Cannot send final results!!");
+    //   });
   };
   return (
     <div
@@ -104,7 +131,7 @@ export default function state11({ projectId, projectNameENG, functionNext }) {
       <div
         className="  text-center text-2xl text-white py-2 rounded-md font-bold "
         style={{
-          width: "450px",
+          width: "350px",
           height: "50px",
           marginTop: "-25px",
           marginLeft: "-25px",

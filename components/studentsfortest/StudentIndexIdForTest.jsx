@@ -273,7 +273,7 @@ export default function StudentIndexIdForTest({ project, refreshData }) {
           members={members}
           projectCPE={project_id}
           refreshData={refreshData}
-          finalCount={final_count}
+          //finalCount={final_count}
         />
       );
     } else if (state == 14) {

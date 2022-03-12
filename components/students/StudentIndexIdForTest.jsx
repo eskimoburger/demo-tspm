@@ -317,6 +317,11 @@ export default function StudentIndexIdForTest({}) {
           functionNext={nextStageProject}
           advisor={advisor}
           refreshData={refreshData}
+          goBack={() => {
+            const cloneData = { ...project };
+            cloneData["data"]["projectData"]["state"] = 8;
+            setProject(cloneData);
+          }}
         />
       );
     } else if (state === 10) {
@@ -377,7 +382,7 @@ export default function StudentIndexIdForTest({}) {
           members={members}
           projectCPE={project_id}
           refreshData={refreshData}
-          finalCount={final_count}
+         // finalCount={final_count}
         />
       );
     } else if (state == 14) {

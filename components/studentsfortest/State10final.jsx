@@ -39,6 +39,7 @@ export default function state10({
   projectId,
   advisor,
   refreshData,
+  goBack,
 }) {
   const classes = useStyles();
   const [status, setStatus] = useState(0);
@@ -52,9 +53,10 @@ export default function state10({
 
   const ConfirmAlert = () => {
     if (dialogStatus == 1) {
-      functionNext();
+      refreshData();
     } else if (dialogStatus == 2) {
-      backToStageProject();
+      //backToStageProject();
+      goBack();
     }
   };
   // const [teacher, setTeacher] = useState({
@@ -66,9 +68,10 @@ export default function state10({
   const [teacher, setTeacher] = useState(null);
   const [feedback, setFeedback] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [selectedButton, setSelectedButton] = useState(1);
 
   useEffect(() => {
-    setStatus(testStatus);
+    //setStatus(testStatus);
     setTeacher(advisor);
     getFeedback(projectId);
     //getTeacher();
@@ -141,6 +144,18 @@ export default function state10({
   //   }
   // } else {
   //   feedbackButton = null;
+  const setStatusButton = (statusB) => {
+    if (statusB === 1) {
+      setSelectedButton(1);
+      setStatus(0);
+    } else if (statusB === 2) {
+      setSelectedButton(2);
+      setStatus(1);
+    } else if (statusB === 3) {
+      setSelectedButton(3);
+      setStatus(2);
+    }
+  };
   // }
   return (
     <>
@@ -170,6 +185,35 @@ export default function state10({
             width: "90%",
           }}
         >
+          <div className="flex justify-center flex-wrap gap-2">
+            <button
+              // onClick={UploadPass}
+              onClick={() => setStatusButton(1)}
+              className={`${
+                selectedButton === 1 ? "bg-blue-500" : "bg-blue-400"
+              }  py-1 px-2 rounded text-white`}
+            >
+              สถานะ 1
+            </button>
+            <button
+              // onClick={UploadNotPass}
+              onClick={() => setStatusButton(2)}
+              className={`${
+                selectedButton === 2 ? "bg-blue-500" : "bg-blue-400"
+              }  py-1 px-2 rounded text-white`}
+            >
+              สถานะ 2
+            </button>
+            <button
+              // onClick={UploadNotPass}
+              onClick={() => setStatusButton(3)}
+              className={`${
+                selectedButton === 3 ? "bg-blue-500" : "bg-blue-400"
+              }  py-1 px-2 rounded text-white`}
+            >
+              สถานะ 3
+            </button>
+          </div>
           <h1 className="text-center font-bold  my-2 text-gray-800  text-2xl   stage2:text-3xl">
             {" "}
             ผลการตอบรับ <br /> ขอสอบโครงงงาน
