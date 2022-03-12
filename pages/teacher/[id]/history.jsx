@@ -15,7 +15,7 @@ const HistoryPage = () => {
 
   const getHistory = async () => {
     await axios
-      .get("https://demo-tspm-server.herokuapp.com/final-course/get-history/" + parseInt(search))
+      .get("http://localhost:3001/final-course/get-history/" + parseInt(search))
       .then((res) => {
         console.log(res.data);
         setHistoryData(res.data);

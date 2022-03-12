@@ -9,7 +9,7 @@ export default function waitMid(props) {
   }, []);
 
   function waitExam() {
-    axios.get(`https://demo-tspm-server.herokuapp.com/project/examresult/1`).then((res) => {
+    axios.get(`http://localhost:3001/project/examresult/1`).then((res) => {
       console.log(res.data);
       setWaits(res.data);
       var status = [];

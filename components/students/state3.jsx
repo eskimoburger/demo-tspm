@@ -105,7 +105,7 @@ export default function state3(props) {
     // appending file
     axios
       .post(
-        `https://demo-tspm-server.herokuapp.com/upload-file/${props.project.idP}`,
+        `http://localhost:3001/upload-file/${props.project.idP}`,
         formData,
         {
           onUploadProgress: (ProgressEvent) => {
@@ -136,7 +136,7 @@ export default function state3(props) {
 
   function nextStageProject() {
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/nextstage/${props.project.idP}`)
+      .put(`http://localhost:3001/project/nextstage/${props.project.idP}`)
       .then((response) => {
         console.log(response.data);
       });
@@ -153,7 +153,7 @@ export default function state3(props) {
       var state_name = "ขอสอบหัวข้อโครงงาน";
 
       axios
-        .post("https://demo-tspm-server.herokuapp.com/notification/id", {
+        .post("http://localhost:3001/notification/id", {
           description: description,
           state_name: state_name,
           id_teacher: id,

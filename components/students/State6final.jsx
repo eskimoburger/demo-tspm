@@ -13,7 +13,7 @@ export default function state6({projectId,functionNext}) {
   const getTeacher = async () => {
     await axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/final-project/get-committees-state6/${projectId}`
+        `http://localhost:3001/final-project/get-committees-state6/${projectId}`
       )
       .then((res) => {
         console.log(res.data);

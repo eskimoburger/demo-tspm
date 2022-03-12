@@ -24,7 +24,7 @@ export default function FinalTeacherLayout({ children, title }) {
 
   const getTeachers = (id) => {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/allteacher/byuser/` + id)
+      .get(`http://localhost:3001/allteacher/byuser/` + id)
       .then((response) => {
         //console.log(response.data[0].name);
         setTeacherName(response.data[0]?.name);

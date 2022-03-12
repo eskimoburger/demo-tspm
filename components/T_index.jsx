@@ -18,7 +18,7 @@ export default function T_index() {
     var advisor = [];
 
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/getprojectbyteacher/1")
+      .get("http://localhost:3001/project/getprojectbyteacher/1")
       .then((response) => {
         for (let i = 0; i < response.data.length; i++) {
           if (response.data[i].role == "กรรมการ") {
@@ -26,7 +26,7 @@ export default function T_index() {
             //console.log(response.data[i]);
             axios
               .get(
-                `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
+                `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
               )
               .then((res) => {
                 //console.log(res.data);
@@ -40,7 +40,7 @@ export default function T_index() {
             advisor.push(response.data[i]);
             axios
               .get(
-                `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
+                `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
               )
               .then((res) => {
                 console.log(res.data);

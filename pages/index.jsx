@@ -232,9 +232,16 @@ export default function newlogin() {
     if (username === "admin" && password === "admin") {
       sessionStorage.setItem("login", true);
       router.push("/admins");
-    } else {
+    }
+    
+    else if (username === "60369999" && password === "test") {
+      sessionStorage.setItem("login",true)
+      router.push(`/students/${username}/test`)
+
+    }
+    else {
       axios
-        .post("https://demo-tspm-server.herokuapp.com/user/all", {
+        .post("http://localhost:3001/user/all", {
           username: username,
           password: password,
         })
@@ -249,7 +256,7 @@ export default function newlogin() {
             var id = sessionStorage.getItem("useID");
             if (sessionStorage.getItem("login") && role == "student") {
               // axios
-              //   .get(`https://demo-tspm-server.herokuapp.com/user/getproject/${id}`)
+              //   .get(`http://localhost:3001/user/getproject/${id}`)
               //   .then((response) => {
               //     sessionStorage.setItem(
               //       "projectname",

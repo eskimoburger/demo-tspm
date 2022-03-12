@@ -50,7 +50,7 @@ export default function teacherState3({
 
   const getProjectMembers = (id) => {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/notification/getproject/` + id)
+      .get(`http://localhost:3001/notification/getproject/` + id)
       .then((response) => {
         console.log(response.data);
         setMembers(response.data.members);
@@ -59,7 +59,7 @@ export default function teacherState3({
 
   const getAsses = () => {
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/asses/" + projectID)
+      .get("http://localhost:3001/project/asses/" + projectID)
       .then((res) => {
         console.log(res.data);
         setAsses(res.data.asses[0]);
@@ -73,7 +73,7 @@ export default function teacherState3({
 
 
   const  finalGetAsses = async() =>{
-    await axios.get("https://demo-tspm-server.herokuapp.com/final-teacher/asses/" + projectID).then((res)=>{
+    await axios.get("http://localhost:3001/final-teacher/asses/" + projectID).then((res)=>{
       setAsses(res.data.project_asses)
       setAssesStudent(res.data.student_asses)
 
@@ -83,7 +83,7 @@ export default function teacherState3({
   }
 
   const finalSendAsses = async(des)=>{
-    await axios.post("https://demo-tspm-server.herokuapp.com/final-teacher/asses/" + projectID,{asses:asses,assesStatus:assesStatus,feedback:feedback,assesStudent:assesStudent,idNotification:idNotification,description:des,idTeacher:teacherID}).then(async(res)=>{
+    await axios.post("http://localhost:3001/final-teacher/asses/" + projectID,{asses:asses,assesStatus:assesStatus,feedback:feedback,assesStudent:assesStudent,idNotification:idNotification,description:des,idTeacher:teacherID}).then(async(res)=>{
       await functionNew();
       console.log(res.data)
       setAlert(false)
@@ -118,7 +118,7 @@ export default function teacherState3({
 
   // const updateAsses =  () => {
   //   axios
-  //     .put("https://demo-tspm-server.herokuapp.com/project/asses/" + projectID, {
+  //     .put("http://localhost:3001/project/asses/" + projectID, {
   //       asses1: asses.asses1,
   //       asses2: asses.asses2,
   //       asses3: asses.asses3,
@@ -136,7 +136,7 @@ export default function teacherState3({
 
   //  for (let i = 0; i < assesStudent.length ; i++  ){
   //   axios
-  //   .put("https://demo-tspm-server.herokuapp.com/project/asses_student/" + projectID, {
+  //   .put("http://localhost:3001/project/asses_student/" + projectID, {
   //     idStudent:assesStudent[i].id_student ,
   //     student1: assesStudent[i].student1,
   //     student2: assesStudent[i].student2,

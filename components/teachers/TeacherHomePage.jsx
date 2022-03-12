@@ -13,7 +13,7 @@ const TeacherHomePage = ({ teacher }) => {
 
   const getCountProject = async () => {
     await axios
-      .get("https://demo-tspm-server.herokuapp.com/final-teacher/count-project/" + teacher.id)
+      .get("http://localhost:3001/final-teacher/count-project/" + teacher.id)
       .then((res) => {
         const { allP, allR, allS } = res.data;
         setLength({

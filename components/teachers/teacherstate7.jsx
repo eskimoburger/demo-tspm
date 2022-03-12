@@ -11,7 +11,7 @@ export default function teacherState7({
 }) {
   const validationState11 = async (idP) => {
     await axios
-      .put("https://demo-tspm-server.herokuapp.com/final-teacher/validation-state11/" + idP, {
+      .put("http://localhost:3001/final-teacher/validation-state11/" + idP, {
         idNotification: idNotification,
       })
       .then(async (res) => {

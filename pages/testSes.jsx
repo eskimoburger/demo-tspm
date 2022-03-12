@@ -18,7 +18,7 @@ const TestSes = () => {
 
 export async function getServerSideProps({ params }) {
     const resData = await fetch(
-      `https://demo-tspm-server.herokuapp.com/final-project/project-detail/${params.id}`
+      `http://localhost:3001/final-project/project-detail/${params.id}`
     );
     const data = await resData.json();
     console.log(data);

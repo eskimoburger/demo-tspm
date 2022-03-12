@@ -135,7 +135,7 @@ export default function state9(props) {
     // appending file
     axios
       .post(
-        `https://demo-tspm-server.herokuapp.com/upload-file-state9/${props.project.idP}`,
+        `http://localhost:3001/upload-file-state9/${props.project.idP}`,
         formData,
         {
           onUploadProgress: (ProgressEvent) => {
@@ -175,7 +175,7 @@ export default function state9(props) {
   const sendTestNotification = async () => {
     await axios
       .post(
-        "https://demo-tspm-server.herokuapp.com/final-project/state-7-test/" + props.project.idP,
+        "http://localhost:3001/final-project/state-7-test/" + props.project.idP,
         {
           idTeacher: teacher.id_teacher,
           teacherName: teacher.teacher_name,
@@ -197,7 +197,7 @@ export default function state9(props) {
   //       var description = `${pnameEN} ได้ส่งคำขอสอบโครงงานให้ ${name} ได้ตรวจสอบ`
   //       var state_name = "ขอสอบโครงงาน"
 
-  //       axios.post("https://demo-tspm-server.herokuapp.com/notification/id", {
+  //       axios.post("http://localhost:3001/notification/id", {
   //         description: description,
   //         state_name: state_name,
   //         id_teacher: id,
@@ -208,7 +208,7 @@ export default function state9(props) {
   //       });
   //       //console.log(id,name,description)
 
-  //       axios.post("https://demo-tspm-server.herokuapp.com/project/test-feedBack/"+props.project.idP).then((res)=>{
+  //       axios.post("http://localhost:3001/project/test-feedBack/"+props.project.idP).then((res)=>{
   //         console.log(res.data)
   //       })
 

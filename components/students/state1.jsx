@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function State1(props) {
   useEffect(() => {
     const fetchAllList = async () => {
-      const resData = await axios.get(`https://demo-tspm-server.herokuapp.com/final-fetch`);
+      const resData = await axios.get(`http://localhost:3001/final-fetch`);
       const { studentList, teacherList } = resData.data;
       setTeacherList(teacherList);
       setStudentList(studentList);
@@ -101,7 +101,7 @@ export default function State1(props) {
   //   console.log(JSON.parse(selectedTeacher[0].teacher));
 
   //   axios
-  //   .post("https://demo-tspm-server.herokuapp.com/project/addprojectdatatest", {
+  //   .post("http://localhost:3001/project/addprojectdatatest", {
   //     project_th: project.projectName_TH,
   //     project_eng: project.projectName_ENG,
   //     project_des: project.detail,
@@ -113,7 +113,7 @@ export default function State1(props) {
 
   //   for (let i = 0; i < selectedStudent.length; i++) {
   //     axios
-  //       .post("https://demo-tspm-server.herokuapp.com/project/addproject", {
+  //       .post("http://localhost:3001/project/addproject", {
   //         project_th: project.projectName_TH,
   //         project_eng: project.projectName_ENG,
   //         members: selectedStudent[i].id,
@@ -131,7 +131,7 @@ export default function State1(props) {
   //     var name = JSON.parse(selectedTeacher[i].teacher).name
   //     var role = selectedTeacher[i].role;
   //     var pnameEN = project.projectName_ENG;
-  //     axios.post("https://demo-tspm-server.herokuapp.com/project/addcommitproject", {
+  //     axios.post("http://localhost:3001/project/addcommitproject", {
   //       committee_name: name,
   //       role: role,
   //       id_teacher: id,
@@ -149,7 +149,7 @@ export default function State1(props) {
   //     var description = `${pnameEN} ได้ส่งคำขอให้ ${name} เป็น ${role} ประจำโครงงาน`
   //     var state_name = "เสนอหัวข้อโครงงาน"
 
-  //     axios.post("https://demo-tspm-server.herokuapp.com/notification/", {
+  //     axios.post("http://localhost:3001/notification/", {
   //       description: description,
   //       state_name: state_name,
   //       id_teacher: id,

@@ -16,7 +16,7 @@ export default function adminindex() {
   const [loading,setLoading] = useState(false);
   const getDataStudent = async () => {
     await axios
-      .get("https://demo-tspm-server.herokuapp.com/students/get")
+      .get("http://localhost:3001/students/get")
       .then((res) => {
         console.log(res.data);
         setStudents(res.data);
@@ -30,7 +30,7 @@ export default function adminindex() {
   };
   const sendMail = (email, password) => {
     axios
-      .post("https://demo-tspm-server.herokuapp.com/students/mail", {
+      .post("http://localhost:3001/students/mail", {
         email: email,
         password: password,
       })

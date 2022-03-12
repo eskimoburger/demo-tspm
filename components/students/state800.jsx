@@ -10,7 +10,7 @@ export default function state8(props) {
 
   function getTeachers() {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
+      .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
       .then((response) => {
         console.log(response.data.length);
         console.log(response.data);
@@ -23,7 +23,7 @@ export default function state8(props) {
 
   function getTeachers() {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
+      .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
       .then((response) => {
         console.log(response.data);
 
@@ -52,7 +52,7 @@ export default function state8(props) {
 
     for (let k = 0; k < data.length; k++) {
       axios
-        .post("https://demo-tspm-server.herokuapp.com/project/examresult", {
+        .post("http://localhost:3001/project/examresult", {
           exam_value: data[k].value,
           exam_details: data[k].detail,
           id_project: props.project.id,
@@ -63,7 +63,7 @@ export default function state8(props) {
         });
 
       axios
-        .post("https://demo-tspm-server.herokuapp.com/notification", {
+        .post("http://localhost:3001/notification", {
           description: `${props.project.name_eng} ได้ส่งแบบบันทึกผลการสอบหัวข้อโครงงานให้ ${data[k].name} ตรวจสอบ !! `,
           state_name: "บันทึกผลการสอบหัวข้อโครงงาน",
           id_teacher: data[k].id,

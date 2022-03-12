@@ -63,7 +63,7 @@ export default function hometeacher(props) {
   function getProjectFromTeacher(id) {
     axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/project/getprojectbyteacher/${props.teacher.id}`
+        `http://localhost:3001/project/getprojectbyteacher/${props.teacher.id}`
       )
       .then((response) => {
         for (let i = 0; i < response.data.length; i++) {
@@ -72,7 +72,7 @@ export default function hometeacher(props) {
             //console.log(response.data[i]);
             axios
               .get(
-                `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
+                `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
               )
               .then((res) => {
                 //console.log(res.data);
@@ -84,7 +84,7 @@ export default function hometeacher(props) {
           if (response.data[i].role == "อาจารย์ที่ปรึกษา") {
             axios
               .get(
-                `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
+                `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
               )
               .then((res) => {
                 console.log(res.data);
@@ -94,7 +94,7 @@ export default function hometeacher(props) {
           if (response.data[i].role == "อาจารย์ที่ปรึกษาร่วม") {
             axios
               .get(
-                `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
+                `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
               )
               .then((res) => {
                 console.log(res.data);

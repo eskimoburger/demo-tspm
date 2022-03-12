@@ -10,7 +10,7 @@ export default function homeadmin() {
   const [students, setStudents] = useState([]);
   const getDataStudent = async () => {
     await axios
-      .get("https://demo-tspm-server.herokuapp.com/students/get")
+      .get("http://localhost:3001/students/get")
       .then((res) => {
         console.log(res.data);
         setStudents(res.data)
@@ -20,7 +20,7 @@ export default function homeadmin() {
       });
   };
   const sendMail = (email,password) =>{
-      axios.post('https://demo-tspm-server.herokuapp.com/students/mail',{email:email,password:password}).then((res)=>{
+      axios.post('http://localhost:3001/students/mail',{email:email,password:password}).then((res)=>{
           console.log(res.data)
           alert("Send Complete")
       })

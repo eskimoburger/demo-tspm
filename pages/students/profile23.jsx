@@ -16,7 +16,7 @@ export default function Profile() {
     if (sessionStorage.length > 0) {
       await axios
         .get(
-          `https://demo-tspm-server.herokuapp.com/allstudent/get/${sessionStorage.getItem(
+          `http://localhost:3001/allstudent/get/${sessionStorage.getItem(
             "useID"
           )}`
         )

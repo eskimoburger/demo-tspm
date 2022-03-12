@@ -43,7 +43,7 @@ export default function testState({
   const [value, setValue] = useState(false);
   const [open, setOpen] = useState(false);
   const [link, setLink] = useState(
-    "https://demo-tspm-server.herokuapp.com/cpetest/612f43e142f8c.pdf"
+    "http://localhost:3001/cpetest/612f43e142f8c.pdf"
   );
   const handleClickOpen = async () => {
    setOpen(true);
@@ -72,7 +72,7 @@ export default function testState({
 
   const getProjectMembers = (id) => {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/notification/getproject/` + id)
+      .get(`http://localhost:3001/notification/getproject/` + id)
       .then((response) => {
         console.log(response.data);
         setMembers(response.data.members);
@@ -81,7 +81,7 @@ export default function testState({
 
   const getDataProject = (id) => {
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/getprojectbyid/" + id)
+      .get("http://localhost:3001/project/getprojectbyid/" + id)
       .then((res) => {
         console.log(res.data);
         setProject(res.data);
@@ -103,7 +103,7 @@ export default function testState({
   const getFile = () => {
     //console.log(projectID)
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/project/showfilefinalstate/${projectID}`)
+      .get(`http://localhost:3001/project/showfilefinalstate/${projectID}`)
       .then((res) => {
         console.log(res.data);
         setShowFile(res.data);
@@ -111,14 +111,14 @@ export default function testState({
   };
 
   const finalGetProjectAsses = (id) =>{
-    axios.get(`https://demo-tspm-server.herokuapp.com/final-course/project-asses/${id}`).then((res)=>{
+    axios.get(`http://localhost:3001/final-course/project-asses/${id}`).then((res)=>{
       console.log(res.data)
       setProject(res.data.data_project)
     })
   }
 
   const finalSendFinalAsses = (id) =>{
-    axios.post(`https://demo-tspm-server.herokuapp.com/final-course/project-asses/${id}`,{final:final,finalStatus:finalStatus}).then((res)=>{
+    axios.post(`http://localhost:3001/final-course/project-asses/${id}`,{final:final,finalStatus:finalStatus}).then((res)=>{
       console.log(res.data)
     })
   }

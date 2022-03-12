@@ -83,13 +83,13 @@ export default function Propose(props) {
   }, []);
 
   function fetchStudentList() {
-    axios.get(`https://demo-tspm-server.herokuapp.com/allstudent/test`).then((response) => {
+    axios.get(`http://localhost:3001/allstudent/test`).then((response) => {
       console.log(response.data.studentList);
       setStudentList(response.data.studentList);
     });
   }
   function fetchTeacherList() {
-    axios.get(`https://demo-tspm-server.herokuapp.com/allteacher`).then((response) => {
+    axios.get(`http://localhost:3001/allteacher`).then((response) => {
       console.log(response.data);
       setTeacherList(response.data);
     });
@@ -291,7 +291,7 @@ export default function Propose(props) {
     });
     /// test_data_project
     axios
-      .post("https://demo-tspm-server.herokuapp.com/project/addprojectdatatest", {
+      .post("http://localhost:3001/project/addprojectdatatest", {
         project_th: pnameTH,
         project_eng: pnameEN,
         project_des: p_des,
@@ -303,7 +303,7 @@ export default function Propose(props) {
     /// addMemberList to database
     for (let i = 0; i < memberID.length; i++) {
       axios
-        .post("https://demo-tspm-server.herokuapp.com/project/addproject", {
+        .post("http://localhost:3001/project/addproject", {
           project_th: pnameTH,
           project_eng: pnameEN,
           members: memberID[i],
@@ -321,7 +321,7 @@ export default function Propose(props) {
       var role = teacher_List[i].role;
       var pnameEN = pnameEN;
 
-      Axios.post("https://demo-tspm-server.herokuapp.com/project/addcommitproject", {
+      Axios.post("http://localhost:3001/project/addcommitproject", {
         committee_name: name,
         role: role,
         id_teacher: id,
@@ -341,7 +341,7 @@ export default function Propose(props) {
       var description = `${pnameEN} ได้ส่งคำขอให้ ${name} เป็น ${role} ประจำโครงงาน`
       var state_name = "เสนอหัวข้อโครงงาน" 
 
-      Axios.post("https://demo-tspm-server.herokuapp.com/notification/", {
+      Axios.post("http://localhost:3001/notification/", {
         description: description,
         state_name: state_name,
         id_teacher: id,

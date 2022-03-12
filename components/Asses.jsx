@@ -62,7 +62,7 @@ export default function Asses(props) {
 
   function send() {
     // axios
-    //   .post("https://demo-tspm-server.herokuapp.com/notification/", {
+    //   .post("http://localhost:3001/notification/", {
     //     description: ` ${props.project.name_eng} ได้ส่งคำขอให้ ${teacher.name} อาจารย์ที่ปรึกษาประจำ${props.project.name} (${props.project.name_eng}) ประเมินความก้าวหน้าของโครงงาน`,
     //     state_name: "ขอประเมินความก้าวหน้าของโครงงาน",
     //     id_teacher: teacher.id_teacher,
@@ -75,7 +75,7 @@ export default function Asses(props) {
 
     //console.log(studentSend ,feedback)
     for(let i = 0; i < studentSend.length ;i++){
-      axios.post("https://demo-tspm-server.herokuapp.com/project/asses_student",{
+      axios.post("http://localhost:3001/project/asses_student",{
         id_student:studentSend[i].id,
         student1:studentSend[i].student1,
         student2:studentSend[i].student2,
@@ -86,7 +86,7 @@ export default function Asses(props) {
       //console.log(studentSend[i])
     }
     console.log(asses)
-    // axios.post("https://demo-tspm-server.herokuapp.com/project/asses",{
+    // axios.post("http://localhost:3001/project/asses",{
     //   id : props.project.id,
     //   asses1 : asses.asses1,
     //   asses2 : asses.asses2,

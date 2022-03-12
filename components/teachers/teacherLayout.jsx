@@ -13,7 +13,7 @@ export default function teacherLayout({ children, title, number }) {
   const getTeachers = () => {
     axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/allteacher/byuser/${sessionStorage.getItem(
+        `http://localhost:3001/allteacher/byuser/${sessionStorage.getItem(
             "useID"
           )}`
       )

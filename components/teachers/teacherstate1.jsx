@@ -27,7 +27,7 @@ export default function teacherState1(props) {
 
   function getProjectByName(name) {
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/getprojectbyname/" + name)
+      .get("http://localhost:3001/project/getprojectbyname/" + name)
       .then((response) => {
         setProjectDetail(response.data);
         setOpen(true);
@@ -36,7 +36,7 @@ export default function teacherState1(props) {
 
   // async function deleteNotification(id) {
   //   axios
-  //     .delete("https://demo-tspm-server.herokuapp.com/notification/project/" + id)
+  //     .delete("http://localhost:3001/notification/project/" + id)
   //     .then(async (response) => {
   //       console.log(response.data);
   //       await props.function();
@@ -46,7 +46,7 @@ export default function teacherState1(props) {
   // function submitted(projectName, teacherID) {
   //   axios
   //     .put(
-  //       `https://demo-tspm-server.herokuapp.com/project/submitted/${projectName}/${teacherID}`
+  //       `http://localhost:3001/project/submitted/${projectName}/${teacherID}`
   //     )
   //     .then((response) => {
   //       console.log(response.data);
@@ -56,7 +56,7 @@ export default function teacherState1(props) {
   // function rejected(projectName, teacherID) {
   //   console.log(projectName, teacherID);
   //   axios
-  //     .put(`https://demo-tspm-server.herokuapp.com/project/rejected/${projectName}/${teacherID}`)
+  //     .put(`http://localhost:3001/project/rejected/${projectName}/${teacherID}`)
   //     .then((response) => {
   //       console.log(response.data);
   //     });
@@ -64,7 +64,7 @@ export default function teacherState1(props) {
   const finalGetProject = async (id) => {
     setOpen(true);
     await axios
-      .get(`https://demo-tspm-server.herokuapp.com/final-teacher/get-project/${id}`)
+      .get(`http://localhost:3001/final-teacher/get-project/${id}`)
       .then((res) => {
         console.log(res.data)
         setProjectData(res.data)
@@ -73,7 +73,7 @@ export default function teacherState1(props) {
   const finalConfirm = async (status, des) => {
     await axios
       .put(
-        `https://demo-tspm-server.herokuapp.com/final-teacher/confirm-state1/${props.teacherID}/${status}`,
+        `http://localhost:3001/final-teacher/confirm-state1/${props.teacherID}/${status}`,
         {
           idNotification: props.id,
           projectName: props.projectName,

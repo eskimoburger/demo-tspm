@@ -74,7 +74,7 @@ export default function FinalManage(props) {
   const getProjectByTeacher = (status) => {
     axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/project/getprojectbyteacher/${props.teacher.id}/${status}`
+        `http://localhost:3001/project/getprojectbyteacher/${props.teacher.id}/${status}`
       )
       .then((res) => {
         console.log(res.data);
@@ -86,7 +86,7 @@ export default function FinalManage(props) {
   const getProjectById = (id) => {
     setOpen(true);
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/project/getprojectbyid/${id}`)
+      .get(`http://localhost:3001/project/getprojectbyid/${id}`)
       .then(async (res) => {
         console.log(res.data);
         setProjectDetail(res.data);

@@ -13,7 +13,7 @@ export default function state14(props) {
 
   function backToStageProject() {
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/backToStage/${props.project.idP}`,{state:12})
+      .put(`http://localhost:3001/project/backToStage/${props.project.idP}`,{state:12})
       .then((response) => {
         console.log(response.data);
       });

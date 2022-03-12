@@ -21,7 +21,7 @@ export default function studentLayout({ children, title }) {
   const getUser = async () => {
     await axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/allstudent/test/${
+        `http://localhost:3001/allstudent/test/${
           sessionStorage.getItem("useID")
           //router.query.id
         }
@@ -31,6 +31,7 @@ export default function studentLayout({ children, title }) {
         setName(
           `${response.data.studentList[0].prefix_th}${response.data.studentList[0].thname} ${response.data.studentList[0].thlastname} `
         );
+        setStudentId( sessionStorage.getItem("useID"))
       })
       .catch((err) => {
         console.log(err.message);
@@ -42,6 +43,7 @@ export default function studentLayout({ children, title }) {
   const [edit, setEdit] = useState(false);
   const [error, setError] = useState(false);
   const [sideShow, setSideShow] = useState(false);
+  const[studentId,setStudentId] = useState(null)
   
 
   var editContent = null;
@@ -61,7 +63,7 @@ export default function studentLayout({ children, title }) {
       >
         <div
           onClick={() => {
-            router.push("/newlogin"), sessionStorage.clear();
+            router.push("/"), sessionStorage.clear();
           }}
           className=" flex items-center rounded-md hover:bg-gray-100 text-black cursor-pointer "
         >
@@ -123,7 +125,11 @@ export default function studentLayout({ children, title }) {
               />
             </div>
 
-            <div className="desktop:text-base  iphone:text-xs bg-white p-2 rounded-full text-black cursor-pointer hover:bg-gray-200 font-bold hidden desktop:block ">
+            <div className="desktop:text-base  iphone:text-xs bg-white p-2 rounded-full text-black cursor-pointer hover:bg-gray-200 font-bold hidden desktop:block " onClick={()=>{
+              if(studentId){
+                router.push(`/students/${studentId}/profile`)
+              }
+            }}>
               <p>{name}</p>
             </div>
             {/* <div onClick={() => setEdit(!edit)} className="">

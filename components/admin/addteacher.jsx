@@ -35,13 +35,13 @@ export default function addteacher() {
   };
 
   const getAllTeacher = async () => {
-    const teacherRes = await axios.get("https://demo-tspm-server.herokuapp.com/allteacher");
+    const teacherRes = await axios.get("http://localhost:3001/allteacher");
     const teacherData = teacherRes.data
 
     setTeachers(teacherData)
 
     // await axios
-    //   .get("https://demo-tspm-server.herokuapp.com/allteacher")
+    //   .get("http://localhost:3001/allteacher")
     //   .then((res) => {
     //     console.log(res.data);
 
@@ -58,7 +58,7 @@ export default function addteacher() {
     event.preventDefault();
 
     axios
-      .post("https://demo-tspm-server.herokuapp.com/allteacher/teachers", {
+      .post("http://localhost:3001/allteacher/teachers", {
         teacher_name: teacherValue,
       })
       .then((res) => {

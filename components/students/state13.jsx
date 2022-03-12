@@ -112,7 +112,7 @@ export default function state13(props) {
     // appending file
     axios
       .post(
-        `https://demo-tspm-server.herokuapp.com/upload-file-final/${props.project.idP}`,
+        `http://localhost:3001/upload-file-final/${props.project.idP}`,
         formData,
         {
           onUploadProgress: (ProgressEvent) => {
@@ -154,7 +154,7 @@ export default function state13(props) {
     var state_name = "ส่งรูปเล่มโครงงาน";
     await axios
       .post(
-        "https://demo-tspm-server.herokuapp.com/notification/course-teacher/" +
+        "http://localhost:3001/notification/course-teacher/" +
           props.project.idP,
         {
           description: description,

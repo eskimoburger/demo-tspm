@@ -24,7 +24,7 @@ export default function TeacherLayout(props) {
     if (sessionStorage.getItem("useID")) {
       axios
         .get(
-          `https://demo-tspm-server.herokuapp.com/allteacher/byuser/${sessionStorage.getItem(
+          `http://localhost:3001/allteacher/byuser/${sessionStorage.getItem(
             "useID"
           )}`
         )

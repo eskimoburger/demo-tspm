@@ -49,7 +49,7 @@ export default function teacherState6({
 
   const getFinalExamResults = (id) => {
     axios
-      .get("https://demo-tspm-server.herokuapp.com/final-teacher/final-exam-result/" + id)
+      .get("http://localhost:3001/final-teacher/final-exam-result/" + id)
       .then((response) => {
         console.log(response.data);
         setExamResult(response.data.exam_result);
@@ -61,7 +61,7 @@ export default function teacherState6({
   const getExamResults = (id) => {
     //setOpen(true);
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/finalexamresult/" + id)
+      .get("http://localhost:3001/project/finalexamresult/" + id)
       .then((response) => {
         console.log(response.data.results);
 
@@ -100,7 +100,7 @@ export default function teacherState6({
   const sendEdit = (teacherName, id) => {
     var text = "||แก้ไขโดย : " + teacherName + " --> " + edit;
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/examresult/${id}`, {
+      .put(`http://localhost:3001/project/examresult/${id}`, {
         edit: text,
         idProject: projectID,
       })
@@ -116,7 +116,7 @@ export default function teacherState6({
   const validationTestExam = async () => {
     await axios
       .put(
-        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10/${teacherID}/${projectID}`,
+        `http://localhost:3001/final-teacher/validation-state10/${teacherID}/${projectID}`,
         {
           idTeacher: teacherID,
           idNotification: idNotification,
@@ -133,7 +133,7 @@ export default function teacherState6({
     var text = "//แก้ไขโดย : " + teacherName + " --> " + edit;
     await axios
       .put(
-        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10-edit/${teacherID}/${projectID}`,
+        `http://localhost:3001/final-teacher/validation-state10-test/${teacherID}/${projectID}`,
         {
           idTeacher: teacherID,
           idNotification: idNotification,
@@ -142,7 +142,6 @@ export default function teacherState6({
       )
       .then(async (res) => {
         await functionNew();
-
         console.log(res.data);
       });
   };

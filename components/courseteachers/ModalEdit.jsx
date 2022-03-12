@@ -104,13 +104,13 @@ const ModalEdit = ({
   };
 
   function fetchStudentList() {
-    axios.get(`https://demo-tspm-server.herokuapp.com/allstudent/test`).then((response) => {
+    axios.get(`http://localhost:3001/allstudent/test`).then((response) => {
       console.log(response.data.studentList);
       setStudentList(response.data.studentList);
     });
   }
   function fetchTeacherList() {
-    axios.get(`https://demo-tspm-server.herokuapp.com/allteacher`).then((response) => {
+    axios.get(`http://localhost:3001/allteacher`).then((response) => {
       console.log(response.data);
       setTeacherList(response.data);
     });

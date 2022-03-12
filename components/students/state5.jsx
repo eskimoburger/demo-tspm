@@ -19,7 +19,7 @@ export default function state4(props) {
 
   const getTeacherByIdProject = async (id) => {
     await axios
-      .get(`https://demo-tspm-server.herokuapp.com/final-project/get-teacher-state5/${id}`)
+      .get(`http://localhost:3001/final-project/get-teacher-state5/${id}`)
       .then((res) => {
         const { results } = res.data;
         // console.log(response.data.results.length);
@@ -68,7 +68,7 @@ export default function state4(props) {
 
   const sendMidExamResult = () => {
     axios.post(
-      `https://demo-tspm-server.herokuapp.com/final-project/results-state5/${props.project.idP}`,
+      `http://localhost:3001/final-project/results-state5/${props.project.idP}`,
       {
         teachers: teachers,
         project_eng: props.project.name_eng,
@@ -78,7 +78,7 @@ export default function state4(props) {
 
   function nextStageProject() {
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/nextstage/${props.project.idP}`)
+      .put(`http://localhost:3001/project/nextstage/${props.project.idP}`)
       .then((response) => {
         console.log(response.data);
       });
@@ -253,7 +253,7 @@ export default function state4(props) {
 
 // function getTeachers() {
 //   axios
-//     .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
+//     .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
 //     .then((response) => {
 
 //       console.log(response.data.length);
@@ -264,7 +264,7 @@ export default function state4(props) {
 
 // function getTeachers() {
 //   axios
-//     .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.project.name_eng}`)
+//     .get(`http://localhost:3001/project/getrequest/${props.project.name_eng}`)
 //     .then((response) => {
 //       console.log(response.data);
 
@@ -299,7 +299,7 @@ export default function state4(props) {
 // function NewSendExamResults() {
 //   for (let k = 0; k < validation.length; k++) {
 //     axios
-//       .post("https://demo-tspm-server.herokuapp.com/project/examresult", {
+//       .post("http://localhost:3001/project/examresult", {
 //         exam_value: validation[k].value,
 //         exam_details: validation[k].detail,
 //         id_project: props.project.idP,
@@ -309,7 +309,7 @@ export default function state4(props) {
 //         console.log(res.data);
 //       });
 //     axios
-//       .post("https://demo-tspm-server.herokuapp.com/notification/id", {
+//       .post("http://localhost:3001/notification/id", {
 //         description: `${props.project.name_eng} ได้ส่งแบบบันทึกผลการสอบหัวข้อโครงงานให้ ${validation[k].name} ตรวจสอบ !! `,
 //         state_name: "บันทึกผลการสอบหัวข้อโครงงาน",
 //         id_teacher: validation[k].id,

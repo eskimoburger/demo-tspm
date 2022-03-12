@@ -64,7 +64,7 @@ export default function profileComponent() {
     if(sessionStorage.length > 0 ){
     await axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/allstudent/get/${sessionStorage.getItem(
+        `http://localhost:3001/allstudent/get/${sessionStorage.getItem(
           "useID"
         )}`
       )
@@ -113,7 +113,7 @@ export default function profileComponent() {
     // appending file
     await axios
       .post(
-        `https://demo-tspm-server.herokuapp.com/profile/${sessionStorage.getItem(
+        `http://localhost:3001/profile/${sessionStorage.getItem(
           "useID"
         )}`,
         formData,
@@ -138,7 +138,7 @@ export default function profileComponent() {
         //setImageProfile("/noimage.jpg")
         //setHook(!hook)
          //getUser()
-        // setImageProfile(`https://demo-tspm-server.herokuapp.com/imagesProfiles/${sessionStorage.getItem(
+        // setImageProfile(`http://localhost:3001/imagesProfiles/${sessionStorage.getItem(
         //   "useID"
         // )}.jpg`)
 
@@ -169,7 +169,7 @@ export default function profileComponent() {
   },[oldPassword])
 
   const checkPassword = async () =>{
-   await axios.post("https://demo-tspm-server.herokuapp.com/allstudent/check/"+ sessionStorage.getItem(
+   await axios.post("http://localhost:3001/allstudent/check/"+ sessionStorage.getItem(
       "useID"
     ),{oldPassword:oldPassword,newPassword:newPassword}).then( async (res)=>{
       console.log(res.data)

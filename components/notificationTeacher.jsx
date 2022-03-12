@@ -24,7 +24,7 @@ export default function notificationTeacher(props) {
 
   const getNotification = () => {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/notification/project/${props.teacher.id}`)
+      .get(`http://localhost:3001/notification/project/${props.teacher.id}`)
       .then((response) => {
         console.log(response.data.results);
         setNotifications(response.data.results);
@@ -43,7 +43,7 @@ export default function notificationTeacher(props) {
   const getExamResults = (id) => {
     setOpen(true);
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/examresult/" + id)
+      .get("http://localhost:3001/project/examresult/" + id)
       .then((response) => {
         console.log(response.data);
         setExamResult(response.data);
@@ -60,7 +60,7 @@ export default function notificationTeacher(props) {
   const sendEdit = (teacherName, id) => {
     var text = "//แก้ไขโดย : " + teacherName + " //" + edit;
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/examresult/${id}`, { edit: text })
+      .put(`http://localhost:3001/project/examresult/${id}`, { edit: text })
       .then((res) => {
         console.log(res.data);
       });
@@ -70,7 +70,7 @@ export default function notificationTeacher(props) {
 
   const acceptExam = () => {
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/updateresult/${props.teacher.id}`)
+      .put(`http://localhost:3001/project/updateresult/${props.teacher.id}`)
       .then((res) => {
         console.log(res.data);
       });
@@ -83,7 +83,7 @@ export default function notificationTeacher(props) {
 
   const getProjectMembers = (id) => {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/notification/getproject/` + id)
+      .get(`http://localhost:3001/notification/getproject/` + id)
       .then((response) => {
         console.log(response.data);
         setMembers(response.data.members);

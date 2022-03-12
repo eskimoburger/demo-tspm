@@ -6,7 +6,7 @@ const state1 = async (req, res) => {
   if (req.method === "POST") {
     try {
       const axiosRes = await axios.post(
-        "https://demo-tspm-server.herokuapp.com/final-project/state-1-demo",
+        "http://localhost:3001/final-project/state-1-demo",
         req.body
       );
 
@@ -24,7 +24,7 @@ export default state1;
 
 //console.log(req.body)
     // await axios
-    // .post("https://demo-tspm-server.herokuapp.com/final-project/state-1-demo", {
+    // .post("http://localhost:3001/final-project/state-1-demo", {
     //   project_th: project.projectName_TH,
     //   project_eng: project.projectName_ENG,
     //   project_des: project.detail,

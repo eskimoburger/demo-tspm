@@ -6,7 +6,7 @@ import { InputAdornment } from "@material-ui/core";
 
 export default function search() {
   React.useEffect(() => {
-    axios.get("https://demo-tspm-server.herokuapp.com/files/document").then((response) => {
+    axios.get("http://localhost:3001/files/document").then((response) => {
       console.log(response.data);
       SetDocuments(response.data);
     });

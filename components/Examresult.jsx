@@ -13,7 +13,7 @@ export default function examresult(props) {
 
   function getTeachers() {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.projectName}`)
+      .get(`http://localhost:3001/project/getrequest/${props.projectName}`)
       .then((response) => {
         console.log(response.data);
 

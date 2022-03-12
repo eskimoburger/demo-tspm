@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import StudentLayoutForTest from "../../../components/students/studentLayoutForTest";
+import StudentIndexIdForTest from "../../../components/students/StudentIndexIdForTest";
 
-const test = () => {
-    return (
-        <div>
-            test
-        </div>
-    )
-}
+const TestPage = () => {
+  //useEffect(() => {}, []);
 
-export default test
+  return (
+    <>
+      <StudentIndexIdForTest/>
+    </>
+  );
+};
+
+export default TestPage;
+
+TestPage.getLayout = function getLayout(page) {
+  return (
+    <StudentLayoutForTest title={"Student | Homepage Test"}>
+      {page}
+    </StudentLayoutForTest>
+  );
+};

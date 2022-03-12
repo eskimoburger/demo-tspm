@@ -11,7 +11,7 @@ export default function state6(props) {
   const getTeacher = async () => {
     await axios
       .get(
-        `https://demo-tspm-server.herokuapp.com/final-project/get-committees-state6/${props.project.idP}`
+        `http://localhost:3001/final-project/get-committees-state6/${props.project.idP}`
       )
       .then((res) => {
         console.log(res.data);
@@ -26,7 +26,7 @@ export default function state6(props) {
 
   function nextStageProject() {
     axios
-      .put(`https://demo-tspm-server.herokuapp.com/project/nextstage/${props.project.idP}`)
+      .put(`http://localhost:3001/project/nextstage/${props.project.idP}`)
       .then((response) => {
         console.log(response.data);
       });

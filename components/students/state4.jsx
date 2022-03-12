@@ -11,7 +11,7 @@ export default function state4(props) {
 
   const getTeacher = () => {
     axios
-      .get(`https://demo-tspm-server.herokuapp.com/project/getcommittee/${props.project.idP}`)
+      .get(`http://localhost:3001/project/getcommittee/${props.project.idP}`)
       .then((res) => {
         console.log(res.data)
         setRequest(res.data);

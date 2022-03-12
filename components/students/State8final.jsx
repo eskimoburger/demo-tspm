@@ -59,7 +59,7 @@ export default function State8({
 
   const getAssesFeedback = async () => {
     await axios
-      .get("https://demo-tspm-server.herokuapp.com/final-project/asses-feedback/" + projectId)
+      .get("http://localhost:3001/final-project/asses-feedback/" + projectId)
       .then((res) => {
         setShowFeedback(true);
         setFeedback(res.data.results.feedback);
@@ -71,7 +71,7 @@ export default function State8({
 
   const goToStage1 = async () => {
     await axios
-      .post("https://demo-tspm-server.herokuapp.com/final-project/delete-project/" + projectId, {
+      .post("http://localhost:3001/final-project/delete-project/" + projectId, {
         projectData: projectData,
         committees: committees,
         members: members,

@@ -32,7 +32,7 @@ export const NewAsses = (props) => {
   
 
   function NextStage(){
-      axios.put(`https://demo-tspm-server.herokuapp.com/project/update/${props.project.id}`).then((res)=>{
+      axios.put(`http://localhost:3001/project/update/${props.project.id}`).then((res)=>{
           console.log(res.data)
           if(res.data){
               router.reload()

@@ -34,14 +34,14 @@ export default function T_index() {
 
   function getProjectFromTeacher() {
     axios
-      .get("https://demo-tspm-server.herokuapp.com/project/getallproject")
+      .get("http://localhost:3001/project/getallproject")
       .then((response) => {
         for (let i = 0; i < response.data.length; i++) {
           // console.log("กรรมการ" + i);
           //console.log(response.data[i]);
           axios
             .get(
-              `https://demo-tspm-server.herokuapp.com/project/getprojectbyname/${response.data[i].project_name_eng}`
+              `http://localhost:3001/project/getprojectbyname/${response.data[i].project_name_eng}`
             )
             .then((res) => {
               console.log(res.data);
@@ -84,14 +84,14 @@ export default function T_index() {
 
   const [idProject ,setIdProject]=useState(0)
   function updateProjectID(id){
-    axios.put(`https://demo-tspm-server.herokuapp.com/project/updateidbyname/${showProject.name_eng}`,{id_project:id}).then((response)=>{
+    axios.put(`http://localhost:3001/project/updateidbyname/${showProject.name_eng}`,{id_project:id}).then((response)=>{
      console.log(response.data.message) 
     })
   }
   const handleSubmit = e => {
     e.preventDefault();
     
-    axios.put(`https://demo-tspm-server.herokuapp.com/project/updateidbyname/${showProject.name_eng}`,{id_project:idProject}).then( async(response)=>{
+    axios.put(`http://localhost:3001/project/updateidbyname/${showProject.name_eng}`,{id_project:idProject}).then( async(response)=>{
      console.log(response.data.message) 
      Router.reload()
      //await getProjectFromTeacher()

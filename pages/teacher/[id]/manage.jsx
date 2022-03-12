@@ -49,7 +49,7 @@ export default ManagePage;
 
 // export async function getServerSideProps({ query }) {
 //   const resData = await fetch(
-//     `https://demo-tspm-server.herokuapp.com/final-project/project-detail/${query.id}`
+//     `http://localhost:3001/final-project/project-detail/${query.id}`
 //   );
 //   const data = await resData.json();
 //   let queryStatus = false;
@@ -67,7 +67,7 @@ export default ManagePage;
 
 export async function getServerSideProps({ query }) {
   const resData = await fetch(
-    `https://demo-tspm-server.herokuapp.com/allteacher/byuser/${query.id}`
+    `http://localhost:3001/allteacher/byuser/${query.id}`
   );
   const data = await resData.json();
   // let queryStatus = false;

@@ -84,7 +84,7 @@ export default function state7(props) {
     const formData = new FormData();
     formData.append("file", file , "state7file.pdf"); // appending file
     axios
-      .post(`https://demo-tspm-server.herokuapp.com/upload2/cpetest/${props.project.idP}`, formData, {
+      .post(`http://localhost:3001/upload2/cpetest/${props.project.idP}`, formData, {
         onUploadProgress: (ProgressEvent) => {
           let progress =
             Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +

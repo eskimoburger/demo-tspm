@@ -34,7 +34,7 @@ ManagePage.getLayout = function getLayout(page) {
 export async function getServerSideProps() {
   try {
     const resData = await fetch(
-      "https://demo-tspm-server.herokuapp.com/final-course/all-project"
+      "http://localhost:3001/final-course/all-project"
     );
     const data = await resData.json();
     return {
