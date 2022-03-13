@@ -192,15 +192,11 @@
 //   );
 // }
 
-
-
-
 import React, { useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import axios from "axios";
 import { useRouter } from "next/router";
-
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -211,8 +207,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-
-
 export default function newlogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -221,7 +215,6 @@ export default function newlogin() {
   const router = useRouter();
 
   const [open, setOpen] = useState(false);
-
 
   const handleClose = () => {
     setOpen(false);
@@ -232,14 +225,10 @@ export default function newlogin() {
     if (username === "admin" && password === "admin") {
       sessionStorage.setItem("login", true);
       router.push("/admins");
-    }
-    
-    else if (username === "60369999" && password === "test") {
-      sessionStorage.setItem("login",true)
-      router.push(`/students/${username}/test`)
-
-    }
-    else {
+    } else if (username === "60369999" && password === "test") {
+      sessionStorage.setItem("login", true);
+      router.push(`/students/${username}/test`);
+    } else {
       axios
         .post("http://localhost:3001/user/all", {
           username: username,
@@ -313,12 +302,12 @@ export default function newlogin() {
                 width={250}
                 height={250}
               />
-              <div className=" text-2xl font-bold  mt-5  border-yellow-400 border-4 p-8 rounded-xl  ">
+              <div className="iphone:text-xs laptop:text-2xl font-bold  mt-5  border-yellow-400 border-2 p-4 rounded-xl   ">
                 <p className="uppercase text-center">
                   The Student Project <br /> Management System
                 </p>
               </div>
-              <p className="text-center text-xl  font-bold  ">
+              <p className="text-center iphone:text-xs laptop:text-xl  font-bold  ">
                 Department of Electrical and Computer <br /> Engineering
                 Naresuan University
               </p>
@@ -326,15 +315,17 @@ export default function newlogin() {
           </div>
 
           <div className="bg-gray-300 w-1/2 rounded-2xl p-6">
-            <div className="w-full h-full flex flex-col justify-center">
-              <h1 className="text-5xl font-bold">เข้าสู่ระบบ</h1>
-              <p className="mt-2 text-2xl font-normal">
+            <div className="w-full  flex flex-col justify-center">
+              <h1 className="iphone:text-2xl   laptop:text-5xl font-bold ">
+                เข้าสู่ระบบ
+              </h1>
+              <p className="mt-2 laptop:text-2xl font-normal">
                 กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ
               </p>
               <form onSubmit={login}>
-                <div className="mt-12  space-y-6 ">
+                <div className="mt-12  space-y-6 iphone:text-xs laptop:text-xl">
                   <label
-                    className="block  tracking-wide text-gray-800   text-xl font-bold mb-2"
+                    className="block  tracking-wide text-gray-800 font-bold mb-2"
                     htmlFor="username"
                   >
                     รหัสประจำตัว
@@ -343,7 +334,7 @@ export default function newlogin() {
                   <input
                     value={username}
                     required
-                    className="border-gray-100 border-2 bg-gray-100 p-3 w-full rounded-lg appearance-none focus:border-red-800  focus:outline-none focus:bg-white  "
+                    className="border-gray-100 border-2 bg-gray-100 p-2 w-full rounded-lg appearance-none focus:border-red-800  focus:outline-none focus:bg-white  "
                     type="text"
                     name=""
                     id="username"
@@ -351,7 +342,7 @@ export default function newlogin() {
                     onChange={(e) => setUsername(e.target.value)}
                   />
                   <label
-                    className="block  tracking-wide text-gray-800 text-xl font-bold mb-2"
+                    className="block  tracking-wide text-gray-800  font-bold mb-2"
                     htmlFor="password"
                   >
                     รหัสผ่าน
@@ -360,7 +351,7 @@ export default function newlogin() {
                   <input
                     value={password}
                     required
-                    className="border-gray-100 border-2 bg-gray-100 p-3 w-full rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-red-800   "
+                    className=" border-gray-100 border-2 bg-gray-100 p-2 w-full rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-red-800   "
                     type="password"
                     name=""
                     id="password"
@@ -370,14 +361,15 @@ export default function newlogin() {
                 </div>
                 <button
                   type="submit"
-                  className="text-2xl bg-red-800 text-white px-6 py-4 rounded font-medium  hover:bg-red-700 hover:text-white transition duration-200 each-in-out w-full"
+                  className="iphone:text-xs  laptop:text-2xl bg-red-800 text-white px-6 py-4 rounded font-medium  hover:bg-red-700 hover:text-white transition duration-200 each-in-out w-full"
                   style={{ marginTop: "70px" }}
                 >
                   เข้าสู่ระบบ
                 </button>
               </form>
+              
 
-              <div className="text-xl text-red-500 text-center mt-10 font-bold">
+              <div className="iphone:text-xs  laptop:text-xl text-red-500 text-center my-8 font-bold">
                 {errorMessages}
               </div>
             </div>
@@ -402,7 +394,7 @@ export default function newlogin() {
               onClick={() => {
                 router.push("/course");
               }}
-              className="py-2 flex  space-x-2  rounded-md  text-black items-center cursor-pointer  px-8 border-2 border-black hover:border-red-800" 
+              className="py-2 flex  space-x-2  rounded-md  text-black items-center cursor-pointer  px-8 border-2 border-black hover:border-red-800"
             >
               <Image
                 alt="logo"
@@ -411,8 +403,10 @@ export default function newlogin() {
                 width={50}
                 height={50}
               />
-              <p className="ml-2"> อาจารย์ <br /> ประจำรายวิชา</p>
-              
+              <p className="ml-2">
+                {" "}
+                อาจารย์ <br /> ประจำรายวิชา
+              </p>
             </div>
             <div
               onClick={() => {
@@ -420,15 +414,16 @@ export default function newlogin() {
               }}
               className="py-2  flex space-x-2 px-8   rounded-md  text-black border-2 border-black hover:border-red-800 cursor-pointer"
             >
-               <Image
+              <Image
                 alt="logo"
                 src="/logo.png"
                 layout="fixed"
                 width={50}
                 height={50}
               />
-              <p className="ml-2">อาจารย์ที่ปรึกษาหรือ <br /> กรรมการประจำโครงงาน</p>
-              
+              <p className="ml-2">
+                อาจารย์ที่ปรึกษาหรือ <br /> กรรมการประจำโครงงาน
+              </p>
             </div>
           </div>
         </DialogContent>
@@ -436,4 +431,3 @@ export default function newlogin() {
     </>
   );
 }
-

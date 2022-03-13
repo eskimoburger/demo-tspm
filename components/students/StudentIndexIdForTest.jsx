@@ -335,6 +335,7 @@ export default function StudentIndexIdForTest({}) {
           advisor={advisor}
           refreshData={refreshData}
           projectNameENG={project_name_eng}
+          
         />
       );
     } else if (state === 11) {
