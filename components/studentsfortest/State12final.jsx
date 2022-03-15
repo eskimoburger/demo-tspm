@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function state12({ advisor, finalStatus, functionNext }) {
+export default function state12({ advisor, finalStatus, functionNext,refreshData }) {
   useEffect(() => {
     setTeacher(advisor);
     setStatus(finalStatus);
@@ -33,6 +33,7 @@ export default function state12({ advisor, finalStatus, functionNext }) {
   const classes = useStyles();
   const [teacher, setTeacher] = useState(null);
   const [status, setStatus] = useState(0);
+  const [selectedButton, setSelectedButton] = useState(1);
 
   return (
     <div
@@ -64,6 +65,28 @@ export default function state12({ advisor, finalStatus, functionNext }) {
           width: "90%",
         }}
       >
+         <div className="flex justify-center flex-wrap gap-2">
+            <button
+              // onClick={UploadPass}
+              onClick={() => {setSelectedButton(1),setStatus(2)}}
+              className={`${
+                selectedButton === 1 ? "bg-blue-500" : "bg-blue-400"
+              }  py-1 px-2 rounded text-white`}
+            >
+              สถานะ 1
+            </button>
+            <button
+              // onClick={UploadNotPass}
+              onClick={() => {setSelectedButton(2),setStatus(1)}}
+              className={`${
+                selectedButton === 2 ? "bg-blue-500" : "bg-blue-400"
+              }  py-1 px-2 rounded text-white`}
+            >
+              สถานะ 2
+            </button>
+         
+          </div>
+
         <h1 className="text-center font-bold  my-2 text-gray-800  text-2xl   stage2:text-3xl">
           {" "}
           ผลการตอบรับบันทึก <br /> ผลการสอบโครงงงาน
@@ -102,7 +125,7 @@ export default function state12({ advisor, finalStatus, functionNext }) {
           <div className="flex justify-center gap-2">
             <Button
               className={classes.button}
-              onClick={functionNext}
+              onClick={refreshData}
               variant="contained"
               color="primary"
               size="large"

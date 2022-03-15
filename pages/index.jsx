@@ -315,7 +315,7 @@ export default function newlogin() {
           </div>
 
           <div className="bg-gray-300 w-1/2 rounded-2xl p-6">
-            <div className="w-full  flex flex-col justify-center">
+            <div className="w-full  flex flex-col justify-center h-full">
               <h1 className="iphone:text-2xl   laptop:text-5xl font-bold ">
                 เข้าสู่ระบบ
               </h1>

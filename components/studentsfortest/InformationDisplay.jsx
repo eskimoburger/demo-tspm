@@ -16,11 +16,9 @@ const ASSES_LABEL = {
   4: "ไม่สามารถประเมินได้",
 };
 const SUMMARIZE = {
-  1:"เหมาะสม",
-  2:"ไม่เหมาะสม"
-}
-
-
+  1: "เหมาะสม",
+  2: "ไม่เหมาะสม",
+};
 
 const InformationDisplay = ({ state, projectData }) => {
   const {
@@ -43,46 +41,157 @@ const InformationDisplay = ({ state, projectData }) => {
   const [finalResults, setFinalResults] = useState([]);
 
   const getMidExamResults = async () => {
-    await axios
-      .get("http://localhost:3001/final-project/mid-exam-result/" + id)
-      .then((res) => {
-        setMidResults(res.data.exam_result);
-        setOpenMid(true);
-      })
-      .catch((_) => alert("Cannot get results"));
+    // await axios
+    //   .get("http://localhost:3001/final-project/mid-exam-result/" + id)
+    //   .then((res) => {
+    //     setMidResults(res.data.exam_result);
+    //     setOpenMid(true);
+    //   })
+    //   .catch((_) => alert("Cannot get results"));
+
+    setMidResults([
+      {
+        exam_status: 0,
+        id_teacher: 2,
+        exam_value: "ผ่าน",
+        exam_details:
+          "ดีเลยครับ ไปต่างประเทศแน่นอน//แก้ไขโดย : ดร.เศรษฐา ตั้งค้าวานิช  --> ไปแน่นอนน้อนน",
+        committee_name: "ดร.เศรษฐา ตั้งค้าวานิช ",
+        role: "อาจารย์ที่ปรึกษา",
+        project_name_eng: "",
+        project_id: 120,
+      },
+      {
+        exam_status: 0,
+        id_teacher: 5,
+        exam_value: "ผ่าน",
+        exam_details: "ผ่านค่ะ//แก้ไขโดย : ดร.จิราพร พุกสุข  --> ผ่านแล้วววววว",
+        committee_name: "ดร.จิราพร พุกสุข ",
+        role: "กรรมการ",
+        project_name_eng: "",
+        project_id: 120,
+      },
+      {
+        exam_status: 0,
+        id_teacher: 7,
+        exam_value: "ผ่าน",
+        exam_details:
+          "ผ่าน//แก้ไขโดย : รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน  --> ผ่านแล้วว",
+        committee_name: "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+        role: "กรรมการ",
+        project_name_eng: "",
+        project_id: 120,
+      },
+    ]);
+    setOpenMid(true);
   };
 
   const getFinalExamResults = async () => {
-    await axios
-      .get("http://localhost:3001/final-project/final-exam-result/" + id)
-      .then((res) => {
-        setFinalResults(res.data.exam_result);
-        setOpenFinal(true);
-      })
-      .catch((_) => alert("Cannot get results"));
+    // await axios
+    //   .get("http://localhost:3001/final-project/final-exam-result/" + id)
+    //   .then((res) => {
+    //     setFinalResults(res.data.exam_result);
+    //     setOpenFinal(true);
+    //   })
+    //   .catch((_) => alert("Cannot get results"));
+
+    setFinalResults([
+      {
+        exam_status: 0,
+        id_teacher: 2,
+        exam_value: "ผ่าน",
+        exam_details:
+          "ผ่านยื่นจบได้เลยครับ//แก้ไขโดย : ดร.เศรษฐา ตั้งค้าวานิช  --> ได้เลยยื่นได้เลย",
+        committee_name: "ดร.เศรษฐา ตั้งค้าวานิช ",
+        role: "อาจารย์ที่ปรึกษา",
+        project_name_eng: "",
+        project_id: 120,
+      },
+      {
+        exam_status: 0,
+        id_teacher: 5,
+        exam_value: "ผ่าน",
+        exam_details: "ผ่านยื่นจบได้เลย//แก้ไขโดย : ดร.จิราพร พุกสุข  --> โอเค",
+        committee_name: "ดร.จิราพร พุกสุข ",
+        role: "กรรมการ",
+        project_name_eng: "",
+        project_id: 120,
+      },
+      {
+        exam_status: 0,
+        id_teacher: 7,
+        exam_value: "ผ่าน",
+        exam_details: "ผ่านยื่นจบได้เลย",
+        committee_name: "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+        role: "กรรมการ",
+        project_name_eng: "",
+        project_id: 120,
+      },
+    ]);
+    setOpenFinal(true);
   };
 
   const getAssesResult = async () => {
-    await axios
-      .get("http://localhost:3001/final-project/get-asses-results/" + id)
-      .then((res) => {
-        setAssesResults(res.data);
-        setOpenAsses(true);
-      })
-      .catch((_) => alert("Cannot get results"));
+    // await axios
+    //   .get("http://localhost:3001/final-project/get-asses-results/" + id)
+    //   .then((res) => {
+    //     setAssesResults(res.data);
+    //     setOpenAsses(true);
+    //   })
+    //   .catch((_) => alert("Cannot get results"));
+    setAssesResults({
+      asses_project: {
+        id_asses: 4,
+        id_project: 120,
+        asses1: "1",
+        asses2: "1",
+        asses3: "1",
+        asses4: "1",
+        asses5: "1",
+        feedback: "ไปเพิ่ม.....",
+        asses_status: 0,
+      },
+      asses_member: [
+        {
+          id_student: 60369999,
+          student1: "A",
+          student2: "A",
+          student3: "A",
+          student4: "A",
+          name: "นาย ทดสอบ ระบบ",
+        },
+      ],
+    });
+    setOpenAsses(true);
   };
 
   const getFinalAsses = async () => {
-    await axios
-      .get(
-        `http://localhost:3001/final-project/get-asses-final/${id}/${final_count-1}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setFinalAssesResults(res.data);
-        setOpenFinalAsses(true);
-      })
-      .catch((_) => alert("Cannot get results"));
+    // await axios
+    //   .get(
+    //     `http://localhost:3001/final-project/get-asses-final/${id}/${
+    //       final_count - 1
+    //     }`
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setFinalAssesResults(res.data);
+    //     setOpenFinalAsses(true);
+    //   })
+    //   .catch((_) => alert("Cannot get results"));
+
+    setFinalAssesResults([
+      {
+        id: 57,
+        id_project: 120,
+        final1: 2,
+        final2: 2,
+        final3: 2,
+        final4: 1,
+        final_details: "ไปแก้นี่มานะ........",
+        times: 0,
+      },
+    ]);
+    setOpenFinalAsses(true);
   };
 
   return (
@@ -99,7 +208,7 @@ const InformationDisplay = ({ state, projectData }) => {
             className="p-2 text-white rounded-t-lg text-2xl"
             style={{ backgroundColor: "#32a5c2" }}
           >
-            ข้อมูลโครงงาน 
+            ข้อมูลโครงงาน
           </div>
           <div className="bg-white rounded-b-lg m-2 font-medium px-2  ">
             {state == 0 ? (
@@ -169,7 +278,9 @@ const InformationDisplay = ({ state, projectData }) => {
               </div>
             )}
             <div className="my-2">
-              {state >= 6 && <h3 className="text-xl font-bold my-1">บันทึกผล</h3>}
+              {state >= 6 && (
+                <h3 className="text-xl font-bold my-1">บันทึกผล</h3>
+              )}
               <div className="flex flex-wrap gap-2">
                 {state >= 6 && (
                   <Button
@@ -451,35 +562,42 @@ const InformationDisplay = ({ state, projectData }) => {
           {/* {JSON.stringify(finalAssesResults)} */}
           {finalAssesResults && (
             <>
-            <div>
-              <p>
-                1.
-                รูปแบบการพิมพ์รายงานถูกต้องตามระเบียบของคณะและ/หรือมหาวิทยาลัย &nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final1]}</span>
-              </p>{" "}
-              <p>
-                2. เนื้อหารายงานครบถ้วนสมบูรณ์&nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final2]}</span>
-              </p>{" "}
-              <p>
-                3. การอ้างอิงบรรณานุกรมถูกต้องตามรูปแบบที่กำหนด&nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final3]}</span>
-              </p>
-              <p>
-                {" "}
-                4. รูปแบบการเขียนสารบัญเนื้อหา
-                สารบัญรูปภาพและตารางถูกต้องตามกำหนด{" "}&nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final4]}</span>
-              </p>
-              
-            </div>
-            <div>
-               <h2 className="font-bold">ข้อเสนอแนะ</h2>
-              <div className="indent-2">
-                  <p>{finalAssesResults[0].final_details}</p>
+              <div>
+                <p>
+                  1.
+                  รูปแบบการพิมพ์รายงานถูกต้องตามระเบียบของคณะและ/หรือมหาวิทยาลัย
+                  &nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final1]}
+                  </span>
+                </p>{" "}
+                <p>
+                  2. เนื้อหารายงานครบถ้วนสมบูรณ์&nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final2]}
+                  </span>
+                </p>{" "}
+                <p>
+                  3. การอ้างอิงบรรณานุกรมถูกต้องตามรูปแบบที่กำหนด&nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final3]}
+                  </span>
+                </p>
+                <p>
+                  {" "}
+                  4. รูปแบบการเขียนสารบัญเนื้อหา
+                  สารบัญรูปภาพและตารางถูกต้องตามกำหนด &nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final4]}
+                  </span>
+                </p>
               </div>
-
-            </div>
+              <div>
+                <h2 className="font-bold">ข้อเสนอแนะ</h2>
+                <div className="indent-2">
+                  <p>{finalAssesResults[0].final_details}</p>
+                </div>
+              </div>
             </>
           )}
 

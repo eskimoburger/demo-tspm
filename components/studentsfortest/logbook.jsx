@@ -10,11 +10,20 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 export default function logbook({ logbook, projectId }) {
   const getLogBook = async (logbookNumber) => {
-    const logbookResponse = await axios.get(
-      `http://localhost:3001/final-project/get-logbook/${projectId}/${logbookNumber}`
-    );
-    const logbookData = logbookResponse.data.results;
-    setLogbookDetail(logbookData);
+    // const logbookResponse = await axios.get(
+    //   `http://localhost:3001/final-project/get-logbook/${projectId}/${logbookNumber}`
+    // );
+    //const logbookData = logbookResponse.data.results;
+    setLogbookDetail({
+      id: 22,
+      id_project: 120,
+      date: "2022-03-10",
+      summary: "ผ่าน",
+      problem: "ผ่าน",
+      solution: "ผ่าน",
+      next_date: "2022-03-11",
+      number: 1,
+    });
     setOpenLogbook(true);
   };
 
@@ -87,7 +96,9 @@ export default function logbook({ logbook, projectId }) {
                   แนวทางการแก้ปัญหา หรือ งานที่ได้รับมอบหมาย
                 </h3>
                 <div className=" bg-slate-100">{logbookDetail.solution}</div>
-                <h3 className="font-bold text-2xl">กำหนดการนัดหมายครั้งต่อไป</h3>
+                <h3 className="font-bold text-2xl">
+                  กำหนดการนัดหมายครั้งต่อไป
+                </h3>
                 <div className=" bg-slate-100">{logbookDetail.next_date}</div>
               </div>
             )}

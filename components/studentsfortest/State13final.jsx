@@ -36,6 +36,7 @@ export default function state13({
   committees,
   finalCount,
   functionNext,
+  refreshData
 }) {
   //const [dialog,setDialog] = useState(false)
 
@@ -112,99 +113,122 @@ export default function state13({
   const [file, setFile] = useState();
   const [Filename, setFilename] = useState("ยังไม่ได้เลือกไฟล์");
   const [progress, setProgress] = useState(0);
-  const [uploadStatus, setUploadStatus] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState(true);
   const [openUpload, setOpenUpload] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("ไม่สามารถอัพโหลดไฟล์ได้");
   
  
   const uploadFile = () => {
     setOpenUpload(true);
-    const formData = new FormData();
-    formData.append("file", file, "finalFile.pdf");
-    // appending file
-    axios
-      .post(`http://localhost:3001/upload-file-final/${projectId}`, formData, {
-        onUploadProgress: (ProgressEvent) => {
-          let progress = Math.round(
-            (ProgressEvent.loaded / ProgressEvent.total) * 100
-          );
-          console.log(typeof progress);
-          setProgress(progress);
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setUploadStatus(res.data.status);
-        //setOpenUpload(true);
+    setProgress(100);
+    //setUploadStatus(true)
+    // const formData = new FormData();
+    // formData.append("file", file, "finalFile.pdf");
+    // // appending file
+    // axios
+    //   .post(`http://localhost:3001/upload-file-final/${projectId}`, formData, {
+    //     onUploadProgress: (ProgressEvent) => {
+    //       let progress = Math.round(
+    //         (ProgressEvent.loaded / ProgressEvent.total) * 100
+    //       );
+    //       console.log(typeof progress);
+    //       setProgress(progress);
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setUploadStatus(res.data.status);
+    //     //setOpenUpload(true);
 
-        // getFile({ name: res.data.name,
-        //          path: 'http://localhost:4500' + res.data.path
-        //        })
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        //setOpenUpload(true);
-        setErrorMessage(err.response.data.message);
-      });
+    //     // getFile({ name: res.data.name,
+    //     //          path: 'http://localhost:4500' + res.data.path
+    //     //        })
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response.data);
+    //     //setOpenUpload(true);
+    //     setErrorMessage(err.response.data.message);
+    //   });
   };
 
   const uploadFileEdit = () => {
     setOpenUpload(true);
-    const formData = new FormData();
-    formData.append("file", file, `finalfile${finalCount}.pdf`);
-    // appending file
-    axios
-      .post(`http://localhost:3001/upload-file-final/${projectId}`, formData, {
-        onUploadProgress: (ProgressEvent) => {
-          let progress = Math.round(
-            (ProgressEvent.loaded / ProgressEvent.total) * 100
-          );
-          console.log(typeof progress);
-          setProgress(progress);
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setUploadStatus(res.data.status);
-        //setOpenUpload(true);
+    setProgress(100);
+    //setUploadStatus(true)
+    // const formData = new FormData();
+    // formData.append("file", file, `finalfile${finalCount}.pdf`);
+    // // appending file
+    // axios
+    //   .post(`http://localhost:3001/upload-file-final/${projectId}`, formData, {
+    //     onUploadProgress: (ProgressEvent) => {
+    //       let progress = Math.round(
+    //         (ProgressEvent.loaded / ProgressEvent.total) * 100
+    //       );
+    //       console.log(typeof progress);
+    //       setProgress(progress);
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setUploadStatus(res.data.status);
+    //     //setOpenUpload(true);
 
-        // getFile({ name: res.data.name,
-        //          path: 'http://localhost:4500' + res.data.path
-        //        })
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        //setOpenUpload(true);
-        setErrorMessage(err.response.data.message);
-      });
+    //     // getFile({ name: res.data.name,
+    //     //          path: 'http://localhost:4500' + res.data.path
+    //     //        })
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response.data);
+    //     //setOpenUpload(true);
+    //     setErrorMessage(err.response.data.message);
+    //   });
   };
 
   async function sendNotification() {
-    var pnameEN = projectNameENG;
-    var description = `${pnameEN} ได้ส่งรูปเล่มโครงงานทั้งหมดให้อาจารย์ประจำรายวิชาได้ตรวจสอบ`;
-    var state_name = "ประเมินรูปเล่มปริญญานิพนธ์";
-    await axios
-      .post("http://localhost:3001/notification/course-teacher/" + projectId, {
-        description: description,
-        state_name: state_name,
-      })
-      .then((response) => {
-        functionNext();
-      });
+    refreshData();
+    // var pnameEN = projectNameENG;
+    // var description = `${pnameEN} ได้ส่งรูปเล่มโครงงานทั้งหมดให้อาจารย์ประจำรายวิชาได้ตรวจสอบ`;
+    // var state_name = "ประเมินรูปเล่มปริญญานิพนธ์";
+    // await axios
+    //   .post("http://localhost:3001/notification/course-teacher/" + projectId, {
+    //     description: description,
+    //     state_name: state_name,
+    //   })
+    //   .then((response) => {
+    //     functionNext();
+    //   });
+  }
+  const [selectedButton, setSelectedButton] = useState(1);
+  const UploadPass = () => {
+    setSelectedButton(1)
+    setProgress(100);
+    setUploadStatus(true)
+
+
+
   }
 
+  const UploadNotPass =() =>{
+    setSelectedButton(2)
+    setProgress(100);
+    setUploadStatus(false)
+
+  }
+
+
   async function sendNotificationEdit() {
-    var pnameEN = projectNameENG;
-    var description = `${pnameEN} ได้ส่งรูปเล่มโครงงานทั้งหมดให้อาจารย์ประจำรายวิชาได้ตรวจสอบ`;
-    var state_name = `แก้ไขรูปเล่มปริญญานิพนธ์ครั้งที่ ${finalCount}`;
-    await axios
-      .post("http://localhost:3001/notification/course-teacher/" + projectId, {
-        description: description,
-        state_name: state_name,
-      })
-      .then((response) => {
-        functionNext();
-      });
+    refreshData();
+    // var pnameEN = projectNameENG;
+    // var description = `${pnameEN} ได้ส่งรูปเล่มโครงงานทั้งหมดให้อาจารย์ประจำรายวิชาได้ตรวจสอบ`;
+    // var state_name = `แก้ไขรูปเล่มปริญญานิพนธ์ครั้งที่ ${finalCount}`;
+    // await axios
+    //   .post("http://localhost:3001/notification/course-teacher/" + projectId, {
+    //     description: description,
+    //     state_name: state_name,
+    //   })
+    //   .then((response) => {
+    //     functionNext();
+    //   });
   }
 
   return (
@@ -235,6 +259,24 @@ export default function state13({
           width: "90%",
         }}
       >
+         <div className="flex justify-center flex-wrap gap-2">
+          <button
+            onClick={UploadPass}
+            className={`${
+              selectedButton === 1 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            อัพโหลดไฟล์ผ่าน
+          </button>
+          <button
+            onClick={UploadNotPass}
+            className={`${
+              selectedButton === 2 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            อัพโหลดไฟล์ไม่ผ่าน
+          </button>
+        </div>
         <h1 className="text-center text-2xl stage2:text-3xl my-2 text-gray-800 font-bold">
           {" "}
           {status == 2

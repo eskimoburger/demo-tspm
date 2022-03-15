@@ -25,15 +25,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const SUMMARIZE = {
-  1:"เหมาะสม",
-  2:"ไม่เหมาะสม"
-}
+  1: "เหมาะสม",
+  2: "ไม่เหมาะสม",
+};
+const DEFAULT_DATA =[
+  {
+    id: 57,
+    id_project: 120,
+    final1: 2,
+    final2: 2,
+    final3: 2,
+    final4: 1,
+    final_details: "ไปแก้นี่มานะ........",
+    times: 0,
+  }
+] 
 
-
-export default function state14({ finalAssesStatus, functionNext,refreshData,projectId,finalCount}) {
-  const classes = useStyles()
+export default function state14({
+  finalAssesStatus,
+  functionNext,
+  refreshData,
+  projectId,
+  finalCount,
+  backState
+}) {
+  const classes = useStyles();
   useEffect(() => {
-    setStatus(finalAssesStatus);
+    //setStatus(finalAssesStatus);
   }, []);
   const [status, setStatus] = useState(0);
 
@@ -43,25 +61,28 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
         state: 12,
       })
       .then((_) => {
-       refreshData()
-      }).catch(_=>alert("Cannot back to stage!"));
+        refreshData();
+      })
+      .catch((_) => alert("Cannot back to stage!"));
   }
 
- 
   const getFinalAsses = async () => {
-    await axios
-      .get(
-        `http://localhost:3001/final-project/get-asses-final/${projectId}/${finalCount-1}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setFinalAssesResults(res.data);
-        setOpenFinalAsses(true);
-      })
-      .catch((_) => alert("Cannot get results"));
+    // await axios
+    //   .get(
+    //     `http://localhost:3001/final-project/get-asses-final/${projectId}/${finalCount-1}`
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setFinalAssesResults(res.data);
+    //     setOpenFinalAsses(true);
+    //   })
+    //   .catch((_) => alert("Cannot get results"));
+    setOpenFinalAsses(true);
+    setFinalAssesResults(DEFAULT_DATA);
   };
   const [openFinalAsses, setOpenFinalAsses] = useState(false);
   const [finalAssesResults, setFinalAssesResults] = useState(null);
+  const [selectedButton, setSelectedButton] = useState(1);
 
   return (
     <div
@@ -91,19 +112,52 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
           width: "90%",
         }}
       >
+        <div className="flex justify-center flex-wrap gap-2">
+          <button
+            // onClick={UploadPass}
+            onClick={() => {
+              setSelectedButton(1), setStatus(0);
+            }}
+            className={`${
+              selectedButton === 1 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 1
+          </button>
+          <button
+            // onClick={UploadNotPass}
+            onClick={() => {
+              setSelectedButton(2), setStatus(1);
+            }}
+            className={`${
+              selectedButton === 2 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 2
+          </button>
+          <button
+            // onClick={UploadNotPass}
+            onClick={() => {
+              setSelectedButton(3), setStatus(2);
+            }}
+            className={`${
+              selectedButton === 3 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 3
+          </button>
+        </div>
         <h1 className="text-center font-bold  my-2 text-gray-800  text-2xl   stage2:text-3xl">
           {" "}
           ผลการประเมิน <br /> รูปเล่มปริญญานิพนธ์
         </h1>
         <br />
-        
 
         <div
           className="stage2:text-left text-base  stage2:w-[500px] stage2:text-2xl space-y-2 flex flex-col items-center "
           style={{ width: "90%" }}
         >
-           <h2 className="font-bold"> อาจารย์ประจำรายวิชา </h2>
-         
+          <h2 className="font-bold"> อาจารย์ประจำรายวิชา </h2>
 
           <div>
             <div className="font-bold flex flex-wrap  justify-center gap-2">
@@ -114,7 +168,7 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
                 </div>
               ) : status === 1 ? (
                 <div className="flex items-center  shadow-lg text-white  text-sm  stage2:text-lg font-bold bg-green-600 px-4 py-1 rounded-full">
-                   ไม่ต้องทำการแก้ไขรายงาน{" "}
+                  ไม่ต้องทำการแก้ไขรายงาน{" "}
                 </div>
               ) : (
                 <div className="flex items-center  gap-2 shadow-lg text-white  text-sm  stage2:text-lg font-bold bg-yellow-500 px-4 py-1 rounded-full">
@@ -141,7 +195,7 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
 
               <Button
                 className={classes.button}
-                onClick={backToStageProject}
+                onClick={backState}
                 variant="contained"
                 color="primary"
                 size="large"
@@ -154,7 +208,7 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
           ) : status == 1 ? (
             <Button
               className={classes.button}
-              onClick={functionNext}
+              onClick={refreshData}
               variant="contained"
               color="primary"
               size="large"
@@ -181,35 +235,42 @@ export default function state14({ finalAssesStatus, functionNext,refreshData,pro
           {/* {JSON.stringify(finalAssesResults)} */}
           {finalAssesResults && (
             <>
-            <div>
-              <p>
-                1.
-                รูปแบบการพิมพ์รายงานถูกต้องตามระเบียบของคณะและ/หรือมหาวิทยาลัย &nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final1]}</span>
-              </p>{" "}
-              <p>
-                2. เนื้อหารายงานครบถ้วนสมบูรณ์&nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final2]}</span>
-              </p>{" "}
-              <p>
-                3. การอ้างอิงบรรณานุกรมถูกต้องตามรูปแบบที่กำหนด&nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final3]}</span>
-              </p>
-              <p>
-                {" "}
-                4. รูปแบบการเขียนสารบัญเนื้อหา
-                สารบัญรูปภาพและตารางถูกต้องตามกำหนด{" "}&nbsp;{" "}
-                <span className="font-bold">{SUMMARIZE[finalAssesResults[0].final4]}</span>
-              </p>
-              
-            </div>
-            <div>
-               <h2 className="font-bold">ข้อเสนอแนะ</h2>
-              <div className="indent-2">
-                  <p>{finalAssesResults[0].final_details}</p>
+              <div>
+                <p>
+                  1.
+                  รูปแบบการพิมพ์รายงานถูกต้องตามระเบียบของคณะและ/หรือมหาวิทยาลัย
+                  &nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final1]}
+                  </span>
+                </p>{" "}
+                <p>
+                  2. เนื้อหารายงานครบถ้วนสมบูรณ์&nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final2]}
+                  </span>
+                </p>{" "}
+                <p>
+                  3. การอ้างอิงบรรณานุกรมถูกต้องตามรูปแบบที่กำหนด&nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final3]}
+                  </span>
+                </p>
+                <p>
+                  {" "}
+                  4. รูปแบบการเขียนสารบัญเนื้อหา
+                  สารบัญรูปภาพและตารางถูกต้องตามกำหนด &nbsp;{" "}
+                  <span className="font-bold">
+                    {SUMMARIZE[finalAssesResults[0].final4]}
+                  </span>
+                </p>
               </div>
-
-            </div>
+              <div>
+                <h2 className="font-bold">ข้อเสนอแนะ</h2>
+                <div className="indent-2">
+                  <p>{finalAssesResults[0].final_details}</p>
+                </div>
+              </div>
             </>
           )}
 
