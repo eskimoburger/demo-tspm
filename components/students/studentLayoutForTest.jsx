@@ -229,20 +229,20 @@ export default function StudentLayoutForTest({ children, title }) {
               </a>
             </Link> */}
 
-            <Link href={`/students/${id}`}>
+            <Link href={`/students/${id}/test`}>
               <a
                 className={` flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800 ${
-                  router.asPath === `/students/${id}` ? "bg-gray-200" : ""
+                  router.asPath === `/students/${id}/test` ? "bg-gray-200" : ""
                 }`}
               >
                 <HomeIcon /> หน้าแรก
               </a>
             </Link>
 
-            <Link href={`/students/${id}/profile`}>
+            <Link href={`/students/${id}/profile_test`}>
               <a
                 className={` flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800 ${
-                  router.asPath === `/students/${id}/profile`
+                  router.asPath === `/students/${id}/profile_test`
                     ? "bg-gray-200"
                     : ""
                 }`}
@@ -250,7 +250,7 @@ export default function StudentLayoutForTest({ children, title }) {
                 <PersonIcon /> ข้อมูลผู้ใช้
               </a>
             </Link>
-            <Link href={`/students/${id}/search`}>
+            <Link href={`/students/${id}/search_test`}>
               <a
                 className={` flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800 ${
                   router.asPath === `/students/${id}/search`
@@ -261,7 +261,7 @@ export default function StudentLayoutForTest({ children, title }) {
                 <SearchIcon /> ค้นหาโครงงาน
               </a>
             </Link>
-            <Link href={`/students/${id}/document`}>
+            <Link href={`/students/${id}/document_test`}>
               <a
                 className={` flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800 ${
                   router.asPath === `/students/${id}/document`

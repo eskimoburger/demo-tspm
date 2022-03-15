@@ -42,10 +42,10 @@ const DEFAULT_DATA_PROJECT = {
       project_description: "สร้างโปรเจคสำหรับทดสอบ",
       project_id: 99,
       state: 0,
-      logbook: 0,
+      logbook: 1,
       asses_status: 2,
       test_status: 1,
-      final_status: 1,
+      final_status: 0,
       final_asses: 1,
       final_count: 0,
     },
@@ -125,6 +125,28 @@ export default function StudentIndexIdForTest({}) {
     setProject(cloneData);
     //console.log(checkState);
   };
+  const backState = () => {
+    const cloneData = { ...project };
+    cloneData["data"]["projectData"]["state"] =
+      cloneData["data"]["projectData"]["state"] - 1 ;
+
+    //setCheckState(checkState + 1);
+
+    setProject(cloneData);
+  };
+  const backToStateBefore = () => {
+    const cloneData = { ...project };
+    cloneData["data"]["projectData"]["state"] =
+      cloneData["data"]["projectData"]["state"] - 1 ;
+      cloneData["data"]["projectData"]["final_count"] = cloneData["data"]["projectData"]["final_count"]+1
+      cloneData["data"]["projectData"]["final_asses"] = 2
+
+    //setCheckState(checkState + 1);
+
+    setProject(cloneData);
+
+
+  }
   let status = project.status;
   const stepsArray = [
     "เสนอหัวข้อโครงงาน",
@@ -149,15 +171,15 @@ export default function StudentIndexIdForTest({}) {
   let projectId = 0;
 
   const nextStageProject = async () => {
-    await axios
-      .put(
-        `http://localhost:3001/final-project/next-stage/${project.data.projectData.id}`
-      )
-      .then(async (_) => {
-        await refreshData();
-        //getProject();
-        console.log(_.data);
-      });
+    // await axios
+    //   .put(
+    //     `http://localhost:3001/final-project/next-stage/${project.data.projectData.id}`
+    //   )
+    //   .then(async (_) => {
+    //     await refreshData();
+    //     //getProject();
+    //     console.log(_.data);
+    //   });
   };
 
   if (status) {
@@ -205,6 +227,11 @@ export default function StudentIndexIdForTest({}) {
           projectCPE={project_id}
           refreshData={refreshData}
           functionNext={nextStageProject}
+          goBack={() => {
+            const cloneData = { ...project };
+            cloneData["data"]["projectData"]["state"] = 0;
+            setProject(cloneData);
+          }}
         />
       );
     } else if (state === 2) {
@@ -335,7 +362,6 @@ export default function StudentIndexIdForTest({}) {
           advisor={advisor}
           refreshData={refreshData}
           projectNameENG={project_name_eng}
-          
         />
       );
     } else if (state === 11) {
@@ -366,6 +392,7 @@ export default function StudentIndexIdForTest({}) {
           functionNext={nextStageProject}
           members={members}
           projectCPE={project_id}
+          refreshData={refreshData}
         />
       );
     } else if (state == 13) {
@@ -383,7 +410,8 @@ export default function StudentIndexIdForTest({}) {
           members={members}
           projectCPE={project_id}
           refreshData={refreshData}
-         // finalCount={final_count}
+          backState={backToStateBefore}
+          // finalCount={final_count}
         />
       );
     } else if (state == 14) {
@@ -452,11 +480,22 @@ export default function StudentIndexIdForTest({}) {
         state={stateCondition}
         projectData={{ projectData, committees, members }}
       />
-
+      <div className="flex gap-2 flex-wrap justify-center mt-4">
+        {project.data.projectData.state > 0 && <button 
+        onClick={backState}
+        className="bg-gradient-to-r from-[#ff595e] to-[#ff9770] transition-colors rounded-[8px] px-[15px] py-[4px] text-white text-2xl">
+          สถานะก่อนหน้า
+        </button>}
+      {project.data.projectData.state < 14 &&  <button
+          onClick={refreshData}
+          className="bg-gradient-to-r from-[#02c39a] to-green-500 transition-colors rounded-[8px] px-[15px] py-[4px] text-white text-2xl"
+        >
+          สถานะถัดไป 
+        </button> }
+      </div>
       <div>{stateComp}</div>
       {/* {JSON.stringify(projectData)}
       {projectData.id} */}
-      <button onClick={refreshData}>Next</button>
     </div>
   );
 }

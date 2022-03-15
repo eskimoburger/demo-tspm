@@ -39,20 +39,20 @@ const SaveLogbook = ({ state, logbookData ,projectId,refreshData }) => {
   };
 
   const sendLogbook = () => {
-    axios
-      .post(`http://localhost:3001/project/logbook/${projectId}`, {
-        date: today,
-        summary: logbook.summary,
-        problem: logbook.problem,
-        solution: logbook.solution,
-        nextDate: logbook.next_date,
-        number: logbookData + 1,
-      })
-      .then(async (res) => {
-        console.log(res.data);
-        refreshData()
-        handleClose();
-      });
+    // axios
+    //   .post(`http://localhost:3001/project/logbook/${projectId}`, {
+    //     date: today,
+    //     summary: logbook.summary,
+    //     problem: logbook.problem,
+    //     solution: logbook.solution,
+    //     nextDate: logbook.next_date,
+    //     number: logbookData + 1,
+    //   })
+    //   .then(async (res) => {
+    //     console.log(res.data);
+    //     refreshData()
+    //     handleClose();
+    //   });
   };
 
   return (

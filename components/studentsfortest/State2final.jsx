@@ -22,7 +22,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function state2({ projectId, projectName,projectCPE,refreshData,functionNext }) {
+export default function state2({ projectId, projectName,projectCPE,refreshData,functionNext,goBack, }) {
   useEffect(() => {
     getRequest();
     getAllTeacher();
@@ -30,39 +30,178 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   }, []);
 
   
-
-  const [request, SetRequest] = useState([]);
+  const [request, SetRequest] = useState([
+    {
+        "id": 441,
+        "committee_name": "ดร.เศรษฐา ตั้งค้าวานิช ",
+        "role": "อาจารย์ที่ปรึกษา",
+        "status": 0,
+        "status_state3": 1,
+        "status_state5": 1,
+        "status_state10": 1,
+        "id_teacher": "2",
+        "project_id": 120,
+        "project_name_eng": ""
+    },
+    {
+        "id": 442,
+        "committee_name": "ดร.จิราพร พุกสุข ",
+        "role": "กรรมการ",
+        "status": 0,
+        "status_state3": 1,
+        "status_state5": 1,
+        "status_state10": 1,
+        "id_teacher": "5",
+        "project_id": 120,
+        "project_name_eng": ""
+    },
+    {
+        "id": 443,
+        "committee_name": "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+        "role": "กรรมการ",
+        "status": 0,
+        "status_state3": 1,
+        "status_state5": 1,
+        "status_state10": 1,
+        "id_teacher": "7",
+        "project_id": 120,
+        "project_name_eng": ""
+    }
+]);
   const [wait, setWait] = useState(false);
   const [nextStage, SetNextStage] = useState(false);
   const [reject, SetReject] = useState(false);
   const [open, setOpen] = useState(false);
-  const [rejectTeacher, SetRejectTeacher] = useState([]);
+  const [rejectTeacher, SetRejectTeacher] = useState([
+    {
+      "id": 441,
+      "committee_name": "ดร.เศรษฐา ตั้งค้าวานิช ",
+      "role": "อาจารย์ที่ปรึกษา",
+      "status": 2,
+      "status_state3": 1,
+      "status_state5": 1,
+      "status_state10": 1,
+      "id_teacher": "2",
+      "project_id": 120,
+      "project_name_eng": ""
+  },
+  ]);
   const [allTeacher, SetAllTeacher] = useState([]);
   const [data, SetData] = useState([]);
   const [idProject, setIdProject] = useState(0);
   const [alertM, setAlertM] = useState(false);
   const [alertChange, setAlertChange] = useState(false);
-  const [duplicate, setDuplicate] = useState([]);
+  const [duplicate, setDuplicate] = useState([
+    {
+      "id": 441,
+      "committee_name": "ดร.เศรษฐา ตั้งค้าวานิช ",
+      "role": "อาจารย์ที่ปรึกษา",
+      "status": 2,
+      "status_state3": 1,
+      "status_state5": 1,
+      "status_state10": 1,
+      "id_teacher": "2",
+      "project_id": 120,
+      "project_name_eng": ""
+  },
+  {
+      "id": 442,
+      "committee_name": "ดร.จิราพร พุกสุข ",
+      "role": "กรรมการ",
+      "status": 0,
+      "status_state3": 1,
+      "status_state5": 1,
+      "status_state10": 1,
+      "id_teacher": "5",
+      "project_id": 120,
+      "project_name_eng": ""
+  },
+  {
+      "id": 443,
+      "committee_name": "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+      "role": "กรรมการ",
+      "status": 0,
+      "status_state3": 1,
+      "status_state5": 1,
+      "status_state10": 1,
+      "id_teacher": "7",
+      "project_id": 120,
+      "project_name_eng": ""
+  }
+]);
+  const [selectedButton, setSelectedButton] = useState(1);
+  const setStatusButton = (statusB) => {
+    if (statusB === 1) {
+      setSelectedButton(1);
+      const cloneData = [...request]
+      cloneData[0]["status"] = 0
+      cloneData[1]["status"] = 0
+      cloneData[2]["status"] = 0
+      SetRequest(cloneData)
+      setIdProject(0)
+      setWait(true)
+      SetReject(true)
+      SetNextStage(false)
+      //set
+
+      //setStatus(0);
+    } else if (statusB === 2) {
+      const cloneData = [...request]
+      cloneData[0]["status"] = 1
+      cloneData[1]["status"] = 1
+      cloneData[2]["status"] = 1
+      SetRequest(cloneData)
+      SetNextStage(true)
+      setIdProject(0)
+      setSelectedButton(2);
+     // SetReject(false)
+      //setWait(true) 
+      //setStatus(1);
+    } else if (statusB === 3) {
+      const cloneData = [...request]
+      cloneData[0]["status"] = 2
+      cloneData[1]["status"] = 1
+      cloneData[2]["status"] = 1
+      SetRequest(cloneData)
+      setIdProject(0)
+      SetReject(true)
+      setSelectedButton(3);
+      setWait(false)
+      SetNextStage(false)
+      //setStatus(2);
+    } else {
+      setSelectedButton(4);
+      const cloneData = [...request]
+      cloneData[0]["status"] = 1
+      cloneData[1]["status"] = 1
+      cloneData[2]["status"] = 1
+      SetRequest(cloneData)
+      SetNextStage(true)
+      setIdProject(99)
+      
+      //setStatus(3);
+    }
+  };
 
   async function getRequest() {
-    await axios
-      .get(
-        `http://localhost:3001/final-project/get-request-state2/${projectId}`
-      )
-      .then((response) => {
-        const { data_request, checkSubmitAll, checkNext, checkReject } =
-          response.data;
-        console.log(response.data);
-        SetRequest(data_request);
-        SetReject(checkReject);
-        setWait(checkSubmitAll);
-        SetNextStage(checkNext);
-        console.log(
-          "rejectStatus : " + checkReject,
-          " nextStatus : " + checkNext,
-          " nextSubmitAll : " + checkSubmitAll
-        );
-      });
+    // await axios
+    //   .get(
+    //     `http://localhost:3001/final-project/get-request-state2/${projectId}`
+    //   )
+    //   .then((response) => {
+    //     const { data_request, checkSubmitAll, checkNext, checkReject } =
+    //       response.data;
+    //     console.log(response.data);
+    //     SetRequest(data_request);
+    //     SetReject(checkReject);
+    //     setWait(checkSubmitAll);
+    //     SetNextStage(checkNext);
+    //     console.log(
+    //       "rejectStatus : " + checkReject,
+    //       " nextStatus : " + checkNext,
+    //       " nextSubmitAll : " + checkSubmitAll
+    //     );
+    //   });
     // axios
     //   .get(`http://localhost:3001/project/getmainproject/${projectName}`)
     //   .then((response) => {
@@ -88,44 +227,49 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   }
 
   async function getReject() {
-    await axios
-      .get(`http://localhost:3001/final-project/reject-teacher/${projectId}`)
-      .then((response) => {
-        ///console.log(response.data);
-        SetRejectTeacher(response.data);
-        setDuplicate(response.data);
-      });
+    // await axios
+    //   .get(`http://localhost:3001/final-project/reject-teacher/${projectId}`)
+    //   .then((response) => {
+    //     ///console.log(response.data);
+    //     SetRejectTeacher(response.data);
+    //     setDuplicate(response.data);
+    //   });
   }
 
   const finalChange = async () => {
-    await axios
-      .post(`http://localhost:3001/final-project/state-1/change/${projectId}`, {
-        changeTeacher: data,
-        rejectTeacher: rejectTeacher,
-        project_eng: projectName,
-      })
-      .then((res) => {
-        console.log(res.data);
-        refreshData()
-        getRequest();
-        handleClose();
-        setAlertChange(false);
-      });
+    //setAlertM(false)
+    setAlertChange(false)
+    setOpen(false)
+  
+    // await axios
+    //   .post(`http://localhost:3001/final-project/state-1/change/${projectId}`, {
+    //     changeTeacher: data,
+    //     rejectTeacher: rejectTeacher,
+    //     project_eng: projectName,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     refreshData()
+    //     getRequest();
+    //     handleClose();
+    //     setAlertChange(false);
+    //   });
   };
   //CancelProject
   const finalCancelProject = async () => {
-    await axios
-      .post(`http://localhost:3001/final-project/cancel/${projectId}`)
-      .then((res) => {
+    goBack();
+    // await axios
+    //   .post(`http://localhost:3001/final-project/cancel/${projectId}`)
+    //   .then((res) => {
 
-        alert("CancelSuccess");
-        refreshData()
+    //     alert("CancelSuccess");
+    //     refreshData()
         
-        //console.lo g(res)
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    //     //console.lo g(res)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   };
 
   const handleChangeTeacher = (e, index, teacher) => {
@@ -151,7 +295,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   };
 
   const waitContent = () => {
-    if (nextStage && projectCPE > 0) {
+    if (nextStage && idProject > 0) {
       let str = projectCPE.toString();
       str = str.padStart(2, 0);
       var id_project_new = "CPE" + str;
@@ -367,6 +511,44 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
           width: "90%",
         }}
       >
+         <div className="flex justify-center flex-wrap gap-2">
+          <button
+            //onClick={fixedResetData}
+            onClick={() => setStatusButton(1)}
+            className={`${
+              selectedButton === 1 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 1
+          </button>
+          <button
+            onClick={() => setStatusButton(2)}
+            //onClick={fixedResetSelected}
+            className={`${
+              selectedButton === 2 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 2
+          </button>
+          <button
+            onClick={() => setStatusButton(3)}
+            //onClick={fixedResetData}
+            className={`${
+              selectedButton === 3 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 3
+          </button>
+          <button
+            onClick={() => setStatusButton(4)}
+            //onClick={fixedResetSelected}
+            className={`${
+              selectedButton === 4 ? "bg-blue-500" : "bg-blue-400"
+            }  py-1 px-2 rounded text-white`}
+          >
+            สถานะ 4
+          </button>
+        </div>
         {/* <button onClick={()=>{finalCancelProject()}}>Test API</button> */}
         <div className=" m-auto text-gray-700" style={{ width: "90%" }}>
           <h1 className="text-center font-bold  my-2 text-gray-800  text-2xl   stage2:text-3xl ">

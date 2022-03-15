@@ -37,28 +37,29 @@ const ProfileComp = ({ studentDetail, imgProfile, functionGetUser }) => {
   }, [oldPassword]);
 
   const checkPassword = async () => {
-    await axios
-      .post(
-        "http://localhost:3001/allstudent/check/" +
-          sessionStorage.getItem("useID"),
-        { oldPassword: oldPassword, newPassword: newPassword }
-      )
-      .then(async (res) => {
-        console.log(res.data);
-        if (res.data.status) {
-          handleClose();
-          setConfirmPassword("");
-          setNewPassword("");
-          setOldPassword("");
-          //console.log("Hello")
-        } else {
-          setCheck(true);
-        }
+    handleClose()
+    // await axios
+    //   .post(
+    //     "http://localhost:3001/allstudent/check/" +
+    //       sessionStorage.getItem("useID"),
+    //     { oldPassword: oldPassword, newPassword: newPassword }
+    //   )
+    //   .then(async (res) => {
+    //     console.log(res.data);
+    //     if (res.data.status) {
+    //       handleClose();
+    //       setConfirmPassword("");
+    //       setNewPassword("");
+    //       setOldPassword("");
+    //       //console.log("Hello")
+    //     } else {
+    //       setCheck(true);
+    //     }
 
-        //console.log(res.data)
+    //     //console.log(res.data)
 
-        //console.log(hash)
-      });
+    //     //console.log(hash)
+    //   });
   };
 
   const handleChangeStudent = (event) => {

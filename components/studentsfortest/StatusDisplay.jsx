@@ -78,25 +78,25 @@ const StatusDisplay = ({
   };
 
   const sendEditProject = async () => {
-    await axios
-      .post(`http://localhost:3001/final-project/edits/${projectData.id}`, {
-        delStudents: delList,
-        addStudents: addList,
-        projectNameTH: projectData.project_name_th,
-        projectNameENG: projectData.project_name_eng,
-      })
-      .then((res) => {
-        console.log(res.data);
-        // getProject();
-        refreshData();
+    // await axios
+    //   .post(`http://localhost:3001/final-project/edits/${projectData.id}`, {
+    //     delStudents: delList,
+    //     addStudents: addList,
+    //     projectNameTH: projectData.project_name_th,
+    //     projectNameENG: projectData.project_name_eng,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     // getProject();
+    //     refreshData();
         setEditMembers(false);
         setAddList([]);
         setDelList([]);
         setAlert(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     //return
   };
 
