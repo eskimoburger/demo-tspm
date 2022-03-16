@@ -67,7 +67,7 @@ export default function teacherState1(props) {
       .get(`http://localhost:3001/final-teacher/get-project/${id}`)
       .then((res) => {
         console.log(res.data)
-        setProjectData(res.data)
+        setProjectData(res.data) 
       });
   };
   const finalConfirm = async (status, des) => {
@@ -165,9 +165,10 @@ export default function teacherState1(props) {
           </p>{" "}
         </DialogTitle>
         <DialogContent dividers>
-          <div className="text-2xl">
-            <p>ชื่อโครงงานภาษาไทย : {projectDetail.project_th}</p>
-            <p>ชื่อโครงงานภาษาอังกฤษ : {projectDetail.project_eng}</p>
+
+          {projectData &&  <>   <div className="text-2xl">
+            <p>ชื่อโครงงานภาษาไทย : {projectData.data.project_details.project_name_th}</p>
+            <p>ชื่อโครงงานภาษาอังกฤษ : {projectData.data.project_details.project_name_eng}</p>
             <p className="py-3">รายละเอียดโครงงาน</p>
           </div>
           <div
@@ -185,10 +186,10 @@ export default function teacherState1(props) {
               
             </p>
             {projectDetail.description} */}
-            {projectDetail.description}
+            {projectData.data.project_details.project_description}
           </div>
           <p className=" text-2xl my-3"> รายชื่ออาจารย์</p>
-          {projectDetail.teachers.map((val, index) => {
+          {projectData.data.committees.map((val, index) => {
             return (
               <div key={index} className="flex">
                 <div className="text-xl ml-4  " style={{ minWidth: "40%" }}>
@@ -203,7 +204,7 @@ export default function teacherState1(props) {
             );
           })}
           <p className=" text-2xl my-3"> รายชื่อสมาชิกในกลุ่ม</p>
-          {projectDetail.name.map((val, index) => {
+          {projectData.data.members.map((val, index) => {
             return (
               <div key={index} className="text-xl ml-3">
                 <p>
@@ -213,6 +214,9 @@ export default function teacherState1(props) {
               </div>
             );
           })}
+          </> 
+          }
+     
         </DialogContent>
       </Dialog>
 
