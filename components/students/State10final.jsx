@@ -77,7 +77,7 @@ export default function state10({
 
   // function getAssesStatus() {
   //     axios
-  //       .get(`http://localhost:3001/project/asses/${props.project.id}`)
+  //       .get(`https://demo-tspm-server.herokuapp.com/project/asses/${props.project.id}`)
   //       .then((res) => {
   //         //console.log(res.data[0]);
   //         if (res.data[0].asses_status===1) {
@@ -104,7 +104,7 @@ export default function state10({
 
   async function getFeedback(id) {
     await axios
-      .get("http://localhost:3001/final-project/get-test-feedback/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/get-test-feedback/" + id)
       .then((res) => {
         setFeedback(res.data.results.test_feedback);
 
@@ -122,7 +122,7 @@ export default function state10({
 
   async function backToStageProject() {
     await axios
-      .put(`http://localhost:3001/final-project/back-to-stage/${projectId}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/final-project/back-to-stage/${projectId}`, {
         state: 8,
       })
       .then((response) => {

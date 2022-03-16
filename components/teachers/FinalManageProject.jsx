@@ -64,7 +64,7 @@ export default function FinalManageProject({ teacherData }) {
 
   const getMidExamResults = async (id) => {
     await axios
-      .get("http://localhost:3001/final-project/mid-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/mid-exam-result/" + id)
       .then((res) => {
         setMidResults(res.data.exam_result);
         setOpenMid(true);
@@ -74,7 +74,7 @@ export default function FinalManageProject({ teacherData }) {
 
   const getFinalExamResults = async (id) => {
     await axios
-      .get("http://localhost:3001/final-project/final-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/final-exam-result/" + id)
       .then((res) => {
         setFinalResults(res.data.exam_result);
         setOpenFinal(true);
@@ -84,7 +84,7 @@ export default function FinalManageProject({ teacherData }) {
 
   const getAssesResult = async (id) => {
     await axios
-      .get("http://localhost:3001/final-project/get-asses-results/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/get-asses-results/" + id)
       .then((res) => {
         setAssesResults(res.data);
         setOpenAsses(true);
@@ -95,7 +95,7 @@ export default function FinalManageProject({ teacherData }) {
   const getFinalAsses = async (id) => {
     await axios
       .get(
-        `http://localhost:3001/final-project/get-asses-final/${id}/${final_count}`
+        `https://demo-tspm-server.herokuapp.com/final-project/get-asses-final/${id}/${final_count}`
       )
       .then((res) => {
         console.log(res.data);
@@ -145,7 +145,7 @@ export default function FinalManageProject({ teacherData }) {
   const getProjectByTeacher = (status) => {
     axios
       .get(
-        `http://localhost:3001/project/getprojectbyteacher/${teacherData.id}/${status}`
+        `https://demo-tspm-server.herokuapp.com/project/getprojectbyteacher/${teacherData.id}/${status}`
       )
       .then((res) => {
         console.log(res.data);
@@ -157,7 +157,7 @@ export default function FinalManageProject({ teacherData }) {
   const getProjectById = (id) => {
     setOpen(true);
     axios
-      .get(`http://localhost:3001/project/getprojectbyid/${id}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/getprojectbyid/${id}`)
       .then(async (res) => {
         console.log(res.data);
         setProjectDetail(res.data);
@@ -169,7 +169,7 @@ export default function FinalManageProject({ teacherData }) {
   const finalGetProjectByID = async (id) => {
     setOpen(true);
     await axios
-      .get("http://localhost:3001/final-course/get-project/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-project/" + id)
       .then((res) => {
         console.log(res.data);
         setProjectDetail(res.data.results);
@@ -182,7 +182,7 @@ export default function FinalManageProject({ teacherData }) {
   const finalGetLogbookProjectByID = async (id) => {
     setOpenLogbook(true);
     await axios
-      .get("http://localhost:3001/final-course/get-logbook/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-course/get-logbook/" + id)
       .then((res) => {
         console.log(res.data);
         setLogbookData(res?.data);
@@ -414,7 +414,7 @@ export default function FinalManageProject({ teacherData }) {
                         color: "white",
                       }}
                       onClick={() =>
-                        window.open(`http://localhost:3001/${projectDetail.project.id}/state3file.pdf`,'_blank')
+                        window.open(`https://demo-tspm-server.herokuapp.com/${projectDetail.project.id}/state3file.pdf`,'_blank')
                        }
                     >
                       ไฟล์ขอสอบหัวข้อโครงงงาน
@@ -430,7 +430,7 @@ export default function FinalManageProject({ teacherData }) {
                           color: "white",
                         }}
                         onClick={() =>
-                         window.open(`http://localhost:3001/${projectDetail.project.id}/state9file.pdf`,'_blank')
+                         window.open(`https://demo-tspm-server.herokuapp.com/${projectDetail.project.id}/state9file.pdf`,'_blank')
                         }
                       >
                         ไฟล์ขอสอบโครงงงาน

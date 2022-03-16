@@ -18,7 +18,7 @@ export default function std_info() {
   
 
   const getUser = () =>{
-    axios.get('http://localhost:3001/allstudent/get/62360959').then((response)=>{
+    axios.get('https://demo-tspm-server.herokuapp.com/allstudent/get/62360959').then((response)=>{
       console.log(response.data[0])
       setStudentDetail(response.data[0])
     })

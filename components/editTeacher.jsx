@@ -34,7 +34,7 @@ export default function editTeacher() {
 
   const getAllteachher = async () => {
     await axios
-      .get("http://localhost:3001/allteacher")
+      .get("https://demo-tspm-server.herokuapp.com/allteacher")
       .then((res) => {
         console.log(res.data);
 
@@ -52,7 +52,7 @@ export default function editTeacher() {
     event.preventDefault();
     
 
-    axios.post("http://localhost:3001/allteacher/teachers",{teacher_name:teacherValue}).then((res)=>{
+    axios.post("https://demo-tspm-server.herokuapp.com/allteacher/teachers",{teacher_name:teacherValue}).then((res)=>{
       console.log(res.data)
       
       getAllteachher();

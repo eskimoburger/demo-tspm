@@ -34,7 +34,7 @@ export default function T_Layout(props) {
   // don't  forget id
   const getNotification = () => {
     axios
-      .get("http://localhost:3001/notification/project/2")
+      .get("https://demo-tspm-server.herokuapp.com/notification/project/2")
       .then((response) => {
         console.log(response.data.results);
         setNotic(response.data.results);
@@ -43,7 +43,7 @@ export default function T_Layout(props) {
 
   async function deleteNotification(id) {
     axios
-      .delete("http://localhost:3001/notification/project/" + id)
+      .delete("https://demo-tspm-server.herokuapp.com/notification/project/" + id)
       .then(async (response) => {
         console.log(response.data);
         await getNotification();
@@ -52,7 +52,7 @@ export default function T_Layout(props) {
 
   async function AcceptAndDeleteNotification() {
     axios
-      .delete("http://localhost:3001/notification/project/153")
+      .delete("https://demo-tspm-server.herokuapp.com/notification/project/153")
       .then(async (response) => {
         console.log(response.data);
         await getNotification();
@@ -61,7 +61,7 @@ export default function T_Layout(props) {
 
   function getProjectByName(name) {
     axios
-      .get("http://localhost:3001/project/getprojectbyname/" + name)
+      .get("https://demo-tspm-server.herokuapp.com/project/getprojectbyname/" + name)
       .then((response) => {
         //console.log(response.data);
         SetProjectDetail(response.data);
@@ -71,7 +71,7 @@ export default function T_Layout(props) {
 
   function submitted(projectname) {
     axios
-      .put(`http://localhost:3001/project/submitted/${projectname}/5`)
+      .put(`https://demo-tspm-server.herokuapp.com/project/submitted/${projectname}/5`)
       .then((response) => {
         console.log(response.data);
       });
@@ -79,7 +79,7 @@ export default function T_Layout(props) {
 
   function rejected(projectname) {
     axios
-      .put(`http://localhost:3001/project/rejected/${projectname}/5`)
+      .put(`https://demo-tspm-server.herokuapp.com/project/rejected/${projectname}/5`)
       .then((response) => {
         console.log(response.data);
       });
@@ -87,7 +87,7 @@ export default function T_Layout(props) {
 
   function pushNotification(des, state, id, project) {
     axios
-      .post(`http://localhost:3001/notification/student/`, {
+      .post(`https://demo-tspm-server.herokuapp.com/notification/student/`, {
         description: des,
         state_name: state,
         id_teacher: id,

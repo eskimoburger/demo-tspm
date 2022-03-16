@@ -71,7 +71,7 @@ const StatusDisplay = ({
   };
 
   const fetchStudentList = () => {
-    axios.get(`http://localhost:3001/allstudent/test`).then((response) => {
+    axios.get(`https://demo-tspm-server.herokuapp.com/allstudent/test`).then((response) => {
       console.log(response.data.studentList);
       setStudentList(response.data.studentList);
     });
@@ -79,7 +79,7 @@ const StatusDisplay = ({
 
   const sendEditProject = async () => {
     // await axios
-    //   .post(`http://localhost:3001/final-project/edits/${projectData.id}`, {
+    //   .post(`https://demo-tspm-server.herokuapp.com/final-project/edits/${projectData.id}`, {
     //     delStudents: delList,
     //     addStudents: addList,
     //     projectNameTH: projectData.project_name_th,

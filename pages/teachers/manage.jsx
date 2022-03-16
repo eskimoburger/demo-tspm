@@ -7,7 +7,7 @@ export default function manage() {
   const getTeachers = () => {
     axios
       .get(
-        `http://localhost:3001/allteacher/byuser/${sessionStorage.getItem(
+        `https://demo-tspm-server.herokuapp.com/allteacher/byuser/${sessionStorage.getItem(
           "useID"
         )}`
       )

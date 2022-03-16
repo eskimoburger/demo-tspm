@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function logbook({ logbook, projectId }) {
   const getLogBook = async (logbookNumber) => {
     // const logbookResponse = await axios.get(
-    //   `http://localhost:3001/final-project/get-logbook/${projectId}/${logbookNumber}`
+    //   `https://demo-tspm-server.herokuapp.com/final-project/get-logbook/${projectId}/${logbookNumber}`
     // );
     //const logbookData = logbookResponse.data.results;
     setLogbookDetail({

@@ -15,7 +15,7 @@ export default NotificationPage;
 
 export async function getServerSideProps({ query }) {
   const resData = await fetch(
-    `http://localhost:3001/allteacher/byuser/${query.id}`
+    `https://demo-tspm-server.herokuapp.com/allteacher/byuser/${query.id}`
   );
   const data = await resData.json();
   // let queryStatus = false;

@@ -60,7 +60,7 @@ function newWating(props) {
 
   function getRequest() {
     axios
-      .get(`http://localhost:3001/project/getrequest/${props.projectName}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/getrequest/${props.projectName}`)
       .then((response) => {
         //console.log(response.data);
         //console.log(response.data[0].project_id);
@@ -96,7 +96,7 @@ function newWating(props) {
   }
 
   function getAllTeacher() {
-    axios.get(`http://localhost:3001/allteacher`).then((response) => {
+    axios.get(`https://demo-tspm-server.herokuapp.com/allteacher`).then((response) => {
       console.log(response.data);
       SetAllTeacher(response.data);
     });
@@ -104,7 +104,7 @@ function newWating(props) {
 
   function getReject() {
     axios
-      .get(`http://localhost:3001/project/rejectteacher/${props.projectName}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/rejectteacher/${props.projectName}`)
       .then((response) => {
         console.log(response.data);
         SetRejectTeacher(response.data);
@@ -123,7 +123,7 @@ function newWating(props) {
       //console.log(id,name,role,pnameEN)
 
       axios
-        .post("http://localhost:3001/project/addcommitproject", {
+        .post("https://demo-tspm-server.herokuapp.com/project/addcommitproject", {
           committee_name: name,
           role: role,
           id_teacher: id,
@@ -134,7 +134,7 @@ function newWating(props) {
         });
 
       axios
-        .post("http://localhost:3001/notification/", {
+        .post("https://demo-tspm-server.herokuapp.com/notification/", {
           description: description,
           state_name: state_name,
           id_teacher: id,
@@ -153,7 +153,7 @@ function newWating(props) {
       var pnameEN = rejectTeacher[i].project_name_eng;
       console.log(id, pnameEN);
       axios
-        .delete("http://localhost:3001/project/deletecommitproject", {
+        .delete("https://demo-tspm-server.herokuapp.com/project/deletecommitproject", {
           data: { id_teacher: id, project_eng: pnameEN },
         })
         .then((response) => {

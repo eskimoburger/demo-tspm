@@ -45,7 +45,7 @@ export default function state11({ projectId, projectNameENG, functionNext,refres
   const getTeacherByIdProjectStage10 = async (id) => {
     setTeachers(RESULTS_FINAL)
     // await axios
-    //   .get(`http://localhost:3001/final-project/get-teacher-state10/${id}`)
+    //   .get(`https://demo-tspm-server.herokuapp.com/final-project/get-teacher-state10/${id}`)
     //   .then((response) => {
     //     console.log(response.data.results.length);
     //     console.log(response.data);
@@ -110,7 +110,7 @@ export default function state11({ projectId, projectNameENG, functionNext,refres
     refreshData();
     // await axios
     //   .post(
-    //     `http://localhost:3001/final-project/results-state10/${projectId}`,
+    //     `https://demo-tspm-server.herokuapp.com/final-project/results-state10/${projectId}`,
     //     {
     //       teachers: teachers,
     //       project_eng: projectNameENG,

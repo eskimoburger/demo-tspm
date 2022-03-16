@@ -40,7 +40,7 @@ const SaveLogbook = ({ state, logbookData ,projectId,refreshData }) => {
 
   const sendLogbook = () => {
     axios
-      .post(`http://localhost:3001/project/logbook/${projectId}`, {
+      .post(`https://demo-tspm-server.herokuapp.com/project/logbook/${projectId}`, {
         date: today,
         summary: logbook.summary,
         problem: logbook.problem,

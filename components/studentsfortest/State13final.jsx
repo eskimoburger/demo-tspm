@@ -126,7 +126,7 @@ export default function state13({
     // formData.append("file", file, "finalFile.pdf");
     // // appending file
     // axios
-    //   .post(`http://localhost:3001/upload-file-final/${projectId}`, formData, {
+    //   .post(`https://demo-tspm-server.herokuapp.com/upload-file-final/${projectId}`, formData, {
     //     onUploadProgress: (ProgressEvent) => {
     //       let progress = Math.round(
     //         (ProgressEvent.loaded / ProgressEvent.total) * 100
@@ -159,7 +159,7 @@ export default function state13({
     // formData.append("file", file, `finalfile${finalCount}.pdf`);
     // // appending file
     // axios
-    //   .post(`http://localhost:3001/upload-file-final/${projectId}`, formData, {
+    //   .post(`https://demo-tspm-server.herokuapp.com/upload-file-final/${projectId}`, formData, {
     //     onUploadProgress: (ProgressEvent) => {
     //       let progress = Math.round(
     //         (ProgressEvent.loaded / ProgressEvent.total) * 100
@@ -190,7 +190,7 @@ export default function state13({
     // var description = `${pnameEN} ได้ส่งรูปเล่มโครงงานทั้งหมดให้อาจารย์ประจำรายวิชาได้ตรวจสอบ`;
     // var state_name = "ประเมินรูปเล่มปริญญานิพนธ์";
     // await axios
-    //   .post("http://localhost:3001/notification/course-teacher/" + projectId, {
+    //   .post("https://demo-tspm-server.herokuapp.com/notification/course-teacher/" + projectId, {
     //     description: description,
     //     state_name: state_name,
     //   })
@@ -222,7 +222,7 @@ export default function state13({
     // var description = `${pnameEN} ได้ส่งรูปเล่มโครงงานทั้งหมดให้อาจารย์ประจำรายวิชาได้ตรวจสอบ`;
     // var state_name = `แก้ไขรูปเล่มปริญญานิพนธ์ครั้งที่ ${finalCount}`;
     // await axios
-    //   .post("http://localhost:3001/notification/course-teacher/" + projectId, {
+    //   .post("https://demo-tspm-server.herokuapp.com/notification/course-teacher/" + projectId, {
     //     description: description,
     //     state_name: state_name,
     //   })

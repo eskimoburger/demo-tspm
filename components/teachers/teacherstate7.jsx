@@ -22,7 +22,7 @@ export default function teacherState7({
   const [open, setOpen] = useState(false);
   const getFinalExamResults = (id) => {
     axios
-      .get("http://localhost:3001/final-teacher/final-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-teacher/final-exam-result/" + id)
       .then((response) => {
         console.log(response.data);
         setExamResult(response.data.exam_result);
@@ -33,7 +33,7 @@ export default function teacherState7({
 
   const validationState11 = async (idP) => {
     await axios
-      .put("http://localhost:3001/final-teacher/validation-state11/" + idP, {
+      .put("https://demo-tspm-server.herokuapp.com/final-teacher/validation-state11/" + idP, {
         idNotification: idNotification,
       })
       .then(async (res) => {

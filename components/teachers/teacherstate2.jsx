@@ -48,7 +48,7 @@ export default function teacherState2({
   const getExamResults = (id) => {
     //setOpen(true);
     axios
-      .get("http://localhost:3001/final-teacher/mid-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-teacher/mid-exam-result/" + id)
       .then((response) => {
         console.log(response.data);
         setExamResult(response.data.exam_result);
@@ -67,7 +67,7 @@ export default function teacherState2({
     }
     //var text = "||แก้ไขโดย : " + teacherName + " --> " + edit;
     axios
-      .put(`http://localhost:3001/project/examresult/${id}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/project/examresult/${id}`, {
         edit: text,
         idProject: projectID,
       })
@@ -85,7 +85,7 @@ export default function teacherState2({
     var text = "//แก้ไขโดย : " + teacherName + " --> " + edit;
     await axios
       .put(
-        `http://localhost:3001/final-teacher/validation-state5/${projectID}/${status}`,
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state5/${projectID}/${status}`,
         {
           idNotification: idNotification,
           projectName: project.project_name_eng,

@@ -63,7 +63,7 @@ export default function State8({
     setShowFeedback(true);
     setFeedback("ไปเพิ่มหรือไปแก้ไขในส่วนของบทที่ 3")
     // await axios
-    //   .get("http://localhost:3001/final-project/asses-feedback/" + projectId)
+    //   .get("https://demo-tspm-server.herokuapp.com/final-project/asses-feedback/" + projectId)
     //   .then((res) => {
     //     setShowFeedback(true);
     //     setFeedback(res.data.results.feedback);
@@ -75,7 +75,7 @@ export default function State8({
 
   const goToStage1 = async () => {
     await axios
-      .post("http://localhost:3001/final-project/delete-project/" + projectId, {
+      .post("https://demo-tspm-server.herokuapp.com/final-project/delete-project/" + projectId, {
         projectData: projectData,
         committees: committees,
         members: members,

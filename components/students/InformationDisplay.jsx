@@ -44,7 +44,7 @@ const InformationDisplay = ({ state, projectData }) => {
 
   const getMidExamResults = async () => {
     await axios
-      .get("http://localhost:3001/final-project/mid-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/mid-exam-result/" + id)
       .then((res) => {
         setMidResults(res.data.exam_result);
         setOpenMid(true);
@@ -54,7 +54,7 @@ const InformationDisplay = ({ state, projectData }) => {
 
   const getFinalExamResults = async () => {
     await axios
-      .get("http://localhost:3001/final-project/final-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/final-exam-result/" + id)
       .then((res) => {
         setFinalResults(res.data.exam_result);
         setOpenFinal(true);
@@ -64,7 +64,7 @@ const InformationDisplay = ({ state, projectData }) => {
 
   const getAssesResult = async () => {
     await axios
-      .get("http://localhost:3001/final-project/get-asses-results/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-project/get-asses-results/" + id)
       .then((res) => {
         setAssesResults(res.data);
         setOpenAsses(true);
@@ -75,7 +75,7 @@ const InformationDisplay = ({ state, projectData }) => {
   const getFinalAsses = async () => {
     await axios
       .get(
-        `http://localhost:3001/final-project/get-asses-final/${id}/${final_count-1}`
+        `https://demo-tspm-server.herokuapp.com/final-project/get-asses-final/${id}/${final_count-1}`
       )
       .then((res) => {
         console.log(res.data);

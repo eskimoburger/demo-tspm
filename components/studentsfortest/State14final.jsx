@@ -57,7 +57,7 @@ export default function state14({
 
   async function backToStageProject() {
     await axios
-      .put(`http://localhost:3001/project/backToStage/${projectId}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/project/backToStage/${projectId}`, {
         state: 12,
       })
       .then((_) => {
@@ -69,7 +69,7 @@ export default function state14({
   const getFinalAsses = async () => {
     // await axios
     //   .get(
-    //     `http://localhost:3001/final-project/get-asses-final/${projectId}/${finalCount-1}`
+    //     `https://demo-tspm-server.herokuapp.com/final-project/get-asses-final/${projectId}/${finalCount-1}`
     //   )
     //   .then((res) => {
     //     console.log(res.data);

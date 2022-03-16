@@ -37,7 +37,7 @@ export default function newlogin() {
       router.push("/admins");
     } else {
       axios
-        .post("http://localhost:3001/user/all", {
+        .post("https://demo-tspm-server.herokuapp.com/user/all", {
           username: username,
           password: password,
         })
@@ -52,7 +52,7 @@ export default function newlogin() {
             var id = sessionStorage.getItem("useID");
             if (sessionStorage.getItem("login") && role == "student") {
               // axios
-              //   .get(`http://localhost:3001/user/getproject/${id}`)
+              //   .get(`https://demo-tspm-server.herokuapp.com/user/getproject/${id}`)
               //   .then((response) => {
               //     sessionStorage.setItem(
               //       "projectname",

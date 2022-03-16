@@ -35,7 +35,7 @@ const ModalDetail = ({
   const handleSubmit = async (e, id, newProjectId) => {
     e.preventDefault();
     await axios
-      .put(`http://localhost:3001/final-course/update-project/${id}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/final-course/update-project/${id}`, {
         projectId: newProjectId,
       })
       .then((_) => {

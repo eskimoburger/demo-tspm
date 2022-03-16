@@ -33,7 +33,7 @@ export default function AssesWaiting(props) {
 
   function getAssesStatus() {
     axios
-      .get(`http://localhost:3001/project/asses/${props.project.id}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/asses/${props.project.id}`)
       .then((res) => {
         console.log(res.data[0]);
         if (res.data[0].asses_status===1) {

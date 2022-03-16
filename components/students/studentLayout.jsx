@@ -21,7 +21,7 @@ export default function studentLayout({ children, title }) {
   const getUser = async () => {
     await axios
       .get(
-        `http://localhost:3001/allstudent/test/${
+        `https://demo-tspm-server.herokuapp.com/allstudent/test/${
           sessionStorage.getItem("useID")
           //router.query.id
         }

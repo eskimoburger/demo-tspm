@@ -14,7 +14,7 @@ export default function teacherState4(props) {
   const [alert, setAlert] = useState(false);
   const getFile = () => {
     axios
-      .get(`http://localhost:3001/final-teacher/file-state3/${props.projectID}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-teacher/file-state3/${props.projectID}`)
       .then((res) => {
         console.log(res.data);
         setShowFile(res.data);
@@ -24,7 +24,7 @@ export default function teacherState4(props) {
   const validation = async() => {
     await axios
       .put(
-        `http://localhost:3001/final-teacher/validation-state3/${props.projectID}`,
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state3/${props.projectID}`,
         {
           idTeacher: props.teacherID,
           idNotification:props.id,

@@ -173,7 +173,7 @@ export default function StudentIndexIdForTest({}) {
   const nextStageProject = async () => {
     // await axios
     //   .put(
-    //     `http://localhost:3001/final-project/next-stage/${project.data.projectData.id}`
+    //     `https://demo-tspm-server.herokuapp.com/final-project/next-stage/${project.data.projectData.id}`
     //   )
     //   .then(async (_) => {
     //     await refreshData();

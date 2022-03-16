@@ -62,7 +62,7 @@ export default function FinalAsses({ projectID, notificationId, refreshData }) {
   const getFile = () => {
     //console.log(projectID)
     axios
-      .get(`http://localhost:3001/project/showfilefinalstate/${projectID}`)
+      .get(`https://demo-tspm-server.herokuapp.com/project/showfilefinalstate/${projectID}`)
       .then((res) => {
         console.log(res.data);
         setShowFile(res.data);
@@ -71,7 +71,7 @@ export default function FinalAsses({ projectID, notificationId, refreshData }) {
 
   const finalGetProjectAsses = (id) => {
     axios
-      .get(`http://localhost:3001/final-course/project-asses/${id}`)
+      .get(`https://demo-tspm-server.herokuapp.com/final-course/project-asses/${id}`)
       .then((res) => {
         console.log(res.data);
         setProject(res.data.data_project);
@@ -80,7 +80,7 @@ export default function FinalAsses({ projectID, notificationId, refreshData }) {
 
   const finalSendFinalAsses = (id) => {
     axios
-      .post(`http://localhost:3001/final-course/project-asses/${id}`, {
+      .post(`https://demo-tspm-server.herokuapp.com/final-course/project-asses/${id}`, {
         final: final,
         finalStatus: finalStatus,
         idNotification: notificationId,

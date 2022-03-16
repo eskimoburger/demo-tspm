@@ -115,7 +115,7 @@ export default function state9({members,committees,projectId,functionNext,adviso
     // appending file
     axios
       .post(
-        `http://localhost:3001/upload-file-state9/${projectId}`,
+        `https://demo-tspm-server.herokuapp.com/upload-file-state9/${projectId}`,
         formData,
         {
           onUploadProgress: (ProgressEvent) => {
@@ -148,7 +148,7 @@ export default function state9({members,committees,projectId,functionNext,adviso
   const sendTestNotification = async () => {
     await axios
       .post(
-        "http://localhost:3001/final-project/state-7-test/" + projectId,
+        "https://demo-tspm-server.herokuapp.com/final-project/state-7-test/" + projectId,
         {
           idTeacher: teacher.id_teacher,
           teacherName: teacher.teacher_name,

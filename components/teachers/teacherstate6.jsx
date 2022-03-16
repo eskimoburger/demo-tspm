@@ -49,7 +49,7 @@ export default function teacherState6({
 
   const getFinalExamResults = (id) => {
     axios
-      .get("http://localhost:3001/final-teacher/final-exam-result/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/final-teacher/final-exam-result/" + id)
       .then((response) => {
         console.log(response.data);
         setExamResult(response.data.exam_result);
@@ -61,7 +61,7 @@ export default function teacherState6({
   const getExamResults = (id) => {
     //setOpen(true);
     axios
-      .get("http://localhost:3001/project/finalexamresult/" + id)
+      .get("https://demo-tspm-server.herokuapp.com/project/finalexamresult/" + id)
       .then((response) => {
         console.log(response.data.results);
 
@@ -100,7 +100,7 @@ export default function teacherState6({
   const sendEdit = (teacherName, id) => {
     var text = "||แก้ไขโดย : " + teacherName + " --> " + edit;
     axios
-      .put(`http://localhost:3001/project/examresult/${id}`, {
+      .put(`https://demo-tspm-server.herokuapp.com/project/examresult/${id}`, {
         edit: text,
         idProject: projectID,
       })
@@ -116,7 +116,7 @@ export default function teacherState6({
   const validationTestExam = async () => {
     await axios
       .put(
-        `http://localhost:3001/final-teacher/validation-state10/${teacherID}/${projectID}`,
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10/${teacherID}/${projectID}`,
         {
           idTeacher: teacherID,
           idNotification: idNotification,
@@ -133,7 +133,7 @@ export default function teacherState6({
     var text = "//แก้ไขโดย : " + teacherName + " --> " + edit;
     await axios
       .put(
-        `http://localhost:3001/final-teacher/validation-state10-test/${teacherID}/${projectID}`,
+        `https://demo-tspm-server.herokuapp.com/final-teacher/validation-state10-test/${teacherID}/${projectID}`,
         {
           idTeacher: teacherID,
           idNotification: idNotification,

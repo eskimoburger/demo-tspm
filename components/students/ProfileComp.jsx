@@ -39,7 +39,7 @@ const ProfileComp = ({ studentDetail, imgProfile, functionGetUser }) => {
   const checkPassword = async () => {
     await axios
       .post(
-        "http://localhost:3001/allstudent/check/" +
+        "https://demo-tspm-server.herokuapp.com/allstudent/check/" +
           sessionStorage.getItem("useID"),
         { oldPassword: oldPassword, newPassword: newPassword }
       )
@@ -73,7 +73,7 @@ const ProfileComp = ({ studentDetail, imgProfile, functionGetUser }) => {
 
   const UpdateProfileDetails = async () => {
     await axios
-      .put("http://localhost:3001/allstudent/edit", {
+      .put("https://demo-tspm-server.herokuapp.com/allstudent/edit", {
         editStudent: editStudent,
       })
       .then((res) => {

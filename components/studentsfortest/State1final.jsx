@@ -82,7 +82,7 @@ const DEFAULT_TEACHER_VALUE = {
 const State1final = ({ user, refreshData }) => {
   useEffect(() => {
     const fetchAllList = async () => {
-      const resData = await axios.get(`http://localhost:3001/final-fetch`);
+      const resData = await axios.get(`https://demo-tspm-server.herokuapp.com/final-fetch`);
       const { studentList, teacherList } = resData.data;
       setTeacherList(teacherList);
       setStudentList(studentList);

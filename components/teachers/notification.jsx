@@ -21,7 +21,7 @@ export default function notification(props) {
 
   const getNotification = () => {
     axios
-      .get(`http://localhost:3001/notification/project/${props.teacher.id}`)
+      .get(`https://demo-tspm-server.herokuapp.com/notification/project/${props.teacher.id}`)
       .then((response) => {
         console.log(response.data.results);
         setNotifications(response.data.results);
@@ -30,7 +30,7 @@ export default function notification(props) {
 
   const getNotificationNew = () => {
     axios
-      .get(`http://localhost:3001/notification/projecttest/${props.teacher.id}`)
+      .get(`https://demo-tspm-server.herokuapp.com/notification/projecttest/${props.teacher.id}`)
       .then((response) => {
         console.log(response.data);
         setNotifications(response.data);

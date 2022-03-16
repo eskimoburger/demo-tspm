@@ -45,7 +45,7 @@ export default function addstudent() {
 
   const Upload = () => {
     axios
-      .post("http://localhost:3001/students/hello", { testData: students })
+      .post("https://demo-tspm-server.herokuapp.com/students/hello", { testData: students })
       .then((res) => {
         console.log(res.data);
       })
@@ -56,7 +56,7 @@ export default function addstudent() {
 
   const upload2 = async () => {
     await axios
-      .post("http://localhost:3001/students/save-students", {
+      .post("https://demo-tspm-server.herokuapp.com/students/save-students", {
         testData: students,
       })
       .then((res) => {
@@ -68,7 +68,7 @@ export default function addstudent() {
 
     for (let i = 0; i < students.length; i++) {
       await axios
-        .post("http://localhost:3001/students/send-reg-hash", {
+        .post("https://demo-tspm-server.herokuapp.com/students/send-reg-hash", {
           username: students[i].studentcode,
           password: students[i].studentcode + students[i].studentnameeng,
           number: i,
