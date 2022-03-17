@@ -16,75 +16,81 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
 
-import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined';
+import NavigateNextOutlinedIcon from "@material-ui/icons/NavigateNextOutlined";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function state2({ projectId, projectName,projectCPE,refreshData,functionNext,goBack, }) {
+export default function state2({
+  projectId,
+  projectName,
+  projectCPE,
+  refreshData,
+  functionNext,
+  goBack,
+}) {
   useEffect(() => {
     getRequest();
     getAllTeacher();
     getReject();
   }, []);
 
-  
   const [request, SetRequest] = useState([
     {
-        "id": 441,
-        "committee_name": "ดร.เศรษฐา ตั้งค้าวานิช ",
-        "role": "อาจารย์ที่ปรึกษา",
-        "status": 0,
-        "status_state3": 1,
-        "status_state5": 1,
-        "status_state10": 1,
-        "id_teacher": "2",
-        "project_id": 120,
-        "project_name_eng": ""
+      id: 441,
+      committee_name: "ดร.เศรษฐา ตั้งค้าวานิช ",
+      role: "อาจารย์ที่ปรึกษา",
+      status: 0,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "2",
+      project_id: 120,
+      project_name_eng: "",
     },
     {
-        "id": 442,
-        "committee_name": "ดร.จิราพร พุกสุข ",
-        "role": "กรรมการ",
-        "status": 0,
-        "status_state3": 1,
-        "status_state5": 1,
-        "status_state10": 1,
-        "id_teacher": "5",
-        "project_id": 120,
-        "project_name_eng": ""
+      id: 442,
+      committee_name: "ดร.จิราพร พุกสุข ",
+      role: "กรรมการ",
+      status: 0,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "5",
+      project_id: 120,
+      project_name_eng: "",
     },
     {
-        "id": 443,
-        "committee_name": "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
-        "role": "กรรมการ",
-        "status": 0,
-        "status_state3": 1,
-        "status_state5": 1,
-        "status_state10": 1,
-        "id_teacher": "7",
-        "project_id": 120,
-        "project_name_eng": ""
-    }
-]);
+      id: 443,
+      committee_name: "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+      role: "กรรมการ",
+      status: 0,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "7",
+      project_id: 120,
+      project_name_eng: "",
+    },
+  ]);
   const [wait, setWait] = useState(false);
   const [nextStage, SetNextStage] = useState(false);
   const [reject, SetReject] = useState(false);
   const [open, setOpen] = useState(false);
   const [rejectTeacher, SetRejectTeacher] = useState([
     {
-      "id": 441,
-      "committee_name": "ดร.เศรษฐา ตั้งค้าวานิช ",
-      "role": "อาจารย์ที่ปรึกษา",
-      "status": 2,
-      "status_state3": 1,
-      "status_state5": 1,
-      "status_state10": 1,
-      "id_teacher": "2",
-      "project_id": 120,
-      "project_name_eng": ""
-  },
+      id: 441,
+      committee_name: "ดร.เศรษฐา ตั้งค้าวานิช ",
+      role: "อาจารย์ที่ปรึกษา",
+      status: 2,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "2",
+      project_id: 120,
+      project_name_eng: "",
+    },
   ]);
   const [allTeacher, SetAllTeacher] = useState([]);
   const [data, SetData] = useState([]);
@@ -93,92 +99,92 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   const [alertChange, setAlertChange] = useState(false);
   const [duplicate, setDuplicate] = useState([
     {
-      "id": 441,
-      "committee_name": "ดร.เศรษฐา ตั้งค้าวานิช ",
-      "role": "อาจารย์ที่ปรึกษา",
-      "status": 2,
-      "status_state3": 1,
-      "status_state5": 1,
-      "status_state10": 1,
-      "id_teacher": "2",
-      "project_id": 120,
-      "project_name_eng": ""
-  },
-  {
-      "id": 442,
-      "committee_name": "ดร.จิราพร พุกสุข ",
-      "role": "กรรมการ",
-      "status": 0,
-      "status_state3": 1,
-      "status_state5": 1,
-      "status_state10": 1,
-      "id_teacher": "5",
-      "project_id": 120,
-      "project_name_eng": ""
-  },
-  {
-      "id": 443,
-      "committee_name": "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
-      "role": "กรรมการ",
-      "status": 0,
-      "status_state3": 1,
-      "status_state5": 1,
-      "status_state10": 1,
-      "id_teacher": "7",
-      "project_id": 120,
-      "project_name_eng": ""
-  }
-]);
+      id: 441,
+      committee_name: "ดร.เศรษฐา ตั้งค้าวานิช ",
+      role: "อาจารย์ที่ปรึกษา",
+      status: 2,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "2",
+      project_id: 120,
+      project_name_eng: "",
+    },
+    {
+      id: 442,
+      committee_name: "ดร.จิราพร พุกสุข ",
+      role: "กรรมการ",
+      status: 0,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "5",
+      project_id: 120,
+      project_name_eng: "",
+    },
+    {
+      id: 443,
+      committee_name: "รองศาสตราจารย์ ดร.พงศ์พันธ์ กิจสนาโยธิน ",
+      role: "กรรมการ",
+      status: 0,
+      status_state3: 1,
+      status_state5: 1,
+      status_state10: 1,
+      id_teacher: "7",
+      project_id: 120,
+      project_name_eng: "",
+    },
+  ]);
   const [selectedButton, setSelectedButton] = useState(1);
   const setStatusButton = (statusB) => {
     if (statusB === 1) {
       setSelectedButton(1);
-      const cloneData = [...request]
-      cloneData[0]["status"] = 0
-      cloneData[1]["status"] = 0
-      cloneData[2]["status"] = 0
-      SetRequest(cloneData)
-      setIdProject(0)
-      setWait(true)
-      SetReject(true)
-      SetNextStage(false)
+      const cloneData = [...request];
+      cloneData[0]["status"] = 0;
+      cloneData[1]["status"] = 0;
+      cloneData[2]["status"] = 0;
+      SetRequest(cloneData);
+      setIdProject(0);
+      setWait(true);
+      SetReject(true);
+      SetNextStage(false);
       //set
 
       //setStatus(0);
     } else if (statusB === 2) {
-      const cloneData = [...request]
-      cloneData[0]["status"] = 1
-      cloneData[1]["status"] = 1
-      cloneData[2]["status"] = 1
-      SetRequest(cloneData)
-      SetNextStage(true)
-      setIdProject(0)
+      const cloneData = [...request];
+      cloneData[0]["status"] = 1;
+      cloneData[1]["status"] = 1;
+      cloneData[2]["status"] = 1;
+      SetRequest(cloneData);
+      SetNextStage(true);
+      setIdProject(0);
       setSelectedButton(2);
-     // SetReject(false)
-      //setWait(true) 
+      // SetReject(false)
+      //setWait(true)
       //setStatus(1);
     } else if (statusB === 3) {
-      const cloneData = [...request]
-      cloneData[0]["status"] = 2
-      cloneData[1]["status"] = 1
-      cloneData[2]["status"] = 1
-      SetRequest(cloneData)
-      setIdProject(0)
-      SetReject(true)
+      const cloneData = [...request];
+      cloneData[0]["status"] = 2;
+      cloneData[1]["status"] = 1;
+      cloneData[2]["status"] = 1;
+      SetRequest(cloneData);
+      setIdProject(0);
+      SetReject(true);
       setSelectedButton(3);
-      setWait(false)
-      SetNextStage(false)
+      setWait(false);
+      SetNextStage(false);
       //setStatus(2);
     } else {
       setSelectedButton(4);
-      const cloneData = [...request]
-      cloneData[0]["status"] = 1
-      cloneData[1]["status"] = 1
-      cloneData[2]["status"] = 1
-      SetRequest(cloneData)
-      SetNextStage(true)
-      setIdProject(99)
-      
+      const cloneData = [...request];
+      cloneData[0]["status"] = 1;
+      cloneData[1]["status"] = 1;
+      cloneData[2]["status"] = 1;
+      SetRequest(cloneData);
+      SetNextStage(true);
+      setIdProject(99);
+
       //setStatus(3);
     }
   };
@@ -220,10 +226,12 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
   };
 
   function getAllTeacher() {
-    axios.get(`https://demo-tspm-server.herokuapp.com/allteacher`).then((response) => {
-      console.log(response.data);
-      SetAllTeacher(response.data);
-    });
+    axios
+      .get(`https://demo-tspm-server.herokuapp.com/allteacher`)
+      .then((response) => {
+        console.log(response.data);
+        SetAllTeacher(response.data);
+      });
   }
 
   async function getReject() {
@@ -238,9 +246,9 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 
   const finalChange = async () => {
     //setAlertM(false)
-    setAlertChange(false)
-    setOpen(false)
-  
+    setAlertChange(false);
+    setOpen(false);
+
     // await axios
     //   .post(`https://demo-tspm-server.herokuapp.com/final-project/state-1/change/${projectId}`, {
     //     changeTeacher: data,
@@ -264,7 +272,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
 
     //     alert("CancelSuccess");
     //     refreshData()
-        
+
     //     //console.lo g(res)
     //   })
     //   .catch((err) => {
@@ -306,18 +314,18 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
             <span className="font-bold">{id_project_new}</span>
           </p>
           <div className="flex justify-center">
-          <Button
+            <Button
               onClick={() => {
-                functionNext();
+                refreshData();
               }}
-            variant="outlined"
-            color="primary"
-            size="large"
-            startIcon={<NavigateNextOutlinedIcon />}
-            style={{ fontSize: 20 }}
-          >
-            ดำเนินการต่อ
-          </Button>
+              variant="outlined"
+              color="primary"
+              size="large"
+              startIcon={<NavigateNextOutlinedIcon />}
+              style={{ fontSize: 20 }}
+            >
+              ดำเนินการต่อ
+            </Button>
             {/* <button
               className="bg-blue-800 text-white px-4 py-2 rounded-md font-bold hover:bg-blue-500 transition duration-200 each-in-out "
               style={{ boxShadow: "#00000038 1.95px 1.95px 1.95px" }}
@@ -511,7 +519,7 @@ export default function state2({ projectId, projectName,projectCPE,refreshData,f
           width: "90%",
         }}
       >
-         <div className="flex justify-center flex-wrap gap-2">
+        <div className="flex justify-center flex-wrap gap-2">
           <button
             //onClick={fixedResetData}
             onClick={() => setStatusButton(1)}

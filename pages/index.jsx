@@ -367,11 +367,22 @@ export default function newlogin() {
                   เข้าสู่ระบบ
                 </button>
               </form>
-              
 
               <div className="iphone:text-xs  laptop:text-xl text-red-500 text-center my-8 font-bold">
                 {errorMessages}
               </div>
+              <button
+                onClick={() =>
+                  window.open(
+                    `https://demo-tspm-server.herokuapp.com/manual_tspm.pdf`,
+                    "_blank"
+                  )
+                }
+                className="text-xl bg-red-800 text-white rounded-sm py-1 px-2  iphone:w-[150px] laptop:w-[220px] iphone:text-xs laptop:text-lg flex items-center  "
+              >
+                <i className=" bx bxs-file-blank  iphone:text-[20px] laptop:text-[28px] "></i>{" "}
+                คู่มือการใช้งานสำหรับทดสอบระบบเบื่องต้น
+              </button>
             </div>
           </div>
         </div>

@@ -248,7 +248,7 @@ export default function state13({
           backgroundColor: "#1C3F60",
         }}
       >
-        ส่งรูปเล่มโครงงงาน
+        ส่งรูปเล่มโครงงาน
       </div>
 
       <div

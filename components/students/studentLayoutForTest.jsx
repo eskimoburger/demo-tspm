@@ -19,17 +19,14 @@ export default function StudentLayoutForTest({ children, title }) {
     getUser();
   }, []);
   const getUser = async () => {
-    setName(
-      `${"นาย"}${"ทดสอบ"} ${"ระบบ"} `
-    );
+    setName(`${"นาย"}${"ทดสอบ"} ${"ระบบ"} `);
   };
 
   const [name, setName] = useState("");
   const [edit, setEdit] = useState(false);
   const [error, setError] = useState(false);
   const [sideShow, setSideShow] = useState(false);
-  const[studentId,setStudentId] = useState(null)
-  
+  const [studentId, setStudentId] = useState(null);
 
   var editContent = null;
   if (edit) {
@@ -110,11 +107,14 @@ export default function StudentLayoutForTest({ children, title }) {
               />
             </div>
 
-            <div className="desktop:text-base  iphone:text-xs bg-white p-2 rounded-full text-black cursor-pointer hover:bg-gray-200 font-bold hidden desktop:block " onClick={()=>{
-              if(studentId){
-                router.push(`/students/${studentId}/profile`)
-              }
-            }}>
+            <div
+              className="desktop:text-base  iphone:text-xs bg-white p-2 rounded-full text-black cursor-pointer hover:bg-gray-200 font-bold hidden desktop:block "
+              onClick={() => {
+                if (studentId) {
+                  router.push(`/students/${studentId}/profile`);
+                }
+              }}
+            >
               <p>{name}</p>
             </div>
             {/* <div onClick={() => setEdit(!edit)} className="">
@@ -165,34 +165,37 @@ export default function StudentLayoutForTest({ children, title }) {
 
           {/* nav */}
           <nav className=" text-xl space-y-2">
-            <Link href="/students">
+            <Link href={`/students/${id}/test`}>
               <a
                 className={`flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800 ${
-                  router.pathname == `/students/${id}/?login=true`
-                    ? "bg-gray-200"
-                    : ""
+                  router.pathname == `/students/${id}/test` ? "bg-gray-200" : ""
                 }`}
               >
-                <HomeIcon /> หน้าแรก 
+                <HomeIcon /> หน้าแรก
               </a>
             </Link>
-            <Link href="/students/profile">
+            <Link href={`/students/${id}/profile_test`}>
               <a className="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800">
                 <PersonIcon /> ข้อมูลผู้ใช้
               </a>
             </Link>
-            <Link href="/students/search">
+            <Link href={`/students/${id}/search_test`}>
               <a className="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800">
                 <SearchIcon /> ค้นหาโครงงาน
               </a>
             </Link>
-            <Link href="/students/document">
+            <Link href={`/students/${id}/document_test`}>
               <a className="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800">
                 <DescriptionIcon /> ไฟล์เอกสาร
               </a>
             </Link>
 
-            <div className="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800">
+            <div
+              onClick={() => {
+                router.push("/"), sessionStorage.clear();
+              }}
+              className="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800 cursor-pointer"
+            >
               <ExitToAppIcon /> ออกจากระบบ
             </div>
           </nav>

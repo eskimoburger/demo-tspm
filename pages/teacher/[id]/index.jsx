@@ -17,7 +17,7 @@ const TeacherPage = ({teacher}) => {
     }
   }, []);
   if (notLogin) {
-    router.push("/newlogin");
+    router.push("/");
     // return <div>Go to login page</div>
   }
 
