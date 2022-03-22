@@ -240,7 +240,6 @@ export default function newlogin() {
             sessionStorage.setItem("useID", response.data.username);
             sessionStorage.setItem("role", response.data.role);
             sessionStorage.setItem("id", response.data.id);
-
             var role = sessionStorage.getItem("role");
             var id = sessionStorage.getItem("useID");
             if (sessionStorage.getItem("login") && role == "student") {
@@ -371,7 +370,7 @@ export default function newlogin() {
               <div className="iphone:text-xs  laptop:text-xl text-red-500 text-center my-8 font-bold">
                 {errorMessages}
               </div>
-              <button
+              {/* <button
                 onClick={() =>
                   window.open(
                     `https://demo-tspm-server.herokuapp.com/manual_tspm.pdf`,
@@ -382,7 +381,7 @@ export default function newlogin() {
               >
                 <i className=" bx bxs-file-blank  iphone:text-[20px] laptop:text-[28px] "></i>{" "}
                 คู่มือการใช้งานสำหรับทดสอบระบบเบื่องต้น
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -421,7 +420,7 @@ export default function newlogin() {
             </div>
             <div
               onClick={() => {
-                router.push("/teachers");
+                router.push(`/teacher/${username}`);
               }}
               className="py-2  flex space-x-2 px-8   rounded-md  text-black border-2 border-black hover:border-red-800 cursor-pointer"
             >

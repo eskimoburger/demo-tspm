@@ -224,7 +224,6 @@ export default function FinalAdminLayout({ children, title }) {
               </a>
             </Link>
             
-
             {/* <div className="flex items-center gap-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200 hover:text-gray-800">
               <ExitToAppIcon /> ออกจากระบบ
             </div> */}

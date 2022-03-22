@@ -6,7 +6,7 @@ const NotificationPage = ({ teacher}) => {
   return (<Notification teacher={teacher} />);
 };
 NotificationPage.getLayout = function getLayout(page) {
-  return <TeacherLayout title={"Teacher | History"}>{page}</TeacherLayout>;
+  return <TeacherLayout title={"Teacher | Notification"}>{page}</TeacherLayout>;
 };
 
 export default NotificationPage;
